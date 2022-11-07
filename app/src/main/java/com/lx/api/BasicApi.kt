@@ -92,6 +92,47 @@ interface BasicApi {
         @Field("id") id: String
     ): Call<MemberListResponse>
 
+    /**
+     * 내위치에서 구조신호 보내기 + 구조신호 리스트 추가
+     */
+
+    @FormUrlEncoded
+    @POST("red/sendMyAreaAdd")
+    fun sendMyArea(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("lat") lat: String,
+        @Field("lng") lng: String
+    ): Call<SendMyAreaResponse>
+
+
+    /**
+     * GET 방식으로 게시판 리스트 보기
+     */
+
+    @GET("red/communityList")
+    fun getCommunityList(
+        @Query("requestCode") requestCode: String
+    ): Call<CommunityResponse>
+
+
+    /**
+     * 게시판 추가
+     */
+
+    @FormUrlEncoded
+    @POST("red/communityAdd")
+    fun addPost(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("title") title: String,
+        @Field("picture") picture: String,
+        @Field("content") content: String,
+        @Field("area") area: String
+    ): Call<CommunityResponse>
+
+
+
 
     /**
      * 파일 업로드 요청
@@ -103,19 +144,6 @@ interface BasicApi {
         @Part file: MultipartBody.Part,
         @Part(value="params", encoding="UTF-8") params: HashMap<String,String> = hashMapOf()
     ): Call<FileUploadResponse>
-
-
-
-
-    @FormUrlEncoded
-    @POST("/inquiry")
-    fun postInquiryAdd2(
-        @Field("requestCode") requestCode: String,
-        @Field("name") name: String,
-        @Field("age") age: String,
-        @Field("mobile") mobile: String,
-        @Field("filepath") filepath: String
-    ): Call<MemberListResponse>
 
 }
 
