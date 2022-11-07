@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // --펼치기 레이아웃 start 강헌구--
+        // --펼치기 레이아웃 start 장현승--
         binding.plusLayout.setOnClickListener {
             if(binding.layoutDetail02.visibility == View.VISIBLE) {
                 binding.layoutDetail02.visibility = View.GONE
