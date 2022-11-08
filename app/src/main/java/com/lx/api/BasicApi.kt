@@ -93,6 +93,19 @@ interface BasicApi {
     ): Call<MemberListResponse>
 
     /**
+     * POST 방식으로 멤버 로그인 요청
+     */
+
+    @FormUrlEncoded
+    @POST("red/dangerzone")
+    fun dangerzone(
+        @Field("requestCode") requestCode: String,
+        @Field("LAT") lat: String,
+        @Field("LNG") lng: String,
+        @Field("LAT2") lat2: String
+    ): Call<MemberListResponse>
+
+    /**
      * 내위치에서 구조신호 보내기 + 구조신호 리스트 추가
      */
 
