@@ -13,7 +13,6 @@ data class MemberListResponse(
     @SerializedName("header")
     val header: Header
 ) {
-
     data class Data(
         @SerializedName("id")
         val id: String,

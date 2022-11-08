@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             val locationRequest = LocationRequest.create()
             locationRequest.run{
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                interval = 1000    //위치 새로고침 시간
+                interval = 100000    //위치 새로고침 시간
 
             }
 

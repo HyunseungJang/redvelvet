@@ -2,6 +2,7 @@ package com.lx.red
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -101,26 +102,24 @@ class RegisterActivity : AppCompatActivity() {
         BasicClient.api.memberAdd(
             requestCode = "1001",
             id = registerId,
+            pw = registerPw,
             name =registerName,
-            phone =registerMobile,
-            gender =registerGender,
             birth =registerBirth,
-            pw =registerPw )
+            gender =registerGender,
+            phone =registerMobile
+        ).enqueue(object : Callback<MemberListResponse> {
+            override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
 
-//        ).enqueue(object:Callback<MemberListResponse>{
-//            override fun onResponse(call: Call<MemberListResponse>,response: Response<MemberListResponse>){
-//                (activity as MainActivity).onFragmentChanged(MainActivity.FragmentItem.ITEM1, null)
-//            }
-//
-//            override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-//                (activity as MainActivity).onFragmentChanged(MainActivity.FragmentItem.ITEM1, null)
-//            }
-//
-//        })
+            }
+
+            override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
+                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
 
     fun toast(message:String){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-//
 }

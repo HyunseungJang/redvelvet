@@ -36,7 +36,7 @@ interface BasicApi {
 
     @FormUrlEncoded
     @POST("red/memberRead")
-    fun memberRead(
+    fun postMemberRead(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
         @Field("pw") pw: String
@@ -57,6 +57,32 @@ interface BasicApi {
         @Field("gender") gender: String,
         @Field("phone") phone: String
     ): Call<MemberListResponse>
+
+    /**
+     * POST 방식으로 회원가입시 위치정보추가
+     */
+
+    @FormUrlEncoded
+    @POST("red/registerArea")
+    fun memberArea(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("lat") lat: Double,
+        @Field("lng") lng: Double
+    ): Call<MemberAreaResponse>
+
+    /**
+     * POST 방식으로 위치정보 새로고침
+     */
+
+    @FormUrlEncoded
+    @POST("red/myAreaUpdate")
+    fun myAreaUpdate(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("lat") lat: Double,
+        @Field("lng") lng: Double
+    ): Call<MemberAreaResponse>
 
     /**
      * POST 방식으로 멤버 정보수정 요청
@@ -183,7 +209,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://192.168.0.2:8001/"
+        private const val BASE_URL = "http://192.168.35.195:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""
