@@ -3,11 +3,11 @@ package com.lx.red
 import android.Manifest
 import android.content.Intent
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Looper
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,6 +18,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var map: GoogleMap
 
     var myMarker: Marker? = null
+
+    val timer = Timer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,8 @@ class MainActivity : AppCompatActivity() {
                     showToast("권한거부")
                 }
             }
+
+
 
         //공지사항
         binding.noticeButton.setOnClickListener {
@@ -102,7 +107,11 @@ class MainActivity : AppCompatActivity() {
         mapFragment.getMapAsync{
             //초기화가 끝난 지도
             map = it
-
+//            val timerTask: TimerTask = object : TimerTask() {
+//                override fun run() {
+//
+//                }
+//            }
             //내위치 요청하기
             requestLocation()
 
@@ -135,6 +144,7 @@ class MainActivity : AppCompatActivity() {
         try {
             //가장 최근에 확인된 위치 알려주기
             locationClient?.lastLocation?.addOnSuccessListener {
+                showToast("최근위치 : ${it.latitude}, ${it.longitude}")
             }
 
             //위치 클라이언트 만들기
@@ -167,7 +177,8 @@ class MainActivity : AppCompatActivity() {
     fun showCurrentLocation(location: Location){
         val curPoint = LatLng(location.latitude, location.longitude)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(curPoint,17.0f))
-
+        AppData.lat = location.latitude.toString()
+        AppData.lng = location.longitude.toString()
         showMarker(curPoint)
     }
     fun showMarker(curPoint:LatLng){
