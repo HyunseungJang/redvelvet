@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lx.drawer.RegisterActivity">
+    tools:context="com.lx.red.RegisterActivity">
 
     <EditText
         android:id="@+id/Registration_Id"
