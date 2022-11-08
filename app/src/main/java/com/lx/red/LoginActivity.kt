@@ -3,7 +3,7 @@ package com.lx.red
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lx.drawer.RegisterActivity
+import com.lx.red.RegisterActivity
 import com.lx.red.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
