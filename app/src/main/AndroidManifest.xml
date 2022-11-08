@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lx.red">
 
-    <meta-data
-        android:name="com.naver.maps.map.CLIENT_ID"
-        android:value="38v1lgp199"/>
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
