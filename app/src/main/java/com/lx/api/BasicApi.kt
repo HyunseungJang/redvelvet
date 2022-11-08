@@ -103,7 +103,7 @@ interface BasicApi {
         @Field("LAT") lat: String,
         @Field("LNG") lng: String,
         @Field("LAT2") lat2: String
-    ): Call<MemberListResponse>
+    ): Call<DangerResponse>
 
     /**
      * 내위치에서 구조신호 보내기 + 구조신호 리스트 추가
