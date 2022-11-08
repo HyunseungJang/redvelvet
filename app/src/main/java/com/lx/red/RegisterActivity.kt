@@ -122,5 +122,5 @@ class RegisterActivity : AppCompatActivity() {
     fun toast(message:String){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
+//
 }
