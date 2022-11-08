@@ -7,7 +7,6 @@ import com.lx.red.databinding.ActivityAddPostBinding
 class AddPostActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddPostBinding
 
-    // 강헌구 바보
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddPostBinding.inflate(layoutInflater)
