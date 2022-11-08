@@ -3,7 +3,6 @@ package com.lx.red
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lx.drawer.RegisterActivity
 import com.lx.red.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -15,14 +14,15 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //로그인 버튼
-        binding.LoginButton.setOnClickListener {
-            val intent = Intent(this,MainActivity::class.java)
+        binding.loginButton.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
         //회원가입 버튼
-        binding.RegistrationButton.setOnClickListener {
+        binding.registrationButton.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
+
 }

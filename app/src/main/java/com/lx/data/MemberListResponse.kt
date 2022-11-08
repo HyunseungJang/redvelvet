@@ -19,6 +19,8 @@ data class MemberListResponse(
         val id: String,
         @SerializedName("pw")
         val pw: String,
+        @SerializedName("name")
+        val name: String,
         @SerializedName("birth")
         val birth: String,
         @SerializedName("gender")

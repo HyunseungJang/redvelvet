@@ -1,4 +1,4 @@
-package com.lx.drawer
+package com.lx.red
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -21,7 +21,7 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.SameButton.setOnClickListener {
+        binding.sameButton.setOnClickListener {
             checkId()
         }
 
@@ -32,8 +32,8 @@ class RegisterActivity : AppCompatActivity() {
 
     //비밀번호 확인 맞을때만 회원가입 가능하게 하기
     fun checkPw() {
-        val registerPw = binding.RegistrationPassword.text.toString()
-        val registerPwCheck = binding.RegistrationPwCheck.text.toString()
+        val registerPw = binding.registrationPassword.text.toString()
+        val registerPwCheck = binding.registrationPwCheck.text.toString()
 
         if(registerPw.equals(registerPwCheck)) {
             postMemberAdd()
@@ -50,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
 
     //중복체크
     fun checkId() {
-        var registerId = binding.RegistrationId.text.toString()
+        var registerId = binding.registrationId.text.toString()
 
         BasicClient.api.postMemberCheckId(
             requestCode = "1001",
@@ -67,7 +67,7 @@ class RegisterActivity : AppCompatActivity() {
                         toast("Positive")
                     }
                     builder.show()
-                    binding.RegistrationId.setText("")
+                    binding.registrationId.setText("")
                 }
                 if(checkId == "0") {
                     var builder = AlertDialog.Builder(this@RegisterActivity)
@@ -90,12 +90,12 @@ class RegisterActivity : AppCompatActivity() {
     //회원리스트 추가 [파라미터]
     fun postMemberAdd(){
 
-        var registerId = binding.RegistrationId.text.toString()
-        var registerName = binding.RegistrationName.text.toString()
-        var registerMobile= binding.RegistrationMobile.text.toString()
-        var registerGender = binding.RegistrationGender.text.toString()
-        var registerBirth = binding.RegistrationBirth.text.toString()
-        var registerPw = binding.RegistrationPassword.text.toString()
+        var registerId = binding.registrationId.text.toString()
+        var registerName = binding.registrationName.text.toString()
+        var registerMobile= binding.registrationMobile.text.toString()
+        var registerGender = binding.registrationGender.text.toString()
+        var registerBirth = binding.registrationBirthday.text.toString()
+        var registerPw = binding.registrationPassword.text.toString()
 
 
         BasicClient.api.memberAdd(

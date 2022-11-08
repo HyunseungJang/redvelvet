@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
             val locationRequest = LocationRequest.create()
             locationRequest.run{
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                interval = 30 * 1000    //위치 새로고침 시간
+                interval = 1000    //위치 새로고침 시간
 
             }
 
@@ -192,6 +192,7 @@ class MainActivity : AppCompatActivity() {
             myMarker = map.addMarker(it)
             //태그정보
             myMarker?.tag = "1001"
+
         }
     }
 
