@@ -67,8 +67,8 @@ interface BasicApi {
     fun memberArea(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
-        @Field("lat") lat: Double,
-        @Field("lng") lng: Double
+        @Field("lat") lat: Int,
+        @Field("lng") lng: Int
     ): Call<MemberAreaResponse>
 
     /**

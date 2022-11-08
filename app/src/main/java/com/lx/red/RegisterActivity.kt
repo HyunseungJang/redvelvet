@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
+import com.lx.data.MemberAreaResponse
 import com.lx.data.MemberListResponse
 import com.lx.red.databinding.ActivityRegisterBinding
 import retrofit2.Call
@@ -38,6 +39,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if(registerPw.equals(registerPwCheck)) {
             postMemberAdd()
+            addMemberArea()
         } else {
             var builder = AlertDialog.Builder(this)
             builder.setTitle("회원가입")
@@ -115,6 +117,28 @@ class RegisterActivity : AppCompatActivity() {
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
                 val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
                 startActivity(intent)
+            }
+        })
+    }
+
+    fun addMemberArea(){
+
+        var id = binding.registrationId.text.toString()
+        var lat = 0
+        var lng = 0
+        BasicClient.api.memberArea(
+            requestCode = "1001",
+            id = id,
+            lat = lat,
+            lng = lng
+
+        ).enqueue(object : Callback<MemberAreaResponse> {
+            override fun onResponse(call: Call<MemberAreaResponse>, response: Response<MemberAreaResponse>) {
+
+            }
+
+            override fun onFailure(call: Call<MemberAreaResponse>, t: Throwable) {
+
             }
         })
     }
