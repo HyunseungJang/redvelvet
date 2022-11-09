@@ -2,8 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lx.red">
+    <!-- 구글서버 인터넷 권한  -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 위험권한 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+
+    <!-- 전화걸기 권한 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 쉐이크 기능 -->
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,6 +26,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRed"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA6iKC87fxHJooWK8xUhbu_SNOm1j0nD6I"/>
+
         <activity
             android:name=".NoticeActivity"
             android:exported="false" />

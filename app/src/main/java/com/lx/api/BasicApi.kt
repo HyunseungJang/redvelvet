@@ -36,7 +36,7 @@ interface BasicApi {
 
     @FormUrlEncoded
     @POST("red/memberRead")
-    fun memberRead(
+    fun postMemberRead(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
         @Field("pw") pw: String
@@ -57,6 +57,32 @@ interface BasicApi {
         @Field("gender") gender: String,
         @Field("phone") phone: String
     ): Call<MemberListResponse>
+
+    /**
+     * POST 방식으로 회원가입시 위치정보추가
+     */
+
+    @FormUrlEncoded
+    @POST("red/registerArea")
+    fun memberArea(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("lat") lat: Int,
+        @Field("lng") lng: Int
+    ): Call<MemberAreaResponse>
+
+    /**
+     * POST 방식으로 위치정보 새로고침
+     */
+
+    @FormUrlEncoded
+    @POST("red/myAreaUpdate")
+    fun myAreaUpdate(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("lat") lat: Double,
+        @Field("lng") lng: Double
+    ): Call<MemberAreaResponse>
 
     /**
      * POST 방식으로 멤버 정보수정 요청
@@ -91,6 +117,19 @@ interface BasicApi {
         @Field("requestCode") requestCode: String,
         @Field("id") id: String
     ): Call<MemberListResponse>
+
+    /**
+     * POST 방식으로 멤버 로그인 요청
+     */
+
+    @FormUrlEncoded
+    @POST("red/dangerzone")
+    fun dangerzone(
+        @Field("requestCode") requestCode: String,
+        @Field("LAT") lat: String,
+        @Field("LNG") lng: String,
+        @Field("LAT2") lat2: String
+    ): Call<DangerResponse>
 
     /**
      * 내위치에서 구조신호 보내기 + 구조신호 리스트 추가
