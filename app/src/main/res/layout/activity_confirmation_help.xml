@@ -6,13 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ConfirmationHelpActivity">
 
+
     <TextView
-        android:id="@+id/ttextView1"
+        android:id="@+id/resultText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="구조자 신호받는 화면"
+        android:text="결과"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.348" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

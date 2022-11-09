@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
     }
     fun readMember() {
         var id = binding.loginId.text.toString()
-        var pw = binding.loginPassword.text.toString()
+        var pw = binding.loginPw.text.toString()
 
         BasicClient.api.postMemberRead(
             requestCode = "1001",
@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 builder.show()
                 binding.loginId.setText("")
-                binding.loginPassword.setText("")
+                binding.loginPw.setText("")
                 }
             }
 
