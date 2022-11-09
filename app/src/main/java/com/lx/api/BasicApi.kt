@@ -80,8 +80,8 @@ interface BasicApi {
     fun myAreaUpdate(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
-        @Field("lat") lat: Double,
-        @Field("lng") lng: Double
+        @Field("lat") lat: Double?,
+        @Field("lng") lng: Double?
     ): Call<MemberAreaResponse>
 
     /**
@@ -126,9 +126,9 @@ interface BasicApi {
     @POST("red/dangerzone")
     fun dangerzone(
         @Field("requestCode") requestCode: String,
-        @Field("LAT") lat: String,
-        @Field("LNG") lng: String,
-        @Field("LAT2") lat2: String
+        @Field("LAT") LAT: Double?,
+        @Field("LNG") LNG: Double?,
+        @Field("LAT2") LAT2: Double?
     ): Call<DangerResponse>
 
     /**
@@ -140,8 +140,8 @@ interface BasicApi {
     fun sendMyArea(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
-        @Field("lat") lat: String,
-        @Field("lng") lng: String
+        @Field("lat") lat: Double?,
+        @Field("lng") lng: Double?
     ): Call<SendMyAreaResponse>
 
 

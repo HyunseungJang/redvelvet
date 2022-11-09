@@ -6,152 +6,141 @@
     android:layout_height="match_parent"
     tools:context="com.lx.red.RegisterActivity">
 
-    <Button
-        android:id="@+id/btn_registration"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
-        android:text="가입하기"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.754" />
 
     <Button
-        android:id="@+id/gologinButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:text="로그인하러가기"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_registration" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_registration"
+        app:layout_constraintVertical_bias="0.754" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="237dp"
+        android:layout_height="328dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.285">
+
+        <EditText
+            android:id="@+id/registrationId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="아이디"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="비밀번호"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationPwCheck"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="비밀번호 확인"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationBirthday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="생년원일"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationName"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="이름"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="성별"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/registrationMobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFD9D9"
+            android:ems="10"
+            android:hint="전화번호"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/sameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="115dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="568dp"
+        android:backgroundTint="#F26161"
         android:text="중복체크"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.913"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21" />
-
-    <EditText
-        android:id="@+id/registrationId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/registrationPassword"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/registrationPassword"
+    <TextView
+        android:id="@+id/textView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPersonName"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginBottom="24dp"
+        android:text="회원가입"
+        android:textColor="#000000"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationId" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/registrationName"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="이름"
-        android:inputType="textPersonName"
+    <Button
+        android:id="@+id/btn_registration"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="106dp"
+        android:backgroundTint="#F26161"
+        android:text="가입하기"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationPwCheck" />
-
-    <EditText
-        android:id="@+id/registrationPwCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="비밀번호 확인"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationPassword" />
-
-    <EditText
-        android:id="@+id/registrationBirthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="생년원일"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationGender" />
-
-    <EditText
-        android:id="@+id/registrationMobile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="160dp"
-        android:layout_marginBottom="100dp"
-        android:ems="10"
-        android:hint="전화번호"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_registration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationBirthday"
-        app:layout_constraintVertical_bias="0.035" />
-
-    <EditText
-        android:id="@+id/registrationGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="160dp"
-        android:ems="10"
-        android:hint="성별"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrationName" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.131" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

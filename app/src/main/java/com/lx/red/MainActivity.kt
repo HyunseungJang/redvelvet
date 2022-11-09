@@ -20,9 +20,16 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.lx.api.BasicClient
+import com.lx.data.DangerResponse
+import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
+import kotlin.concurrent.scheduleAtFixedRate
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -86,7 +93,13 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-
+        Timer().scheduleAtFixedRate(1000, 5000) {
+            updateArea()
+        }
+        Timer().scheduleAtFixedRate(6000, 5000) {
+            searchDanger()
+        }
+        binding.noticeButton.text = MemberData.memberId
 
         //공지사항
         binding.noticeButton.setOnClickListener {
@@ -190,7 +203,7 @@ class MainActivity : AppCompatActivity() {
             val locationRequest = LocationRequest.create()
             locationRequest.run{
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                interval = 100000    //위치 새로고침 시간
+                interval = 1000    //위치 새로고침 시간
 
             }
 
@@ -247,6 +260,50 @@ class MainActivity : AppCompatActivity() {
         // Add the following line to unregister the Sensor Manager onPause
         mSensorManager?.unregisterListener(mShakeDetector)
         super.onPause()
+    }
+
+    fun updateArea(){
+        var id = binding.noticeButton.text.toString()
+        var lat= AppData.lat?.toDouble()
+        var lng= AppData.lng?.toDouble()
+
+        BasicClient.api.myAreaUpdate(
+            requestCode = "1001",
+            id = id,
+            lat = lat,
+            lng = lng
+        ).enqueue(object : Callback<MemberAreaResponse> {
+            override fun onResponse(call: Call<MemberAreaResponse>, response: Response<MemberAreaResponse>) {
+
+            }
+            override fun onFailure(call: Call<MemberAreaResponse>, t: Throwable) {
+
+            }
+        })
+    }
+    fun searchDanger(){
+        var lat = AppData.lat?.toDouble()
+        var lng = AppData.lng?.toDouble()
+        var lat2 = AppData.lat?.toDouble()
+
+        BasicClient.api.dangerzone(
+            requestCode = "1001",
+            LAT = lat,
+            LNG = lng,
+            LAT2 = lat2
+        ).enqueue(object : Callback<DangerResponse> {
+            override fun onResponse(call: Call<DangerResponse>, response: Response<DangerResponse>) {
+                val checkDanger = response.body()?.header?.total.toString()
+                if(checkDanger !="0"){
+                    binding.textView7.text=checkDanger
+                }else{
+                    binding.textView7.text=checkDanger
+                }
+            }
+            override fun onFailure(call: Call<DangerResponse>, t: Throwable) {
+
+            }
+        })
     }
 
     fun showToast(message: String) {

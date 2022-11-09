@@ -9,7 +9,9 @@ data class DangerResponse(
     @SerializedName("data")
     val `data`: List<Data>,
     @SerializedName("message")
-    val message: String
+    val message: String,
+    @SerializedName("header")
+    val header: Header
 ) {
     data class Data(
         @SerializedName("LAT")
@@ -18,5 +20,9 @@ data class DangerResponse(
         val LNG: Double,
         @SerializedName("LAT2")
         val LAT2: Double
+    )
+    data class Header(
+        @SerializedName("total")
+        val total: Int
     )
 }

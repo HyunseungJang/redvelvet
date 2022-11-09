@@ -8,8 +8,6 @@ import android.os.Bundle
 import android.widget.Toast
 import com.lx.api.BasicClient
 import com.lx.data.MemberListResponse
-import com.lx.red.MemberData.Companion.memberId
-import com.lx.red.MemberData.Companion.memberPw
 import com.lx.red.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,8 +42,8 @@ class LoginActivity : AppCompatActivity() {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
                 val checkMember = response.body()?.header?.total.toString()
                 if(checkMember == "1"){
-                    memberId = memberId
-                    memberPw = memberPw
+                    MemberData.memberId = response.body()?.data?.get(0)?.id.toString()
+                    MemberData.memberPw = response.body()?.data?.get(0)?.pw.toString()
                     MemberData.memberName = response.body()?.data?.get(0)?.name.toString()
                     MemberData.memberBirth = response.body()?.data?.get(0)?.birth.toString()
                     MemberData.memberGender = response.body()?.data?.get(0)?.gender.toString()
