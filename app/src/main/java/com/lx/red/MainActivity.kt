@@ -1,8 +1,12 @@
 package com.lx.red
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
+import android.hardware.Sensor
+import android.hardware.SensorManager
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.os.Looper
 import android.view.View
@@ -31,10 +35,34 @@ class MainActivity : AppCompatActivity() {
 
     val timer = Timer()
 
+    // 쉐이크 + 전화걸기
+    private var mSensorManager: SensorManager? = null
+    private var mAccelerometer: Sensor? = null
+    private var mShakeDetector: ShakeDetector? = null
+    var phoneNum: String = "tel:"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // 쉐이크 + 전화걸기
+        mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        mAccelerometer = mSensorManager!!
+            .getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
+        mShakeDetector = ShakeDetector()
+        with(mShakeDetector) {
+            this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
+                override fun onShake(count: Int) {
+                    phoneNum += "01053230211"
+                    var intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse(phoneNum)
+                    startActivity(intent)
+
+                    phoneNum = "tel:"
+                }
+            })
+        }
 
         //위험권한 요청하기
         PermissionX.init(this)
@@ -60,8 +88,14 @@ class MainActivity : AppCompatActivity() {
 
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,HelpRequestActivity::class.java)
-            startActivity(intent)
+
+            phoneNum += "01053230211"
+            var intent = Intent(Intent.ACTION_DIAL)
+                intent.data = Uri.parse(phoneNum)
+                startActivity(intent)
+
+                phoneNum = "tel:"
+
         }
 
         //상황대처 정보
@@ -194,6 +228,23 @@ class MainActivity : AppCompatActivity() {
             myMarker?.tag = "1001"
 
         }
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        // Add the following line to register the Session Manager Listener onResume
+        mSensorManager?.registerListener(
+            mShakeDetector,
+            mAccelerometer,
+            SensorManager.SENSOR_DELAY_UI
+        )
+    }
+
+    // background 상황에서도 흔들림을 감지하고 적용할 필요는 없다
+    public override fun onPause() {
+        // Add the following line to unregister the Sensor Manager onPause
+        mSensorManager?.unregisterListener(mShakeDetector)
+        super.onPause()
     }
 
     fun showToast(message: String) {
