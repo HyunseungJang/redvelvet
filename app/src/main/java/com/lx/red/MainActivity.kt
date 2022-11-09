@@ -88,14 +88,8 @@ class MainActivity : AppCompatActivity() {
 
         //구조요청
         binding.helpButton.setOnClickListener {
-
-            phoneNum += "01053230211"
-            var intent = Intent(Intent.ACTION_DIAL)
-                intent.data = Uri.parse(phoneNum)
-                startActivity(intent)
-
-                phoneNum = "tel:"
-
+            val intent = Intent(this,HelpRequestActivity::class.java)
+            startActivity(intent)
         }
 
         //상황대처 정보
