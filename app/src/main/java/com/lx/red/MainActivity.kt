@@ -1,6 +1,7 @@
 package com.lx.red
 
 import android.Manifest
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -30,6 +31,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -78,7 +80,7 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
-
+        val builder = AlertDialog.Builder(this)
         //위험권한 요청하기
         PermissionX.init(this)
             .permissions(
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         Timer().scheduleAtFixedRate(1000, 5000) {
             updateArea()
         }
-        Timer().scheduleAtFixedRate(6000, 5000) {
+        Timer().scheduleAtFixedRate(6000, 10000) {
             searchDanger()
         }
         binding.noticeButton.text = MemberData.memberId
@@ -295,6 +297,8 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DangerResponse>, response: Response<DangerResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
+                    val intent = Intent(this@MainActivity,WarningActivity::class.java)
+                    startActivity(intent)
                     binding.textView7.text=checkDanger
                 }else{
                     binding.textView7.text=checkDanger
