@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 쉐이크 + 전화걸기
+        // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         mAccelerometer = mSensorManager!!
             .getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
@@ -54,12 +54,20 @@ class MainActivity : AppCompatActivity() {
         with(mShakeDetector) {
             this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
                 override fun onShake(count: Int) {
+                    // 전화걸기
                     phoneNum += "01053230211"
                     var intent = Intent(Intent.ACTION_DIAL)
                     intent.data = Uri.parse(phoneNum)
                     startActivity(intent)
 
                     phoneNum = "tel:"
+
+                    // 문자발송
+                    val inputPhoneNum = "01053230211"
+                    val myUri = Uri.parse("smsto:${inputPhoneNum}")
+                    val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
+                    myIntent.putExtra("sms_body", "살려주세요!")
+                    startActivity(myIntent)
                 }
             })
         }
