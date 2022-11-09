@@ -7,7 +7,7 @@
     tools:context=".ConfirmationHelpActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/ttextView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="구조자 신호받는 화면"

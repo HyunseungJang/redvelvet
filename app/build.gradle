@@ -1,6 +1,9 @@
+
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -62,5 +65,11 @@ dependencies {
 
     // 위험 권한
     implementation("com.guolindev.permissionx:permissionx:1.7.1")
+
+    // 뷰페이저 2
+    implementation "androidx.viewpager2:viewpager2:1.0.0"
+
+    // 인디케이터 애니메이션
+//    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
 }

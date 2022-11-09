@@ -1,18 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:attrs="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/situationView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SituationActivity">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="상황대처 화면 CPR"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="134dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/leftButton1"
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="50dp"
+            attrs:srcCompat="@drawable/leftbutton" />
+
+        <TextView
+            android:id="@+id/ttitleView2"
+            android:layout_width="368dp"
+            android:layout_height="51dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:text="상황대처 및 요령"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="409dp"
+        android:layout_height="597dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginBottom="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/smallTitleView1"
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="57dp"
+                android:layout_marginTop="40dp"
+                android:text="소아 심폐소생술"
+                android:textColor="#E86969"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/previous_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_left_arrow_24dp"
+                    android:textStyle="bold" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/my_intro_view_pager"
+                    android:layout_width="297dp"
+                    android:layout_height="350dp">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <ImageView
+                    android:id="@+id/next_btn"
+                    android:layout_width="57dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_right_arrow_24dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="#D1A4A4"
+                />
+
+            <TextView
+                android:id="@+id/ttextView1"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/smallTitleView2"
+                android:layout_width="296dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="57dp"
+                android:text="4가지 호신술"
+                android:textColor="#E86969"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/previous_btn2"
+                    android:layout_width="57dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_left_arrow_24dp"
+                    android:textStyle="bold" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/my_intro_view_pager2"
+                    android:layout_width="300dp"
+                    android:layout_height="400dp"
+                    android:layout_weight="1">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <ImageView
+                    android:id="@+id/next_btn2"
+                    android:layout_width="57dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_right_arrow_24dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="#8F8C8C"
+                />
+
+            <TextView
+                android:id="@+id/ttextView3"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/smallTitleView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="57dp"
+                android:text="압사사고 예방 방법"
+                android:textColor="#E86969"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/previous_btn3"
+                    android:layout_width="57dp"
+                    android:layout_height="match_parent"
+                    attrs:srcCompat="@drawable/ic_left_arrow_24dp" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/my_intro_view_pager3"
+                    android:layout_width="300dp"
+                    android:layout_height="400dp"
+                    android:layout_weight="1"
+                    android:background="#E1D6D6" />
+
+                <ImageView
+                    android:id="@+id/next_btn3"
+                    android:layout_width="57dp"
+                    android:layout_height="match_parent"
+                    attrs:srcCompat="@drawable/ic_right_arrow_24dp" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:background="#8F8C8C"
+                />
+
+            <TextView
+                android:id="@+id/ttextView4"
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:text="TextView" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

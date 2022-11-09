@@ -7,7 +7,7 @@
     tools:context=".EmergencyCallActivity">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/ttextView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="긴급전화등록"

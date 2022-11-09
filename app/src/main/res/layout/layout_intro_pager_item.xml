@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pager_item_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/pager_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="271dp"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:id="@+id/pager_item_text"
+        android:layout_width="302dp"
+        android:layout_height="29dp"
+        android:text="뷰페이저 아이템 레이아웃"
+        android:textAlignment="center"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
