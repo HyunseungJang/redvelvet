@@ -93,8 +93,8 @@ interface BasicApi {
     fun memberUpdate(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
-        @Field("height") height: String,
         @Field("birth") birth: String,
+        @Field("height") height: String,
         @Field("weight") weight: String,
         @Field("emernum") emernum: String,
         @Field("medicine") medicine: String,
@@ -231,7 +231,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://211.219.169.44:8001/"
+        private const val BASE_URL = "http://192.168.35.195:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

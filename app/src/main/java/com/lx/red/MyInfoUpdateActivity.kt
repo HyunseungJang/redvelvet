@@ -71,7 +71,7 @@ class MyInfoUpdateActivity : AppCompatActivity() {
                 Runtime.getRuntime().exit(0)
             }
 
-        })//
+        })
 
     }
 

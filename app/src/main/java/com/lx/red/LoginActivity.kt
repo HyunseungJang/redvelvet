@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import com.lx.api.BasicClient
 import com.lx.data.MemberListResponse
 import com.lx.red.databinding.ActivityLoginBinding
@@ -14,7 +15,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
+
     lateinit var binding : ActivityLoginBinding
+
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -26,8 +31,7 @@ class LoginActivity : AppCompatActivity() {
         }
         //회원가입 버튼
         binding.registrationButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,RegisterActivity::class.java))
         }
     }
     fun readMember() {
@@ -56,8 +60,7 @@ class LoginActivity : AppCompatActivity() {
                     MemberData.memberBloodtype = response.body()?.data?.get(0)?.bloodtype.toString()
                     MemberData.memberCertificate = response.body()?.data?.get(0)?.certificate.toString()
                     MemberData.memberOther = response.body()?.data?.get(0)?.others.toString()
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    startActivity(intent)
+                    launcher.launch(Intent(applicationContext,MainActivity::class.java))
                 } else if(checkMember == "0"){
                 val builder = AlertDialog.Builder(this@LoginActivity)
                 builder.setTitle("로그인")

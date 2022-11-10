@@ -13,31 +13,24 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.content.Context
+import androidx.activity.result.contract.ActivityResultContracts
 
 class ConfirmationHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityConfirmationHelpBinding
     var phoneNum: String = "tel:"
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        // 전화걸기
-//        phoneNum += "01053230211"
-//        var intent = Intent(Intent.ACTION_DIAL)
-//        intent.data = Uri.parse(phoneNum)
-//        startActivity(intent)
-//
-//        phoneNum = "tel:"
-
         // 문자발송
         val inputPhoneNum = "01053230211"
         val myUri = Uri.parse("smsto:${inputPhoneNum}")
         val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
         myIntent.putExtra("sms_body", "살려주세요!")
         startActivity(myIntent)
-
         // 다이얼로그
         val builder = AlertDialog.Builder(this)
         builder.setTitle("112 신고 완료")
@@ -48,7 +41,6 @@ class ConfirmationHelpActivity : AppCompatActivity() {
                     binding.resultText.text = "닫기 클릭"
                     help()
                 })
-
         // 다이얼로그를 띄워주기
         builder.show()
     }
