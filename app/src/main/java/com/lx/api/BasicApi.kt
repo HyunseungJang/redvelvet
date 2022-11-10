@@ -92,6 +92,7 @@ interface BasicApi {
     @POST("red/memberUpdate")
     fun memberUpdate(
         @Field("requestCode") requestCode: String,
+        @Field("name") name: String,
         @Field("id") id: String,
         @Field("pw") pw: String,
         @Field("birth") birth: String,
