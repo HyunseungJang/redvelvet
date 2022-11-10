@@ -95,6 +95,7 @@ interface BasicApi {
         @Field("id") id: String,
         @Field("birth") birth: String,
         @Field("height") height: String,
+        @Field("birth") birth: String,
         @Field("weight") weight: String,
         @Field("emernum") emernum: String,
         @Field("medicine") medicine: String,
