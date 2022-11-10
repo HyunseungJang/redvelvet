@@ -217,7 +217,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="기타"
-                android:textSize="20sp" />
+                android:textSize="20sp" />//
         </LinearLayout>
     </ScrollView>
 
