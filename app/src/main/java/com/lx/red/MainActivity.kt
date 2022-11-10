@@ -64,9 +64,9 @@ class MainActivity : AppCompatActivity() {
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
 
-        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
-        val intent = Intent(this, BackgroundService::class.java)
-        startForegroundService(intent)
+//        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
+//        val intent = Intent(this, BackgroundService::class.java)
+//        startForegroundService(intent)
 
 
 
