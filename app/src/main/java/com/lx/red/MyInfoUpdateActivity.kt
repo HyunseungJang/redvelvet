@@ -63,11 +63,12 @@ class MyInfoUpdateActivity : AppCompatActivity() {
             birth = MemberData.memberBirth.toString()
         ).enqueue(object : Callback<MemberListResponse> {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
-                val intent = Intent(this@MyInfoUpdateActivity, MyInfoMainActivity::class.java)
-                startActivity(intent)
             }
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-                binding.infoinputBlood.setText(t.message)
+                val intent = Intent(this@MyInfoUpdateActivity,LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+                Runtime.getRuntime().exit(0)
             }
 
         })

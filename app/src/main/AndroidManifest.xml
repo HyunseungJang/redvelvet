@@ -35,8 +35,8 @@
             android:name=".GetHelpActivity"
             android:exported="false" />
         <activity
-            android:name=".MoreRequestActivity"
-            android:exported="false" />
+            android:name=".MyInfoUpdateActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

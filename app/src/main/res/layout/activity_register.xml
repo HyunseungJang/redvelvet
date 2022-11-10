@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FFD9D9"
             android:ems="10"
-            android:hint="생년원일"
+            android:hint="나이(만 - 세)"
             android:inputType="textPersonName" />
 
         <EditText
