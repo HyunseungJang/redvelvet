@@ -145,6 +145,20 @@ interface BasicApi {
         @Field("lng") lng: Double?
     ): Call<SendMyAreaResponse>
 
+    /**
+     * POST 방식으로 멤버 로그인 요청
+     */
+
+    @FormUrlEncoded
+    @POST("red/scanHelp")
+    fun scanhelp(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("LAT") LAT: Double?,
+        @Field("LNG") LNG: Double?,
+        @Field("LAT2") LAT2: Double?
+    ): Call<HelpResponse>
+
 
     /**
      * GET 방식으로 게시판 리스트 보기
@@ -171,7 +185,18 @@ interface BasicApi {
         @Field("area") area: String
     ): Call<CommunityResponse>
 
+    /**
+     * 내위치에서 구조신호 보냈을때 리스트 추가
+     */
 
+    @FormUrlEncoded
+    @POST("red/helpMyAreaAdd")
+    fun help(
+        @Field("requestCode") requestCode: String,
+        @Field("id") id: String,
+        @Field("LAT") LAT: Double?,
+        @Field("LNG") LNG: Double?
+    ): Call<HelpResponse>
 
 
     /**
@@ -210,7 +235,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://192.168.35.195:8001/"
+        private const val BASE_URL = "http://172.168.10.33:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

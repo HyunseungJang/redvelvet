@@ -1,12 +1,10 @@
 package com.lx.red
 
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import com.lx.red.databinding.ActivityHelpRequestBinding
-import kotlinx.android.synthetic.main.activity_help_request.*
 
 class HelpRequestActivity : AppCompatActivity() {
     lateinit var binding : ActivityHelpRequestBinding
@@ -20,7 +18,7 @@ class HelpRequestActivity : AppCompatActivity() {
         object : CountDownTimer(10000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
-                count.text = "" + millisUntilFinished / 1000
+                binding.count.text = "" + millisUntilFinished / 1000
             }
 
             override fun onFinish() {

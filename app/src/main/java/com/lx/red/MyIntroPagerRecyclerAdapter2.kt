@@ -3,9 +3,6 @@ package com.lx.red
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.lx.red.MyIntroPagerViewHolder
-import com.lx.red.PageItem
-import com.lx.red.R
 
 class MyIntroPagerRecyclerAdapter2(private var pageList2: ArrayList<PageItem>) : RecyclerView.Adapter<MyIntroPagerViewHolder>(){
 

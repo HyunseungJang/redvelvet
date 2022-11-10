@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
+import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity() {
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
-    var phoneNum: String = "tel:"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,20 +63,9 @@ class MainActivity : AppCompatActivity() {
         with(mShakeDetector) {
             this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
                 override fun onShake(count: Int) {
-                    // 전화걸기
-                    phoneNum += "01053230211"
-                    var intent = Intent(Intent.ACTION_DIAL)
-                    intent.data = Uri.parse(phoneNum)
-                    startActivity(intent)
 
-                    phoneNum = "tel:"
+                    run()
 
-                    // 문자발송
-                    val inputPhoneNum = "01053230211"
-                    val myUri = Uri.parse("smsto:${inputPhoneNum}")
-                    val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
-                    myIntent.putExtra("sms_body", "살려주세요!")
-                    startActivity(myIntent)
                 }
             })
         }
@@ -100,6 +89,9 @@ class MainActivity : AppCompatActivity() {
         }
         Timer().scheduleAtFixedRate(6000, 10000) {
             searchDanger()
+        }
+        Timer().scheduleAtFixedRate(6000, 10000) {
+            searchHelp()
         }
         binding.noticeButton.text = MemberData.memberId
 
@@ -158,11 +150,6 @@ class MainActivity : AppCompatActivity() {
         mapFragment.getMapAsync{
             //초기화가 끝난 지도
             map = it
-//            val timerTask: TimerTask = object : TimerTask() {
-//                override fun run() {
-//
-//                }
-//            }
             //내위치 요청하기
             requestLocation()
 
@@ -308,6 +295,39 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    fun searchHelp(){
+        var id = MemberData.memberId.toString()
+        var lat = AppData.lat?.toDouble()
+        var lng = AppData.lng?.toDouble()
+        var lat2 = AppData.lat?.toDouble()
+
+        BasicClient.api.scanhelp(
+            requestCode = "1001",
+            id = id,
+            LAT = lat,
+            LNG = lng,
+            LAT2 = lat2
+        ).enqueue(object : Callback<HelpResponse> {
+            override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
+                val checkDanger = response.body()?.header?.total.toString()
+                if(checkDanger !="0"){
+                    val intent = Intent(this@MainActivity,GetHelpActivity::class.java)
+                    startActivity(intent)
+                }else{
+
+                }
+            }
+            override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
+
+            }
+        })
+    }
+
+    fun run() {
+        val intent = Intent(this,HelpRequestActivity::class.java)
+        startActivity(intent)
     }
 
     fun showToast(message: String) {
