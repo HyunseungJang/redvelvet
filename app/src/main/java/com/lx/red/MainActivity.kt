@@ -8,10 +8,13 @@ import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -50,10 +53,22 @@ class MainActivity : AppCompatActivity() {
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // --백그라운드 작업 start--
+
+        // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
+        Thread { time() }.start()
+
+        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
+        val intent = Intent(this, BackgroundService::class.java)
+        startForegroundService(intent)
+
+
 
         // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -323,6 +338,19 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+    }
+
+    //10초 카운트 세기 (1초마다)
+    fun time() {
+        for (i in 0..1) {
+            try {
+                Thread.sleep(1000)
+                Log.d("test", "count: $i")
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+            stopService(intent)
+        }
     }
 
     fun run() {

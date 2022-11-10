@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.lx.red">
+    package="com.lx.red" >
+
     <!-- 구글서버 인터넷 권한 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 위험권한 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 전화걸기 권한 -->
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 쉐이크 기능 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 백그라운드 권한 -->
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
@@ -22,7 +24,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyRed"
         android:usesCleartextTraffic="true"
-        tools:targetApi="31">
+        tools:targetApi="31" >
+        <service
+            android:name=".BackgroundService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
         <activity
             android:name=".GetHelpActivity"
             android:exported="false" />
@@ -84,7 +92,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
