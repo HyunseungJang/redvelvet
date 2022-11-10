@@ -12,6 +12,7 @@ import com.lx.red.databinding.ActivityConfirmationHelpBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.content.Context
 
 class ConfirmationHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityConfirmationHelpBinding
@@ -23,12 +24,12 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // 전화걸기
-        phoneNum += "01053230211"
-        var intent = Intent(Intent.ACTION_DIAL)
-        intent.data = Uri.parse(phoneNum)
-        startActivity(intent)
-
-        phoneNum = "tel:"
+//        phoneNum += "01053230211"
+//        var intent = Intent(Intent.ACTION_DIAL)
+//        intent.data = Uri.parse(phoneNum)
+//        startActivity(intent)
+//
+//        phoneNum = "tel:"
 
         // 문자발송
         val inputPhoneNum = "01053230211"
@@ -51,6 +52,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         // 다이얼로그를 띄워주기
         builder.show()
     }
+
     fun help(){
         var id = MemberData.memberId.toString()
         var LAT= AppData.lat?.toDouble()

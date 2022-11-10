@@ -34,9 +34,6 @@
         <activity
             android:name=".GetHelpActivity"
             android:exported="false" />
-        <activity
-            android:name=".MoreRequestActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
