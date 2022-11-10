@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
 
-        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
+//        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
 //        val intent = Intent(this, BackgroundService::class.java)
 //        startForegroundService(intent)
 
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,GetHelpActivity::class.java)
+            val intent = Intent(this,HelpRequestActivity::class.java)
             startActivity(intent)
         }
 
@@ -259,7 +259,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    // 쉐이크 (background 상황에서도 흔들림을 감지하고 적용할 필요는 없다)
+    // background 상황에서도 흔들림을 감지하고 적용할 필요는 없다
     public override fun onPause() {
         // Add the following line to unregister the Sensor Manager onPause
         mSensorManager?.unregisterListener(mShakeDetector)

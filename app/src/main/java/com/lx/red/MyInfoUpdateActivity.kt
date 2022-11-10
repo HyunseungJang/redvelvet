@@ -21,6 +21,7 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.outputName.text = "${MemberData.memberId+"의 정보"}"
+        binding.outputBirth.text = "${"만"+MemberData.memberBirth+"세"}"
         binding.infoinputTall.setText("${MemberData.memberHeight}")
         binding.infoinputWeight.setText("${MemberData.memberWeight}")
         binding.infoinputMedi.setText("${MemberData.memberMedicine}")
@@ -31,17 +32,10 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         binding.infoinputEmer.setText("${MemberData.memberEmernum}")
 
 
-        //긴급전화 등록
-        binding.addcallButton.setOnClickListener {
-            val intent = Intent(this, EmergencyCallActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.updateButton.setOnClickListener {
+        //
+        binding.checkButton.setOnClickListener {
             updateMember()
-
         }
-
     }
 
     //회원 정보 수정 요청하기
@@ -65,14 +59,15 @@ class MyInfoUpdateActivity : AppCompatActivity() {
             disease = memberDisease,
             emernum = memberEmernum,
             others = memberOther,
-            bloodtype = memberBlood
+            bloodtype = memberBlood,
+            birth = MemberData.memberBirth.toString()
         ).enqueue(object : Callback<MemberListResponse> {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
-                val intent = Intent(this@MyInfoUpdateActivity, MainActivity::class.java)
+                val intent = Intent(this@MyInfoUpdateActivity, MyInfoMainActivity::class.java)
                 startActivity(intent)
             }
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-                binding.outputName.text = "${t.message}"
+                binding.infoinputBlood.setText(t.message)
             }
 
         })

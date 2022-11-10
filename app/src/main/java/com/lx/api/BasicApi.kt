@@ -94,6 +94,7 @@ interface BasicApi {
         @Field("requestCode") requestCode: String,
         @Field("id") id:String,
         @Field("height") height: String,
+        @Field("birth") birth: String,
         @Field("weight") weight: String,
         @Field("emernum") emernum: String,
         @Field("medicine") medicine: String,
