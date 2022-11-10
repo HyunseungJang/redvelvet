@@ -14,6 +14,8 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.content.Context
 import androidx.activity.result.contract.ActivityResultContracts
+import kotlinx.android.synthetic.main.activity_confirmation_help.*
+import java.lang.reflect.Member
 
 class ConfirmationHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityConfirmationHelpBinding
@@ -25,6 +27,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        help()
         // 문자발송
         val inputPhoneNum = "01053230211"
         val myUri = Uri.parse("smsto:${inputPhoneNum}")
@@ -39,10 +42,13 @@ class ConfirmationHelpActivity : AppCompatActivity() {
             .setPositiveButton("닫기",
                 DialogInterface.OnClickListener { dialog, id ->
                     binding.resultText.text = "닫기 클릭"
-                    help()
                 })
         // 다이얼로그를 띄워주기
         builder.show()
+
+        binding.deleteHelp.setOnClickListener {
+            deleteHelp()
+        }
     }
 
     fun help(){
@@ -61,6 +67,20 @@ class ConfirmationHelpActivity : AppCompatActivity() {
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
 
+            }
+        })
+    }
+    fun deleteHelp(){
+        var id = MemberData.memberId.toString()
+
+        BasicClient.api.getMemberDelete(
+            requestCode = "1001",
+            id = id
+        ).enqueue(object : Callback<HelpResponse> {
+            override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
+            }
+            override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
+                launcher.launch(Intent(applicationContext,MainActivity::class.java))
             }
         })
     }

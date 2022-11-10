@@ -194,6 +194,16 @@ interface BasicApi {
         @Field("LNG") LNG: Double?
     ): Call<HelpResponse>
 
+    /**
+     *  구조요청 완료 요청(송신자)
+     */
+
+    @GET("red/deleteHelp")
+    fun getMemberDelete(
+        @Query("requestCode") requestCode: String,
+        @Query("id") id: String
+    ): Call<HelpResponse>
+
 
     /**
      * 파일 업로드 요청

@@ -102,10 +102,10 @@ class MainActivity : AppCompatActivity() {
         Timer().scheduleAtFixedRate(1000, 5000) {
             updateArea()
         }
-        Timer().scheduleAtFixedRate(6000, 10000) {
+        Timer().scheduleAtFixedRate(10000, 30000) {
             searchDanger()
         }
-        Timer().scheduleAtFixedRate(6000, 10000) {
+        Timer().scheduleAtFixedRate(10000, 30000) {
             searchHelp()
         }
         binding.noticeButton.text = MemberData.memberId
