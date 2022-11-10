@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,HelpRequestActivity::class.java)
+            val intent = Intent(this,HelperActivity::class.java)
             startActivity(intent)
         }
 

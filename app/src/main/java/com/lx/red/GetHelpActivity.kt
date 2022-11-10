@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.lx.red.databinding.ActivityGetHelpBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class GetHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityGetHelpBinding
@@ -118,9 +118,11 @@ class GetHelpActivity : AppCompatActivity() {
             myMarker?.tag = "2002"
 
         }
+
     }
 
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
 }
