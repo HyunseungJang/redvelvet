@@ -95,7 +95,6 @@ interface BasicApi {
         @Field("id") id: String,
         @Field("birth") birth: String,
         @Field("height") height: String,
-        @Field("birth") birth: String,
         @Field("weight") weight: String,
         @Field("emernum") emernum: String,
         @Field("medicine") medicine: String,
@@ -232,7 +231,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://172.168.10.33:8001/"
+        private const val BASE_URL = "http://192.168.35.195:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

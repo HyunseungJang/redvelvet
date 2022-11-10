@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
 import com.lx.data.MemberAreaResponse
@@ -17,6 +18,7 @@ import retrofit2.Response
 class RegisterActivity : AppCompatActivity() {
     lateinit var binding : ActivityRegisterBinding
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,9 +86,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-
             }
-
         })
     }
 
@@ -100,7 +100,6 @@ class RegisterActivity : AppCompatActivity() {
         var registerBirth = binding.registrationBirthday.text.toString()
         var registerPw = binding.registrationPassword.text.toString()
 
-
         BasicClient.api.memberAdd(
             requestCode = "1001",
             id = registerId,
@@ -111,12 +110,10 @@ class RegisterActivity : AppCompatActivity() {
             phone =registerMobile
         ).enqueue(object : Callback<MemberListResponse> {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
-
             }
 
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                startActivity(intent)
+                launcher.launch(Intent(applicationContext,LoginActivity::class.java))
             }
         })
     }
@@ -134,11 +131,9 @@ class RegisterActivity : AppCompatActivity() {
 
         ).enqueue(object : Callback<MemberAreaResponse> {
             override fun onResponse(call: Call<MemberAreaResponse>, response: Response<MemberAreaResponse>) {
-
             }
 
             override fun onFailure(call: Call<MemberAreaResponse>, t: Throwable) {
-
             }
         })
     }

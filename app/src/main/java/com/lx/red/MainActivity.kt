@@ -7,13 +7,13 @@ import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     val timer = Timer()
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
     // 쉐이크 + 전화걸기
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
@@ -59,17 +60,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // --백그라운드 작업 start--
-
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
-
-//        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
-//        val intent = Intent(this, BackgroundService::class.java)
-//        startForegroundService(intent)
-
-
-
         // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         mAccelerometer = mSensorManager!!
@@ -78,9 +70,7 @@ class MainActivity : AppCompatActivity() {
         with(mShakeDetector) {
             this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
                 override fun onShake(count: Int) {
-
                     run()
-
                 }
             })
         }
@@ -98,49 +88,36 @@ class MainActivity : AppCompatActivity() {
                     showToast("권한거부")
                 }
             }
-
         Timer().scheduleAtFixedRate(1000, 5000) {
             updateArea()
         }
-        Timer().scheduleAtFixedRate(6000, 10000) {
+        Timer().scheduleAtFixedRate(10000, 30000) {
             searchDanger()
         }
         Timer().scheduleAtFixedRate(6000, 10000) {
             searchHelp()
         }
         binding.noticeButton.text = MemberData.memberId
-
         //공지사항
         binding.noticeButton.setOnClickListener {
-            val intent = Intent(this,NoticeActivity::class.java)
-            startActivity(intent)
+            lunActivity()
         }
-
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,HelpRequestActivity::class.java)
-            startActivity(intent)
+            lunActivity2()
         }
-
         //상황대처 정보
         binding.infoButton.setOnClickListener {
-            val intent = Intent(this,InformationActivity::class.java)
-            startActivity(intent)
+            lunActivity3()
         }
-
         //내정보
         binding.myinfoButton.setOnClickListener {
-            val intent = Intent(this,MyInfoUpdateActivity::class.java)
-            startActivity(intent)
+            lunActivity4()
         }
-
         //게시판
         binding.postButton.setOnClickListener {
-            val intent = Intent(this,PostActivity::class.java)
-            startActivity(intent)
+            lunActivity5()
         }
-
-
         // --펼치기 레이아웃 start --
         binding.plusLayout.setOnClickListener {
             if (binding.layoutDetail02.visibility == View.VISIBLE) {
@@ -157,8 +134,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        // --펼치기 레이아웃 end--
-
         //지도 초기화하기
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         //구글맵 객체를 컨트롤
@@ -167,42 +142,31 @@ class MainActivity : AppCompatActivity() {
             map = it
             //내위치 요청하기
             requestLocation()
-
             //마커 클릭시 처리
             map.setOnMarkerClickListener {
                 showToast("마커 클릭됨 : ${it.tag},${it.title}")
-
                 //필요시, 다른화면으로 이동(tag 정보를 이용해서 구분함)
-
                 //리턴
                 true
             }
-
             //보고있는 지도영역에 대한 구분
             map.setOnCameraIdleListener {
                 //현재위치
                 val bounds = map.projection.visibleRegion.latLngBounds
-
-
                 //줌 레벨
                 val zoomLevel = map.cameraPosition.zoom
                 println("zoomLevel: ${zoomLevel}")
             }
-
         }
-
     }
     fun requestLocation(){
-
         try {
             //가장 최근에 확인된 위치 알려주기
             locationClient?.lastLocation?.addOnSuccessListener {
                 showToast("최근위치 : ${it.latitude}, ${it.longitude}")
             }
-
             //위치 클라이언트 만들기
             locationClient = LocationServices.getFusedLocationProviderClient(this)
-
             //내위치를 요청할 때 필요한 설정값
             val locationRequest = LocationRequest.create()
             locationRequest.run{
@@ -210,7 +174,6 @@ class MainActivity : AppCompatActivity() {
                 interval = 1000    //위치 새로고침 시간
 
             }
-
             //내 위치를 받았을 때 자동으로 호출되는 함수
             val locationCallback = object : LocationCallback(){
                 override fun onLocationResult(result: LocationResult) {
@@ -234,6 +197,7 @@ class MainActivity : AppCompatActivity() {
         AppData.lng = location.longitude.toString()
         showMarker(curPoint)
     }
+
     fun showMarker(curPoint:LatLng){
         myMarker?.remove()
 
@@ -245,7 +209,6 @@ class MainActivity : AppCompatActivity() {
             myMarker = map.addMarker(it)
             //태그정보
             myMarker?.tag = "1001"
-
         }
     }
 
@@ -278,10 +241,8 @@ class MainActivity : AppCompatActivity() {
             lng = lng
         ).enqueue(object : Callback<MemberAreaResponse> {
             override fun onResponse(call: Call<MemberAreaResponse>, response: Response<MemberAreaResponse>) {
-
             }
             override fun onFailure(call: Call<MemberAreaResponse>, t: Throwable) {
-
             }
         })
     }
@@ -299,15 +260,12 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<DangerResponse>, response: Response<DangerResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
-                    val intent = Intent(this@MainActivity,WarningActivity::class.java)
-                    startActivity(intent)
-                    binding.textView7.text=checkDanger
+                    lunActivity6()
                 }else{
                     binding.textView7.text=checkDanger
                 }
             }
             override fun onFailure(call: Call<DangerResponse>, t: Throwable) {
-
             }
         })
     }
@@ -328,18 +286,14 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
-                    val intent = Intent(this@MainActivity,GetHelpActivity::class.java)
-                    startActivity(intent)
+                    lunActivity7()
                 }else{
-
                 }
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
-
             }
         })
     }
-
     //10초 카운트 세기 (1초마다)
     fun time() {
         for (i in 0..1) {
@@ -360,5 +314,34 @@ class MainActivity : AppCompatActivity() {
 
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    fun lunActivity(){
+        val intent = Intent(applicationContext, NoticeActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity2(){
+        val intent = Intent(applicationContext, HelpRequestActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity3(){
+        val intent = Intent(applicationContext, InformationActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity4(){
+        val intent = Intent(applicationContext, MyInfoUpdateActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity5(){
+        val intent = Intent(applicationContext, PostActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity6(){
+        val intent = Intent(applicationContext, WarningActivity::class.java)
+        launcher.launch(intent)
+    }
+    fun lunActivity7(){
+        val intent = Intent(applicationContext, GetHelpActivity::class.java)
+        launcher.launch(intent)
     }
 }
