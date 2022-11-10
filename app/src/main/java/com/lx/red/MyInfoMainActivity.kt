@@ -14,7 +14,14 @@ class MyInfoMainActivity : AppCompatActivity() {
         binding = ActivityMyInfoMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //내정보
+        binding.updateButton.setOnClickListener {
+            val intent = Intent(this,MyInfoUpdateActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.outputName.text = "${MemberData.memberId+"의 정보"}"
+        binding.outputBirth2.text = "${"만"+MemberData.memberBirth+"세"}"
         binding.outputTall.text= "${MemberData.memberHeight}"
         binding.outputWeight.text= "${MemberData.memberWeight}"
         binding.outputMedi.text= "${MemberData.memberMedicine}"
@@ -23,15 +30,12 @@ class MyInfoMainActivity : AppCompatActivity() {
         binding.outputOther.text= "${MemberData.memberOther}"
         binding.outputCertifi.text= "${MemberData.memberCertificate}"
         binding.outputEmer.text= "${MemberData.memberEmernum}"
-        //내정보
-        binding.goupdateButton.setOnClickListener {
-            val intent = Intent(this,MyInfoUpdateActivity::class.java)
-            startActivity(intent)
+
         }
 
     }
 
-}
+
 
 
 
