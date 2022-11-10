@@ -21,15 +21,14 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.outputName.text = "${MemberData.memberId+"의 정보"}"
-//        binding.infoinputTall.text= "${MemberData.memberHeight}"
-//        binding.infoinputWeight.text= "${MemberData.memberWeight}"
-//        binding.infoinputMedi.text= "${MemberData.memberMedicine}"
-//        binding.infoinputBlood.text= "${MemberData.memberBloodtype}"
-//        binding.infoinputSick.text= "${MemberData.memberDisease}"
-//        binding.infoinputOther.text= "${MemberData.memberOther}"
-//        binding.infoinputCertifi.text= "${MemberData.memberCertificate}"
-//        binding.infoinputEmer.text= "${MemberData.memberEmernum}"
-
+        binding.infoinputTall.setText("${MemberData.memberHeight}")
+        binding.infoinputWeight.setText("${MemberData.memberWeight}")
+        binding.infoinputMedi.setText("${MemberData.memberMedicine}")
+        binding.infoinputBlood.setText("${MemberData.memberBloodtype}")
+        binding.infoinputSick.setText("${MemberData.memberDisease}")
+        binding.infoinputOther.setText("${MemberData.memberOther}")
+        binding.infoinputCertifi.setText("${MemberData.memberCertificate}")
+        binding.infoinputEmer.setText("${MemberData.memberEmernum}")
 
 
         //긴급전화 등록
@@ -41,10 +40,6 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         binding.updateButton.setOnClickListener {
             updateMember()
 
-        }
-        binding.updateButton.setOnClickListener {
-            val intent = Intent(this,MyInfoMainActivity::class.java)
-            startActivity(intent)
         }
 
     }
@@ -58,12 +53,11 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         val memberDisease = binding.infoinputSick.text.toString()
         val memberEmernum = binding.infoinputEmer.text.toString()
         val memberOther = binding.infoinputOther.text.toString()
-        val memberId = binding.outputName.text.toString()
         val memberBlood = binding.infoinputBlood.text.toString()
 
         BasicClient.api.memberUpdate(
             requestCode = "1001",
-            id = memberId,
+            id = MemberData.memberId.toString(),
             height = memberHeight,
             weight = memberWeight,
             certificate = memberCertificate,
@@ -74,10 +68,11 @@ class MyInfoUpdateActivity : AppCompatActivity() {
             bloodtype = memberBlood
         ).enqueue(object : Callback<MemberListResponse> {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
-
+                val intent = Intent(this@MyInfoUpdateActivity, MainActivity::class.java)
+                startActivity(intent)
             }
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-
+                binding.outputName.text = "${t.message}"
             }
 
         })
@@ -87,5 +82,4 @@ class MyInfoUpdateActivity : AppCompatActivity() {
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
 }

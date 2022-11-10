@@ -71,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<MemberListResponse>, t: Throwable) {
-                printLog("${t.message}")
+                binding.loginId.setText("${t.message}")
             }
         })
     }

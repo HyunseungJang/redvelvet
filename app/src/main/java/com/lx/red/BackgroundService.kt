@@ -33,7 +33,7 @@ class BackgroundService : Service() {
             manager.createNotificationChannel(serviceChannel)
         }
         val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
+       val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
         val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("백그라운드")
             .setContentText("실행중")
