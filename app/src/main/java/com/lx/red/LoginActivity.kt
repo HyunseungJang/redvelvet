@@ -60,6 +60,9 @@ class LoginActivity : AppCompatActivity() {
                     MemberData.memberBloodtype = response.body()?.data?.get(0)?.bloodtype.toString()
                     MemberData.memberCertificate = response.body()?.data?.get(0)?.certificate.toString()
                     MemberData.memberOther = response.body()?.data?.get(0)?.others.toString()
+                    MemberData.memberAgreeP = response.body()?.data?.get(0)?.agreep.toString()
+                    MemberData.memberAgreeS1 = response.body()?.data?.get(0)?.agrees1.toString()
+                    MemberData.memberAgreeS2 = response.body()?.data?.get(0)?.agrees2.toString()
                     launcher.launch(Intent(applicationContext,MainActivity::class.java))
                 } else if(checkMember == "0"){
                 val builder = AlertDialog.Builder(this@LoginActivity)

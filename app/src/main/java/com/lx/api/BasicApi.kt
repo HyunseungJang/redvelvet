@@ -55,7 +55,10 @@ interface BasicApi {
         @Field("name") name: String,
         @Field("birth") birth: String,
         @Field("gender") gender: String,
-        @Field("phone") phone: String
+        @Field("phone") phone: String,
+        @Field("agreep") agreep: String,
+        @Field("agrees1") agrees1: String,
+        @Field("agrees2") agrees2: String
     ): Call<MemberListResponse>
 
     /**
@@ -241,7 +244,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://192.168.35.195:8001/"
+        private const val BASE_URL = "http://192.168.0.3:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

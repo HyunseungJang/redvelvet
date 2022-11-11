@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
 import com.lx.data.MemberAreaResponse
 import com.lx.data.MemberListResponse
+import com.lx.red.HelpData.Companion.id
 import com.lx.red.databinding.ActivityRegisterBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -92,14 +93,15 @@ class RegisterActivity : AppCompatActivity() {
 
     //회원리스트 추가 [파라미터]
     fun postMemberAdd(){
-
         var registerId = binding.registrationId.text.toString()
         var registerName = binding.registrationName.text.toString()
         var registerMobile= binding.registrationMobile.text.toString()
         var registerGender = binding.registrationGender.text.toString()
         var registerBirth = binding.registrationBirthday.text.toString()
         var registerPw = binding.registrationPassword.text.toString()
-
+        var registerAgreeP = binding.registrationBirthday.text.toString()
+        var registerAgreeS1 = binding.registrationBirthday.text.toString()
+        var registerAgreeS2 = binding.registrationBirthday.text.toString()
         BasicClient.api.memberAdd(
             requestCode = "1001",
             id = registerId,
@@ -107,7 +109,10 @@ class RegisterActivity : AppCompatActivity() {
             name =registerName,
             birth =registerBirth,
             gender =registerGender,
-            phone =registerMobile
+            phone =registerMobile,
+            agreep=registerAgreeP,
+            agrees1=registerAgreeS1,
+            agrees2=registerAgreeS2
         ).enqueue(object : Callback<MemberListResponse> {
             override fun onResponse(call: Call<MemberListResponse>, response: Response<MemberListResponse>) {
             }
