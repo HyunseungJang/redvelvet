@@ -7,7 +7,6 @@ import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
