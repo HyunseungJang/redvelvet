@@ -50,7 +50,12 @@
         <service
             android:name=".BackgroundService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true"
+            android:process=":backgroundservice">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </service>
 
         <activity
             android:name=".GetHelpActivity"
@@ -105,7 +110,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
