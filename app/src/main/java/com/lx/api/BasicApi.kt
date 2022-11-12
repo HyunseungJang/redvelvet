@@ -301,7 +301,7 @@ class BasicClient {
 
             clientBuilder.addInterceptor(headerInterceptor)
             clientBuilder.addInterceptor(httpLoggingInterceptor)
-            clientBuilder.callTimeout(60, TimeUnit.SECONDS)       // 호출 타임아웃 시간 설정 60초
+            clientBuilder.callTimeout(60, TimeUnit.SECONDS)       // 호출 타임아웃 시간 설정 60초//
             clientBuilder.connectTimeout(60, TimeUnit.SECONDS)    // 연결 타임아웃 시간 설정 60초
             clientBuilder.readTimeout(60, TimeUnit.SECONDS)
             clientBuilder.writeTimeout(60, TimeUnit.SECONDS)

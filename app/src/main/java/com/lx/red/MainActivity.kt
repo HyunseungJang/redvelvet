@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            //내 위치 요청
+            //내 위치 요청//
             locationClient?.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
         }catch(e:SecurityException){
             e.printStackTrace()

@@ -54,7 +54,7 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 //            mMap.addMarker(MarkerOptions().position(locationArrayList!![i]).title("Marker"))
 //            mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f))
 //            mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList!!.get(i)))
-//        }
+//        }//
 
         val sos = mMap.addMarker(
             MarkerOptions()
