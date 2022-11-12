@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MyRed</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_disaster">disasterActivity</string>
 </resources>
