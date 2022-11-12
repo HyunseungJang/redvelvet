@@ -10,13 +10,12 @@ import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
 
-
 class BackgroundService : Service() {
     val CHANNEL_ID = ""
 
-    private var mSensorManager: SensorManager? = null
-    private var mAccelerometer: Sensor? = null
-    private var mShakeDetector: ShakeDetector? = null
+    var mSensorManager: SensorManager? = null
+    var mAccelerometer: Sensor? = null
+    var mShakeDetector: ShakeDetector? = null
 
     override fun onBind(intent: Intent): IBinder {
         TODO("Return the communication channel to the service.")
@@ -64,9 +63,7 @@ class BackgroundService : Service() {
         with(mShakeDetector) {
             this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
                 override fun onShake(count: Int) {
-
                     run()
-
                 }
             })
         }
@@ -74,11 +71,11 @@ class BackgroundService : Service() {
         return super.onStartCommand(intent, flags, startId)
     }
 
-    private fun time() {
+    fun time() {
 
     }
     fun run() {
-        val intent = Intent(this,HelpRequestActivity::class.java)
+        val intent = Intent(this, HelpRequestActivity::class.java)
         startActivity(intent)
     }
 

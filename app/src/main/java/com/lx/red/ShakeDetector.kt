@@ -8,13 +8,13 @@ import android.hardware.SensorManager
 // detector를 따로 선언
 class ShakeDetector : SensorEventListener {
     // listener
-    private var mListener: OnShakeListener? = null
+    var mListener: OnShakeListener? = null
 
     // 시간 기록용
-    private var mShakeTimestamp: Long = 0
+    var mShakeTimestamp: Long = 0
 
     // 횟수
-    private var mShakeCount = 0
+    var mShakeCount = 0
 
     // listener setting
     fun setOnShakeListener(listener: OnShakeListener?) {
@@ -76,12 +76,12 @@ class ShakeDetector : SensorEventListener {
         // 센서 이벤트를 들을 listener를 충족하는 class
         // 중력, 중력가속도을 기준으로 삼아서 진동, 움직임을 측정한다.
         // 흔들림 감지할 때 기준이 되는 가해지는 힘
-        private const val SHAKE_THRESHOLD_GRAVITY = 2.7f
+        const val SHAKE_THRESHOLD_GRAVITY = 2.7f
 
         // 흔들림 감지할때 최소 0.5초를 기준으로 측정한다.
-        private const val SHAKE_SLOP_TIME_MS = 500
+        const val SHAKE_SLOP_TIME_MS = 500
 
         // 흔드는 횟수는 3초마다 초기화
-        private const val SHAKE_COUNT_RESET_TIME_MS = 3000
+        const val SHAKE_COUNT_RESET_TIME_MS = 3000
     }
 }
