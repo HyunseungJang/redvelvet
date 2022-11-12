@@ -49,6 +49,10 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         binding.deleteHelp.setOnClickListener {
             deleteHelp()
         }
+
+        binding.blueButton.setOnClickListener {
+            launcher.launch(Intent(applicationContext,BluetoothChatActivity::class.java))
+        }
     }
 
     fun help(){

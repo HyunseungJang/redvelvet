@@ -13,6 +13,7 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
@@ -29,6 +30,7 @@ import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import kotlinx.coroutines.NonCancellable.cancel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +48,8 @@ class MainActivity : AppCompatActivity() {
 
     val timer = Timer()
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
+
     // 쉐이크 + 전화걸기
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
@@ -61,10 +65,6 @@ class MainActivity : AppCompatActivity() {
 
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
-
-
-
-
 
         // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -94,15 +94,16 @@ class MainActivity : AppCompatActivity() {
                     showToast("권한거부")
                 }
             }
+        var time = Timer()
 
-        Timer().scheduleAtFixedRate(1000, 5000) {
-            updateArea()
+        time.scheduleAtFixedRate(1000, 5000) {
+            updateArea(time)
         }
-        Timer().scheduleAtFixedRate(10000, 30000) {
-            searchDanger()
+        time.scheduleAtFixedRate(10000, 30000) {
+            searchDanger(time)
         }
-        Timer().scheduleAtFixedRate(10000, 30000) {
-            searchHelp()
+        time.scheduleAtFixedRate(10000, 30000) {
+            searchHelp(time)
         }
         binding.noticeButton.text = MemberData.memberId
 
@@ -114,26 +115,22 @@ class MainActivity : AppCompatActivity() {
 
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,HelperActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,HelperActivity::class.java))
         }
 
         //상황대처 정보
         binding.infoButton.setOnClickListener {
-            val intent = Intent(this,InformationActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,InformationActivity::class.java))
         }
 
         //내정보
         binding.myinfoButton.setOnClickListener {
-            val intent = Intent(this,MyInfoMainActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
         }
 
         //게시판
         binding.postButton.setOnClickListener {
-            val intent = Intent(this,PostActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,PostActivity::class.java))
         }
 
 
@@ -189,7 +186,6 @@ class MainActivity : AppCompatActivity() {
         //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
         val intent = Intent(this, BackgroundService::class.java)
         startForegroundService(intent)
-
     }
     fun requestLocation(){
 
@@ -265,7 +261,7 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    fun updateArea(){
+    fun updateArea(time:Timer){
         var id = binding.noticeButton.text.toString()
         var lat= AppData.lat?.toDouble()
         var lng= AppData.lng?.toDouble()
@@ -284,7 +280,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-    fun searchDanger(){
+    fun searchDanger(time:Timer) {
         var lat = AppData.lat?.toDouble()
         var lng = AppData.lng?.toDouble()
         var lat2 = AppData.lat?.toDouble()
@@ -299,7 +295,9 @@ class MainActivity : AppCompatActivity() {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
                     val intent = Intent(this@MainActivity,WarningActivity::class.java)
+                    time.cancel()
                     startActivity(intent)
+                    return
                 }else{
                 }
             }
@@ -309,7 +307,7 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun searchHelp(){
+    fun searchHelp(time:Timer){
         var id = MemberData.memberId.toString()
         var lat = AppData.lat?.toDouble()
         var lng = AppData.lng?.toDouble()
@@ -328,7 +326,9 @@ class MainActivity : AppCompatActivity() {
                     HelpData.id= response.body()?.data?.get(0)?.id.toString()
                     binding.textView7.text=HelpData.id
                     val intent = Intent(this@MainActivity,HelperActivity::class.java)
+                    time.cancel()
                     startActivity(intent)
+                    return
                 }else{
 
                 }
@@ -353,11 +353,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun run() {
-        val intent = Intent(this,HelpRequestActivity::class.java)
-        startActivity(intent)
+        launcher.launch(Intent(applicationContext,HelpRequestActivity::class.java))
     }
 
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
+    //타이머 객체 하나씩 만들어서 죽여버리는 함수
+
 }

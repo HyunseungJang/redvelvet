@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 전화걸기 권한 -->
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 쉐이크 기능 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 백그라운드 권한 -->
-
     <uses-permission
         android:name="android.permission.BLUETOOTH"
         android:maxSdkVersion="30" />
@@ -26,7 +25,6 @@
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
     <uses-feature android:name="android.software.companion_device_setup" />
-
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
@@ -42,6 +40,10 @@
         android:theme="@style/Theme.MyRed"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".BluetoothChatActivity"
+            android:allowBackup="true"
+            android:exported="false" />
         <activity
             android:name=".HelperActivity"
             android:exported="false" />
@@ -128,7 +130,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
