@@ -145,7 +145,7 @@ interface BasicApi {
     ): Call<SendMyAreaResponse>
 
     /**
-     * POST 방식으로 멤버 로그인 요청
+     * 도움요청자 스캔하기
      */
 
     @FormUrlEncoded
@@ -244,7 +244,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://192.168.35.195:8001/"
+        private const val BASE_URL = "http://172.168.10.63:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

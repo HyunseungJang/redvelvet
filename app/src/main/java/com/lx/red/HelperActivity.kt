@@ -20,11 +20,14 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
-    var lat = HelpData.lat?.toDouble()
-    var lng = HelpData.lng?.toDouble()
+    var latMe = AppData.lat?.toDouble()
+    var lngMe = AppData.lng?.toDouble()
+    var nameMe = MemberData.memberName
 
-    val soser = LatLng(37.5306182,127.0306218)
-    val saver = LatLng(37.5306182, 127.0306218)
+    val nameHelp = HelpData.id
+
+    val soser = LatLng(37.5306182, 127.0306218)
+    val saver = LatLng(latMe!!, lngMe!!)
     private var locationArrayList: ArrayList<LatLng>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,16 +59,16 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
         val sos = mMap.addMarker(
             MarkerOptions()
                 .position(soser)
-                .title("구조받는 사람")
-                .snippet("도와줘!")
+                .title("$nameHelp")
+                .snippet("도움이 필요한 사람의 위치")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.sos))
         )
 
         val save = mMap.addMarker(
             MarkerOptions()
                 .position(saver)
-                .title("구조해주는 사람")
-                .snippet("도와줄게!")
+                .title("$nameMe")
+                .snippet("나의 위치")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.you))
         )
 
