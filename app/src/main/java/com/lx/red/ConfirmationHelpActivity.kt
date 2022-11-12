@@ -43,7 +43,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
                 DialogInterface.OnClickListener { dialog, id ->
                     binding.resultText.text = "닫기 클릭"
                 })
-        // 다이얼로그를 띄워주기
+        // 다이얼로그를 띄워주기//
         builder.show()
 
         binding.deleteHelp.setOnClickListener {
