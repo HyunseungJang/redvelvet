@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
 
         //내정보
         binding.myinfoButton.setOnClickListener {
-            val intent = Intent(this,MyInfoUpdateActivity::class.java)
+            val intent = Intent(this,MyInfoMainActivity::class.java)
             startActivity(intent)
         }
 
