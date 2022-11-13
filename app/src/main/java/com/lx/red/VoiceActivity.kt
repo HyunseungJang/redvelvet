@@ -33,10 +33,13 @@ class VoiceActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             intent.action = TextToSpeech.Engine.ACTION_CHECK_TTS_DATA
             activityResult.launch(intent)
             Toast.makeText(
-                this, "버튼 눌렸음.",
+                this, "음성 전환 시작",
                 Toast.LENGTH_SHORT
             ).show()
         }
+
+        // 프레그먼트 부분
+        supportFragmentManager.beginTransaction().replace(R.id.view, VoiceOneFragment()).commit()
 
         binding.btn1.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(R.id.view, VoiceOneFragment()).commit()
@@ -94,7 +97,7 @@ class VoiceActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                 // 입력값 변수에 담기
                 val data: String = speechText.text.toString()
                 var speechStatus: Int = 0
-                // 안드로이드 버전에 따른 조건(롤리팝보다 같거나 높다면
+                // 안드로이드 버전에 따른 조건(롤리팝보다 같거나 높다면)
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     speechStatus = textToSpeech.speak(
                         data, TextToSpeech.QUEUE_FLUSH,

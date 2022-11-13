@@ -76,4 +76,7 @@ dependencies {
     // 인디케이터 애니메이션
 //    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
+    // 원형 이미지 뷰
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }
