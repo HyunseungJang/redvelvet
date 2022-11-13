@@ -1,7 +1,9 @@
 package com.lx.red
 
 import android.Manifest
+import android.app.AlarmManager
 import android.app.AlertDialog
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -10,6 +12,7 @@ import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -186,6 +189,23 @@ class MainActivity : AppCompatActivity() {
         //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
         val intent = Intent(this, BackgroundService::class.java)
         startForegroundService(intent)
+
+        // --백그라운드에서 알람 울리기 기능 start--
+        val alarmMgr = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        val alarmIntent = Intent(this, NotificationBroadcastReceiver::class.java) // 리시버로 전달
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, NotificationBroadcastReceiver.NOTIFICATION_ID, alarmIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT)
+
+        val triggerTime = (SystemClock.elapsedRealtime()  // 5초 지나면 알람 울리기
+                + 5 * 1000)
+        alarmMgr.setExactAndAllowWhileIdle(   // setExactAndAllowWhileIdle -> 절전모드에서도 동작하는 코드(절전모드 원치 않으면 setExact)
+            AlarmManager.RTC_WAKEUP,
+            triggerTime,
+            pendingIntent
+        )
+        // --백그라운드에서 알람 울리기 기능 end--
     }
     fun requestLocation(){
 
