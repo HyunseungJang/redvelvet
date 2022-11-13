@@ -1,5 +1,6 @@
 package com.lx.red
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,6 +10,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.util.Log
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 
 class NotificationBroadcastReceiver : BroadcastReceiver() {
@@ -20,6 +23,7 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
     }
     lateinit var notificationManager: NotificationManager
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onReceive(context: Context, intent: Intent?) {
 
         Log.d(TAG, "Received intent : $intent")
@@ -29,14 +33,17 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
         createNotificationChannel()
         deliverNotification(context)
     }
+
+    @RequiresApi(Build.VERSION_CODES.S)
     private fun deliverNotification(context: Context) {
         val contentIntent = Intent(context, MainActivity::class.java)
         val contentPendingIntent = PendingIntent.getActivity(
             context,
             NOTIFICATION_ID,
             contentIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT
+            PendingIntent.FLAG_MUTABLE
         )
+        Log.e("알림", toString())
         val builder =
             NotificationCompat.Builder(context, PRIMARY_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background) //알림창에 뜨는 아이콘

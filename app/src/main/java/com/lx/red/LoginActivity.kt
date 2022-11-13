@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         }
         //회원가입 버튼
         binding.registrationButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,RegisterActivity::class.java))
+            launcher.launch(Intent(applicationContext,AgreeActivity::class.java))
         }
     }
     fun readMember() {

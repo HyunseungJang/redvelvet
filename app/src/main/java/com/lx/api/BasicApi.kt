@@ -213,8 +213,8 @@ interface BasicApi {
      */
 
     @Multipart
-    @POST("/farm/upload")
-    fun uploadFile(
+    @POST("red/communityUpload")
+    fun communityUploadFile(
         @Part file: MultipartBody.Part,
         @Part(value="params", encoding="UTF-8") params: HashMap<String,String> = hashMapOf()
     ): Call<FileUploadResponse>
