@@ -18,7 +18,7 @@ class InformationActivity : AppCompatActivity() {
 
         //재난대피지역
         binding.safezoneButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,SafeDisasterActivity::class.java))
+            launcher.launch(Intent(applicationContext,SkyActivity::class.java))
         }
 
         //상황대처

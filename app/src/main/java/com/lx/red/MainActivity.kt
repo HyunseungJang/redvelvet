@@ -134,11 +134,6 @@ class MainActivity : AppCompatActivity() {
             launcher.launch(Intent(applicationContext,PostActivity::class.java))
         }
 
-        //재난대피
-        binding.disasterButton.setOnClickListener {
-            val intent = Intent(this,SkyActivity::class.java)
-            startActivity(intent)
-        }
 
 
         // --펼치기 레이아웃 start --
