@@ -82,6 +82,9 @@
             android:name=".GetHelpActivity"
             android:exported="false" />
         <activity
+            android:name=".SkyActivity"
+            android:exported="false" />
+        <activity
             android:name=".MyInfoUpdateActivity"
             android:exported="true" />
         <activity
