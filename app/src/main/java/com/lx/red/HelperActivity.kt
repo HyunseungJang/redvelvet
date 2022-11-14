@@ -81,20 +81,20 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 if(marker.snippet == "도움이 필요한 사람의 위치") {
 
-                    // 다이얼로그를 생성하기 위해 Builder 클래스 생성자를 이용해 줍니다.
-                    val builder = AlertDialog.Builder(this@HelperActivity)
-                    builder.setTitle("$nameHelp 님에게로 가는 경로 탐색")
-                        .setMessage("구글맵으로 이동합니다.")
-                        .setPositiveButton("확인",
-                            DialogInterface.OnClickListener { dialog, id ->
-                                goToMap()
-                            })
-                        .setNegativeButton("취소",
-                            DialogInterface.OnClickListener { dialog, id ->
+                        // 다이얼로그를 생성하기 위해 Builder 클래스 생성자를 이용해 줍니다.
+                        val builder = AlertDialog.Builder(this@HelperActivity)
+                        builder.setTitle("$nameHelp 님에게로 가는 경로 탐색")
+                            .setMessage("구글맵으로 이동합니다.")
+                            .setPositiveButton("확인",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                    goToMap()
+                                })
+                            .setNegativeButton("취소",
+                                DialogInterface.OnClickListener { dialog, id ->
 
-                            })
-                    // 다이얼로그를 띄워주기
-                    builder.show()
+                                })
+                        // 다이얼로그를 띄워주기
+                        builder.show()
 
                 } else {
 
@@ -112,7 +112,7 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
             "geo:0,0?q=${latHelp},${lngHelp}?z=18"
         ).let { location ->
             // Or map point based on latitude/longitude
-            //val location: Uri = Uri.parse("geo:37.5157852,127.0354285?z=14") // z param is zoom level
+             //val location: Uri = Uri.parse("geo:37.5157852,127.0354285?z=14") // z param is zoom level
             Intent(Intent.ACTION_VIEW, location)
         }
         startActivity(mapIntent)
