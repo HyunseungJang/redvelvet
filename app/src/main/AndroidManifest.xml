@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lx.red">
+
     <!-- 구글서버 인터넷 권한 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 위험권한 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -20,6 +21,9 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
         android:name="android.hardware.bluetooth_le"
@@ -30,6 +34,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -80,6 +85,9 @@
 
         <activity
             android:name=".GetHelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SkyActivity"
             android:exported="false" />
         <activity
             android:name=".MyInfoUpdateActivity"
