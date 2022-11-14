@@ -164,9 +164,9 @@ interface BasicApi {
      */
 
     @GET("red/communityList")
-    fun getCommunityList(
+    fun getList(
         @Query("requestCode") requestCode: String
-    ): Call<CommunityResponse>
+    ): Call<CommunityListResponse>
 
 
     /**
@@ -175,14 +175,15 @@ interface BasicApi {
 
     @FormUrlEncoded
     @POST("red/communityAdd")
-    fun addPost(
+    fun postCommunityAdd(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
         @Field("title") title: String,
-        @Field("picture") picture: String,
         @Field("content") content: String,
-        @Field("area") area: String
-    ): Call<CommunityResponse>
+        @Field("filepath") filepath: String,
+        @Field("area") area: String,
+        @Field("time") time: String
+    ): Call<CommunityListResponse>
 
     /**
      * 내위치에서 구조신호 보냈을때 리스트 추가
