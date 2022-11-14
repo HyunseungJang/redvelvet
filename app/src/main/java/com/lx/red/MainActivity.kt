@@ -338,9 +338,9 @@ class MainActivity : AppCompatActivity() {
         BasicClient.api.scanhelp(
             requestCode = "1001",
             id = id,
-            lat = lat,
-            lng = lng,
-            lat2 = lat2
+            LAT = lat,
+            LNG = lng,
+            LAT2 = lat2
         ).enqueue(object : Callback<HelpResponse> {
             override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
