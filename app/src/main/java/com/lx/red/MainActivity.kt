@@ -2,9 +2,7 @@ package com.lx.red
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.app.AlarmManager
-import android.app.AlertDialog
-import android.app.PendingIntent
+import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -14,12 +12,14 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
+import android.service.notification.NotificationListenerService
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -134,8 +134,6 @@ class MainActivity : AppCompatActivity() {
         binding.postButton.setOnClickListener {
             launcher.launch(Intent(applicationContext,PostActivity::class.java))
         }
-
-
 
         // --펼치기 레이아웃 start --
         binding.plusLayout.setOnClickListener {
@@ -318,7 +316,6 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this@MainActivity,WarningActivity::class.java)
                     time.cancel()
                     startActivity(intent)
-                    return
                 }else{
                     return
                 }
@@ -349,6 +346,35 @@ class MainActivity : AppCompatActivity() {
                     HelpData.lat= response.body()?.data?.get(0)?.lat.toString()
                     HelpData.lng= response.body()?.data?.get(0)?.lng.toString()
                     binding.textView7.text=response.body()?.data.toString()
+
+                    // 알림 기능
+                    showToast("알림 표시됨")
+
+                    var builder = NotificationCompat.Builder(this@MainActivity, "MY_channel")
+                        .setSmallIcon(R.drawable.ic_launcher_background)
+                        .setContentTitle("RED 앱 구조요청 알림")
+                        .setContentText("근처 200m 이내에 도움이 필요한 사람이 있어요!")
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
+                        val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
+                        val channel_name = "채널이름" // 채널 이름 설정
+                        val descriptionText = "설명글" // 채널 설명글 설정
+                        val importance = NotificationManager.IMPORTANCE_DEFAULT // 알림 우선순위 설정
+                        val channel = NotificationChannel(channel_id, channel_name, importance).apply {
+                            description = descriptionText
+                        }
+
+                        // 만든 채널 정보를 시스템에 등록
+                        val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+                        notificationManager.createNotificationChannel(channel)
+
+                        // 알림 표시: 알림의 고유 ID(ex: 1002), 알림 결과
+                        notificationManager.notify(1002, builder.build())
+
+                        notificationManager.
+                    }
+
+
                     val intent = Intent(this@MainActivity,HelperActivity::class.java)
                     time.cancel()
                     startActivity(intent)

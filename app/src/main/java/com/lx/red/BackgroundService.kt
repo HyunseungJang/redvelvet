@@ -8,6 +8,7 @@ import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.os.Build
 import android.os.IBinder
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 
 class BackgroundService : Service() {
@@ -55,28 +56,20 @@ class BackgroundService : Service() {
         startForeground(1, notification)
         Thread { time() }.start()
 
-        // 쉐이크 + 전화걸기 + 문자발송
-        mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        mAccelerometer = mSensorManager!!
-            .getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        mShakeDetector = ShakeDetector()
-        with(mShakeDetector) {
-            this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
-                override fun onShake(count: Int) {
-                    run()
-                }
-            })
-        }
-
         return super.onStartCommand(intent, flags, startId)
     }
 
     fun time() {
 
     }
+
     fun run() {
         val intent = Intent(this, HelpRequestActivity::class.java)
         startActivity(intent)
+    }
+
+    fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
 }
