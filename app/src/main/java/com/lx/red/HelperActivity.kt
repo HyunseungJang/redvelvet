@@ -1,9 +1,12 @@
 package com.lx.red
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -13,6 +16,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_confirmation_help.*
 
 class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -77,7 +81,20 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 
                 if(marker.snippet == "도움이 필요한 사람의 위치") {
 
-                    goToMap()
+                    // 다이얼로그를 생성하기 위해 Builder 클래스 생성자를 이용해 줍니다.
+                    val builder = AlertDialog.Builder(this@HelperActivity)
+                    builder.setTitle("$nameHelp 님에게로 가는 경로 탐색")
+                        .setMessage("구글맵으로 이동합니다.")
+                        .setPositiveButton("확인",
+                            DialogInterface.OnClickListener { dialog, id ->
+                                goToMap()
+                            })
+                        .setNegativeButton("취소",
+                            DialogInterface.OnClickListener { dialog, id ->
+
+                            })
+                    // 다이얼로그를 띄워주기
+                    builder.show()
 
                 } else {
 
@@ -92,10 +109,10 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
     // 구글맵 앱으로 이동하기
     fun goToMap() {
         val mapIntent: Intent = Uri.parse(
-            "geo:0,0?q=$latMe,$lngMe?z=14"
+            "geo:0,0?q=${latHelp},${lngHelp}?z=18"
         ).let { location ->
             // Or map point based on latitude/longitude
-//             val location: Uri = Uri.parse("geo:37.422219,-122.08364?z=14") // z param is zoom level
+            //val location: Uri = Uri.parse("geo:37.5157852,127.0354285?z=14") // z param is zoom level
             Intent(Intent.ACTION_VIEW, location)
         }
         startActivity(mapIntent)

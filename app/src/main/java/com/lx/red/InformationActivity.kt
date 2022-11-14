@@ -1,5 +1,6 @@
 package com.lx.red
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -29,6 +30,11 @@ class InformationActivity : AppCompatActivity() {
         //목소리(변조,녹음)
         binding.voiceButton.setOnClickListener {
             launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
+        }
+
+        //사고대처요령 영상
+        binding.accidentButton.setOnClickListener {
+            launcher.launch(Intent(applicationContext,MediaActivity::class.java))
         }
     }
 }

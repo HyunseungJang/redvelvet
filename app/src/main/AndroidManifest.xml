@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lx.red">
-
     <!-- 구글서버 인터넷 권한 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 위험권한 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -47,11 +46,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MediaActivity"
+            android:exported="false" />
+        <activity
             android:name=".BluetoothChatActivity"
             android:allowBackup="true"
             android:exported="false" />
         <activity
             android:name=".HelperActivity"
+            android:exported="false" />
+        <activity
+            android:name=".VideoActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -84,7 +89,13 @@
         </service>
 
         <activity
+            android:name=".PictureItemActivity"
+            android:exported="false" />
+        <activity
             android:name=".GetHelpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CaptureActivity"
             android:exported="false" />
         <activity
             android:name=".SkyActivity"
