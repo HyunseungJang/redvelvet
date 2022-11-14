@@ -7,7 +7,6 @@ import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
@@ -36,7 +35,6 @@ import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 
-
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
 
@@ -64,9 +62,7 @@ class MainActivity : AppCompatActivity() {
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
 
-//        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
-//        val intent = Intent(this, BackgroundService::class.java)
-//        startForegroundService(intent)
+
 
 
 
@@ -130,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 
         //내정보
         binding.myinfoButton.setOnClickListener {
-            val intent = Intent(this,MyInfoUpdateActivity::class.java)
+            val intent = Intent(this,MyInfoMainActivity::class.java)
             startActivity(intent)
         }
 
@@ -196,6 +192,9 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+        //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
+        val intent = Intent(this, BackgroundService::class.java)
+        startForegroundService(intent)
 
     }
     fun requestLocation(){
@@ -226,7 +225,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
             }
-            //내 위치 요청
+            //내 위치 요청//
             locationClient?.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
         }catch(e:SecurityException){
             e.printStackTrace()
@@ -307,9 +306,7 @@ class MainActivity : AppCompatActivity() {
                 if(checkDanger !="0"){
                     val intent = Intent(this@MainActivity,WarningActivity::class.java)
                     startActivity(intent)
-                    binding.textView7.text=checkDanger
                 }else{
-                    binding.textView7.text=checkDanger
                 }
             }
             override fun onFailure(call: Call<DangerResponse>, t: Throwable) {
@@ -334,7 +331,9 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
-                    val intent = Intent(this@MainActivity,GetHelpActivity::class.java)
+                    HelpData.id= response.body()?.data?.get(0)?.id.toString()
+                    binding.textView7.text=HelpData.id
+                    val intent = Intent(this@MainActivity,HelperActivity::class.java)
                     startActivity(intent)
                 }else{
 

@@ -135,7 +135,7 @@
         app:layout_constraintVertical_bias="0.453" />
 
     <CheckBox
-        android:id="@+id/checkBox2"
+        android:id="@+id/localcheckBox"
         android:layout_width="214dp"
         android:layout_height="42dp"
         android:layout_marginStart="18dp"
@@ -145,13 +145,14 @@
         android:buttonTint="#F26161"
         android:text="위치정보 제공 동의"
         android:textStyle="bold"
+        android:onClick="agreeCheck"
         app:layout_constraintBottom_toTopOf="@+id/registrationButton3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registrationButton2" />
 
     <CheckBox
-        android:id="@+id/checkBox3"
+        android:id="@+id/emercheckBox"
         android:layout_width="214dp"
         android:layout_height="42dp"
         android:layout_marginStart="18dp"
@@ -160,13 +161,14 @@
         android:buttonTint="#F26161"
         android:text="구조상황시 신체 접촉 허용"
         android:textStyle="bold"
+        android:onClick="agreeCheck"
         app:layout_constraintBottom_toTopOf="@+id/registrationButton4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <CheckBox
-        android:id="@+id/checkBox4"
+        android:id="@+id/bodycheckBox"
         android:layout_width="214dp"
         android:layout_height="42dp"
         android:layout_marginStart="18dp"
@@ -176,13 +178,30 @@
         android:buttonTint="#F26161"
         android:text="신체정보 제공 동의"
         android:textStyle="bold"
+        android:onClick="agreeCheck"
         app:layout_constraintBottom_toTopOf="@+id/registrationButton5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registrationButton4" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/allcheckBox"
+        android:layout_width="214dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="179dp"
+        android:layout_marginBottom="20dp"
+        android:buttonTint="#F26161"
+        android:text="전체 동의 하기"
+        android:textStyle="bold"
+        android:onClick="agreeCheck"
+        app:layout_constraintBottom_toTopOf="@+id/agreeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registrationButton5" />
+
+    <CheckBox
+        android:id="@+id/infocheckBox"
         android:layout_width="214dp"
         android:layout_height="42dp"
         android:layout_marginStart="18dp"
@@ -193,24 +212,26 @@
         android:buttonTint="#F26161"
         android:text="개인정보 접근 동의"
         android:textStyle="bold"
+        android:onClick="agreeCheck"
         app:layout_constraintBottom_toTopOf="@+id/registrationButton2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/agreeButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#F26161"
         android:text="확인"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:enabled="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintVertical_bias="0.925" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

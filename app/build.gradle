@@ -71,6 +71,8 @@ dependencies {
     // 뷰페이저 2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
 
+    implementation 'androidx.work:work-runtime-ktx:2.7.1'
+
     // 인디케이터 애니메이션
 //    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 

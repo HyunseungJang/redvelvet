@@ -16,5 +16,8 @@ class MemberData {
         var memberBloodtype: String? = null
         var memberCertificate: String? = null
         var memberOther: String? = null
+        var memberAgreeP: String? = null
+        var memberAgreeS1: String? = null
+        var memberAgreeS2: String? = null
     }
 }

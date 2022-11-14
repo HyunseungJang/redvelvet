@@ -41,7 +41,13 @@ data class MemberListResponse(
         @SerializedName("certificate")
         val certificate: String,
         @SerializedName("others")
-        val others: String
+        val others: String,
+        @SerializedName("agreep")
+        val agreep: String,
+        @SerializedName("agrees1")
+        val agrees1: String,
+        @SerializedName("agrees2")
+        val agrees2: String
     )
     data class Header(
         @SerializedName("total")

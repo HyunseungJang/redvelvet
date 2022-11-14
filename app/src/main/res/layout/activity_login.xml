@@ -10,36 +10,15 @@
         android:id="@+id/loginId"
         android:layout_width="229dp"
         android:layout_height="49dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="103dp"
-        android:layout_marginEnd="94dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="#FFD9D9"
         android:ems="10"
-        android:hint="이메일 / 핸드폰 번호"
+        android:hint="아이디"
         android:inputType="textPersonName"
         android:shadowColor="#FFD9D9"
-        app:layout_constraintBottom_toTopOf="@+id/loginPw"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/loginPw"
-        android:layout_width="229dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="41dp"
-        android:backgroundTint="#FFD9D9"
-        android:ems="10"
-        android:hint="비밀번호"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/loginButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginId"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -109,5 +88,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023" />
+
+    <EditText
+        android:id="@+id/loginPw"
+        android:layout_width="229dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="18dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginId" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

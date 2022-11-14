@@ -10,7 +10,7 @@ import com.lx.red.databinding.ActivityHelpRequestBinding
 class HelpRequestActivity : AppCompatActivity() {
     lateinit var binding : ActivityHelpRequestBinding
 
-    var helpCheck = 1
+    var helpCheck = 1//
 
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
 
