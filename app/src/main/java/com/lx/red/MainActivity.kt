@@ -125,6 +125,7 @@ class MainActivity : AppCompatActivity() {
             launcher.launch(Intent(applicationContext,InformationActivity::class.java))
         }
 
+
         //내정보
         binding.myinfoButton.setOnClickListener {
             launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
