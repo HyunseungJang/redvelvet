@@ -68,7 +68,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>(){
             // 글라이드를 이용해서 웹서버에 올린 이미지를 가져와서 보여주기
             item.profile?.apply {
                 //val uri = Uri.parse("http://172.168.10.11:8001/images/profile21664852389750.jpg")
-                val uri = Uri.parse("http://172.168.10.79:8001${this}")
+                val uri = Uri.parse("http://192.168.0.18:8001${this}")
 
                 Glide.with(binding.profileView)         // 글라이드를 사용하는데,
                     .load(uri)                              // 이미지 파일을 읽어와서,
