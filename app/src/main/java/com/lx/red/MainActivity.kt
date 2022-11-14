@@ -1,7 +1,10 @@
 package com.lx.red
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.AlarmManager
 import android.app.AlertDialog
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
@@ -10,9 +13,11 @@ import android.location.Location
 import android.os.Build
 import android.os.Bundle
 import android.os.Looper
+import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.location.*
@@ -33,7 +38,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.concurrent.scheduleAtFixedRate
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -46,12 +50,15 @@ class MainActivity : AppCompatActivity() {
 
     val timer = Timer()
 
+    val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
+
     // 쉐이크 + 전화걸기
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
 
-    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("UnspecifiedImmutableFlag")
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,10 +68,6 @@ class MainActivity : AppCompatActivity() {
 
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
-
-
-
-
 
         // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -94,46 +97,41 @@ class MainActivity : AppCompatActivity() {
                     showToast("권한거부")
                 }
             }
+        val time = Timer()
 
-        Timer().scheduleAtFixedRate(1000, 5000) {
-            updateArea()
-        }
-        Timer().scheduleAtFixedRate(10000, 30000) {
-            searchDanger()
-        }
-        Timer().scheduleAtFixedRate(10000, 30000) {
-            searchHelp()
-        }
-        binding.noticeButton.text = MemberData.memberId
-
+//        time.scheduleAtFixedRate(1000, 5000) {
+//            updateArea(time)
+//        }
+//        time.scheduleAtFixedRate(10000, 30000) {
+//            searchDanger(time)
+//        }
+//        time.scheduleAtFixedRate(10000, 30000) {
+//            searchHelp(time)
+//        }
         //공지사항
         binding.noticeButton.setOnClickListener {
-            val intent = Intent(this,NoticeActivity::class.java)
+            val intent = Intent(this,BluetoothChatActivity::class.java)
             startActivity(intent)
         }
 
         //구조요청
         binding.helpButton.setOnClickListener {
-            val intent = Intent(this,HelperActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,HelperActivity::class.java))
         }
 
         //상황대처 정보
         binding.infoButton.setOnClickListener {
-            val intent = Intent(this,InformationActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,InformationActivity::class.java))
         }
 
         //내정보
         binding.myinfoButton.setOnClickListener {
-            val intent = Intent(this,MyInfoMainActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
         }
 
         //게시판
         binding.postButton.setOnClickListener {
-            val intent = Intent(this,PostActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,PostActivity::class.java))
         }
 
         //재난대피
@@ -196,6 +194,23 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, BackgroundService::class.java)
         startForegroundService(intent)
 
+        // --백그라운드에서 알람 울리기 기능 start--
+        val alarmMgr = getSystemService(ALARM_SERVICE) as AlarmManager
+
+        val alarmIntent = Intent(this, NotificationBroadcastReceiver::class.java) // 리시버로 전달
+
+        val pendingIntent = PendingIntent.getBroadcast(
+            this, 0, alarmIntent,
+            PendingIntent.FLAG_MUTABLE)
+
+        val triggerTime = (SystemClock.elapsedRealtime()  // 5초 지나면 알람 울리기
+                + 20 * 1000)
+        alarmMgr.setExactAndAllowWhileIdle(   // setExactAndAllowWhileIdle -> 절전모드에서도 동작하는 코드(절전모드 원치 않으면 setExact)
+            AlarmManager.RTC_WAKEUP,
+            triggerTime,
+            pendingIntent
+        )
+        // --백그라운드에서 알람 울리기 기능 end--
     }
     fun requestLocation(){
 
@@ -271,10 +286,10 @@ class MainActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    fun updateArea(){
-        var id = binding.noticeButton.text.toString()
-        var lat= AppData.lat?.toDouble()
-        var lng= AppData.lng?.toDouble()
+    fun updateArea(time:Timer){
+        val id = MemberData.memberId.toString()
+        val lat= AppData.lat?.toDouble()
+        val lng= AppData.lng?.toDouble()
 
         BasicClient.api.myAreaUpdate(
             requestCode = "1001",
@@ -290,10 +305,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-    fun searchDanger(){
-        var lat = AppData.lat?.toDouble()
-        var lng = AppData.lng?.toDouble()
-        var lat2 = AppData.lat?.toDouble()
+    fun searchDanger(time:Timer) {
+        val lat = AppData.lat?.toDouble()
+        val lng = AppData.lng?.toDouble()
+        val lat2 = AppData.lat?.toDouble()
 
         BasicClient.api.dangerzone(
             requestCode = "1001",
@@ -305,8 +320,11 @@ class MainActivity : AppCompatActivity() {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
                     val intent = Intent(this@MainActivity,WarningActivity::class.java)
+                    time.cancel()
                     startActivity(intent)
+                    return
                 }else{
+                    return
                 }
             }
             override fun onFailure(call: Call<DangerResponse>, t: Throwable) {
@@ -315,11 +333,11 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun searchHelp(){
-        var id = MemberData.memberId.toString()
-        var lat = AppData.lat?.toDouble()
-        var lng = AppData.lng?.toDouble()
-        var lat2 = AppData.lat?.toDouble()
+    fun searchHelp(time:Timer){
+        val id = MemberData.memberId.toString()
+        val lat = AppData.lat?.toDouble()
+        val lng = AppData.lng?.toDouble()
+        val lat2 = AppData.lat?.toDouble()
 
         BasicClient.api.scanhelp(
             requestCode = "1001",
@@ -332,11 +350,13 @@ class MainActivity : AppCompatActivity() {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
                     HelpData.id= response.body()?.data?.get(0)?.id.toString()
-                    binding.textView7.text=HelpData.id
-                    val intent = Intent(this@MainActivity,HelperActivity::class.java)
-                    startActivity(intent)
-                }else{
 
+                    val intent = Intent(this@MainActivity,HelperActivity::class.java)
+                    time.cancel()
+                    startActivity(intent)
+                    return
+                }else{
+                    return
                 }
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
@@ -359,11 +379,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun run() {
-        val intent = Intent(this,HelpRequestActivity::class.java)
-        startActivity(intent)
+        launcher.launch(Intent(applicationContext,HelpRequestActivity::class.java))
     }
 
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
+    //타이머 객체 하나씩 만들어서 죽여버리는 함수
+
 }

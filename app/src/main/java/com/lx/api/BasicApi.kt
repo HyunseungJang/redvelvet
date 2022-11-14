@@ -213,8 +213,8 @@ interface BasicApi {
      */
 
     @Multipart
-    @POST("/farm/upload")
-    fun uploadFile(
+    @POST("red/communityUpload")
+    fun communityUploadFile(
         @Part file: MultipartBody.Part,
         @Part(value="params", encoding="UTF-8") params: HashMap<String,String> = hashMapOf()
     ): Call<FileUploadResponse>
@@ -244,7 +244,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://172.168.10.63:8001/"
+        private const val BASE_URL = "http://192.168.35.195:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

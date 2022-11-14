@@ -79,4 +79,3 @@ class AgreeActivity : AppCompatActivity() {
         }
     }
 }
-

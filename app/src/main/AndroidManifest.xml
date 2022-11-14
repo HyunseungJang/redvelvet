@@ -9,10 +9,27 @@
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> <!-- 전화걸기 권한 -->
     <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 쉐이크 기능 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- 백그라운드 권한 -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <uses-feature android:name="android.software.companion_device_setup" />
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,7 +42,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SkyActivity"
+            android:name=".BluetoothChatActivity"
+            android:allowBackup="true"
+            android:exported="false" />
+        <activity
+            android:name=".HelperActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -43,13 +64,6 @@
             android:value="AIzaSyA6iKC87fxHJooWK8xUhbu_SNOm1j0nD6I" />
 
         <activity
-            android:name=".DisasterActivity"
-            android:exported="false"
-            android:label="@string/title_activity_disaster" />
-        <activity
-            android:name=".HelperActivity"
-            android:exported="false" />
-        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
@@ -57,7 +71,12 @@
         <service
             android:name=".BackgroundService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:process=":backgroundservice">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </service>
 
         <activity
             android:name=".GetHelpActivity"
@@ -112,7 +131,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
