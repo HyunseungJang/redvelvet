@@ -164,9 +164,9 @@ interface BasicApi {
      */
 
     @GET("red/communityList")
-    fun getCommunityList(
+    fun getList(
         @Query("requestCode") requestCode: String
-    ): Call<CommunityResponse>
+    ): Call<CommunityListResponse>
 
 
     /**
@@ -175,14 +175,15 @@ interface BasicApi {
 
     @FormUrlEncoded
     @POST("red/communityAdd")
-    fun addPost(
+    fun postCommunityAdd(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
         @Field("title") title: String,
-        @Field("picture") picture: String,
         @Field("content") content: String,
-        @Field("area") area: String
-    ): Call<CommunityResponse>
+        @Field("filepath") filepath: String,
+        @Field("area") area: String,
+        @Field("time") time: String
+    ): Call<CommunityListResponse>
 
     /**
      * 내위치에서 구조신호 보냈을때 리스트 추가
@@ -244,7 +245,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://172.168.10.33:8001/"
+        private const val BASE_URL = "http://192.168.0.18:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

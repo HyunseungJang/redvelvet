@@ -16,12 +16,12 @@ data class HelpResponse(
     data class Data(
         @SerializedName("id")
         val id: String,
-        @SerializedName("LAT")
-        val LAT: Double,
-        @SerializedName("LNG")
-        val LNG: Double,
-        @SerializedName("LAT2")
-        val LAT2: Double
+        @SerializedName("lat")
+        val lat: Double,
+        @SerializedName("lng")
+        val lng: Double,
+        @SerializedName("lat2")
+        val lat2: Double
     )
     data class Header(
         @SerializedName("total")

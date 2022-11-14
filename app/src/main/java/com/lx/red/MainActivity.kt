@@ -38,6 +38,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.concurrent.scheduleAtFixedRate
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -99,15 +100,15 @@ class MainActivity : AppCompatActivity() {
             }
         val time = Timer()
 
-//        time.scheduleAtFixedRate(1000, 5000) {
-//            updateArea(time)
-//        }
-//        time.scheduleAtFixedRate(10000, 30000) {
-//            searchDanger(time)
-//        }
-//        time.scheduleAtFixedRate(10000, 30000) {
-//            searchHelp(time)
-//        }
+        time.scheduleAtFixedRate(1000, 5000) {
+            updateArea(time)
+        }
+        time.scheduleAtFixedRate(10000, 30000) {
+            searchDanger(time)
+        }
+        time.scheduleAtFixedRate(10000, 30000) {
+            searchHelp(time)
+        }
         //공지사항
         binding.noticeButton.setOnClickListener {
             val intent = Intent(this,BluetoothChatActivity::class.java)
@@ -337,15 +338,17 @@ class MainActivity : AppCompatActivity() {
         BasicClient.api.scanhelp(
             requestCode = "1001",
             id = id,
-            LAT = lat,
-            LNG = lng,
-            LAT2 = lat2
+            lat = lat,
+            lng = lng,
+            lat2 = lat2
         ).enqueue(object : Callback<HelpResponse> {
             override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
                 if(checkDanger !="0"){
                     HelpData.id= response.body()?.data?.get(0)?.id.toString()
-
+                    HelpData.lat= response.body()?.data?.get(0)?.lat.toString()
+                    HelpData.lng= response.body()?.data?.get(0)?.lng.toString()
+                    binding.textView7.text=response.body()?.data.toString()
                     val intent = Intent(this@MainActivity,HelperActivity::class.java)
                     time.cancel()
                     startActivity(intent)

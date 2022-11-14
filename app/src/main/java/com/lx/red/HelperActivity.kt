@@ -1,20 +1,18 @@
 package com.lx.red
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.lx.api.BasicClient
-import com.lx.data.DangerResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -24,9 +22,11 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
     var lngMe = AppData.lng?.toDouble()
     var nameMe = MemberData.memberName
 
-    val nameHelp = HelpData.id
+    var latHelp = HelpData.lat?.toDouble()
+    var lngHelp = HelpData.lng?.toDouble()
+    var nameHelp = HelpData.id
 
-    val soser = LatLng(37.5306182, 127.0306218)
+    val soser = LatLng(latHelp!!, lngHelp!!)
     val saver = LatLng(latMe!!, lngMe!!)
     private var locationArrayList: ArrayList<LatLng>? = null
 
@@ -72,5 +72,36 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.you))
         )
 
+        mMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
+            override fun onMarkerClick(marker: Marker): Boolean {
+
+                if(marker.snippet == "도움이 필요한 사람의 위치") {
+
+                    goToMap()
+
+                } else {
+
+                }
+
+                return false
+            }
+        })
+
+    }
+
+    // 구글맵 앱으로 이동하기
+    fun goToMap() {
+        val mapIntent: Intent = Uri.parse(
+            "geo:0,0?q=$latMe,$lngMe?z=14"
+        ).let { location ->
+            // Or map point based on latitude/longitude
+//             val location: Uri = Uri.parse("geo:37.422219,-122.08364?z=14") // z param is zoom level
+            Intent(Intent.ACTION_VIEW, location)
+        }
+        startActivity(mapIntent)
+    }
+
+    fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 }
