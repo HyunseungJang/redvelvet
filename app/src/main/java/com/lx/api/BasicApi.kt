@@ -153,9 +153,9 @@ interface BasicApi {
     fun scanhelp(
         @Field("requestCode") requestCode: String,
         @Field("id") id: String,
-        @Field("LAT") LAT: Double?,
-        @Field("LNG") LNG: Double?,
-        @Field("LAT2") LAT2: Double?
+        @Field("lat") lat: Double?,
+        @Field("lng") lng: Double?,
+        @Field("lat") lat2: Double?
     ): Call<HelpResponse>
 
 
@@ -245,7 +245,7 @@ class BasicClient {
         private const val PROTOCOL = "http"
 
         // 기본 URL
-        private const val BASE_URL = "http://172.168.10.63:8001/"
+        private const val BASE_URL = "http://192.168.0.18:8001/"
 
         // 헤더 속성
         private const val CLIENT_ID = ""

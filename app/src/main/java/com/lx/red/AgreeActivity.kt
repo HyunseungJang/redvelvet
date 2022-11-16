@@ -3,12 +3,9 @@ package com.lx.red
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.CheckBox
 import android.widget.CompoundButton
 import androidx.activity.result.contract.ActivityResultContracts
 import com.lx.red.databinding.ActivityAgreeBinding
-import com.lx.red.databinding.ActivityRegisterBinding
 import kotlinx.android.synthetic.main.activity_agree.*
 
 class AgreeActivity : AppCompatActivity() {

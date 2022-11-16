@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
@@ -19,7 +20,9 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -111,8 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
         //공지사항
         binding.noticeButton.setOnClickListener {
-            val intent = Intent(this,BluetoothChatActivity::class.java)
-            startActivity(intent)
+            launcher.launch(Intent(applicationContext,DeviceListActivity::class.java))
         }
 
         //구조요청
@@ -336,9 +338,9 @@ class MainActivity : AppCompatActivity() {
         BasicClient.api.scanhelp(
             requestCode = "1001",
             id = id,
-            LAT = lat,
-            LNG = lng,
-            LAT2 = lat2
+            lat = lat,
+            lng = lng,
+            lat2 = lat2
         ).enqueue(object : Callback<HelpResponse> {
             override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
                 val checkDanger = response.body()?.header?.total.toString()
@@ -371,8 +373,6 @@ class MainActivity : AppCompatActivity() {
 
                         // 알림 표시: 알림의 고유 ID(ex: 1002), 알림 결과
                         notificationManager.notify(1002, builder.build())
-
-                        notificationManager.
                     }
 
 
@@ -381,7 +381,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                     return
                 }else{
-                    return
+                    
                 }
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
@@ -411,6 +411,5 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    //타이머 객체 하나씩 만들어서 죽여버리는 함수
 
 }

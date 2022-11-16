@@ -12,10 +12,7 @@ import com.lx.red.databinding.ActivityConfirmationHelpBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import android.content.Context
 import androidx.activity.result.contract.ActivityResultContracts
-import kotlinx.android.synthetic.main.activity_confirmation_help.*
-import java.lang.reflect.Member
 
 class ConfirmationHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityConfirmationHelpBinding
@@ -51,7 +48,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         }
 
         binding.blueButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,BluetoothChatActivity::class.java))
+            launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
         }
     }
 

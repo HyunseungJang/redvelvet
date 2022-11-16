@@ -12,8 +12,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.lx.api.BasicClient
 import com.lx.data.CommunityListResponse
 import com.lx.data.FileUploadResponse
-import com.lx.red.AppData
-import com.lx.red.ListData
 import com.lx.red.databinding.ActivityAddPostBinding
 import com.permissionx.guolindev.PermissionX
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -28,7 +26,6 @@ import java.util.*
 
 class AddPostActivity : AppCompatActivity() {
     lateinit var binding: ActivityAddPostBinding
-
     val mainLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult(),
         ActivityResultCallback {

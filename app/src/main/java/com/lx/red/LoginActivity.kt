@@ -33,6 +33,10 @@ class LoginActivity : AppCompatActivity() {
         binding.registrationButton.setOnClickListener {
             launcher.launch(Intent(applicationContext,AgreeActivity::class.java))
         }
+        binding.bluetooth.setOnClickListener {
+            var intent = Intent(this,BluetoothActivity::class.java)
+            startActivity(intent)
+        }
     }
     fun readMember() {
         var id = binding.loginId.text.toString()

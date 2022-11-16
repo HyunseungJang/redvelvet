@@ -8,7 +8,6 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.VideoView
 import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -18,7 +17,6 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.xml.transform.Source
 
 
 class CaptureActivity : AppCompatActivity() {
