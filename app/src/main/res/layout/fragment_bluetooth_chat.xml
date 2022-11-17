@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="살려주세요"
+            app:backgroundTint="#F26161" />
+
+        <Button
+            android:id="@+id/help2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="도와주세요"
+            app:backgroundTint="#602B2B" />
+
+        <Button
+            android:id="@+id/help3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="사람살려!"
+            app:backgroundTint="#F26161" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/in"
@@ -10,7 +41,9 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:stackFromBottom="true"
-        android:transcriptMode="alwaysScroll" />
+        android:transcriptMode="alwaysScroll" >
+
+    </ListView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +61,8 @@
             android:id="@+id/buttonSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/send" />
+            android:text="보내기"
+            app:backgroundTint="#F26161" />
     </LinearLayout>
 
 </LinearLayout>

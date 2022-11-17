@@ -21,12 +21,12 @@
         
             
             This application allows two Android devices to carry out two-way text chat over
-            Bluetooth. It demonstrates all the fundamental Bluetooth API capabilities, such as:
-              (1) Scanning for other Bluetooth devices
-              (2) Querying the local Bluetooth adapter for paired Bluetooth devices
-              (3) Establishing RFCOMM channels/sockets
-              (4) Connecting to a remote device
-              (5) Transferring data over Bluetooth
+            Bluetooth. It demonstrates all the fundamental Bluetooth API capabilities, such as: \n
+              (1) 장치를 검색해 주세요 \n
+              (2) 구조 신호를 보낼 다른 사용자를 선택해주세요\n
+              (3) 연결 \n
+              (4) 위급상황 메시지 전달 \n
+              (5) 상단 버튼은 퀵메시지
             
         
         ]]>

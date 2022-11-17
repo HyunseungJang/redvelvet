@@ -25,7 +25,6 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:layout_marginTop="90dp"
             app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp">
@@ -186,7 +185,6 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:layout_marginTop="90dp"
             app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp">
@@ -347,7 +345,6 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:layout_marginTop="90dp"
             app:cardBackgroundColor="#ffffff"
             app:cardCornerRadius="20dp"
             app:cardElevation="4dp">

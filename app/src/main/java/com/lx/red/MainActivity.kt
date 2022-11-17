@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
         }
         //공지사항
         binding.noticeButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,DeviceListActivity::class.java))
+            launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
         }
 
         //구조요청

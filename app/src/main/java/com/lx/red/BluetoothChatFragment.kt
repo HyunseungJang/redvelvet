@@ -29,6 +29,8 @@ import android.widget.*
 import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import com.lx.red.common.logger.Log
+import kotlinx.android.synthetic.main.fragment_bluetooth_chat.*
+import kotlinx.android.synthetic.main.fragment_bluetooth_chat.view.*
 
 
 class BluetoothChatFragment : Fragment() {
@@ -43,7 +45,9 @@ class BluetoothChatFragment : Fragment() {
     private var mConversationView: ListView? = null
     private var mOutEditText: EditText? = null
     private var mSendButton: Button? = null
-
+    private var mhelp: Button? = null
+    private var mhelp2: Button? = null
+    private var mhelp3: Button? = null
     private var mConnectedDeviceName: String? = null
     private var mConversationArrayAdapter: ArrayAdapter<String>? = null
     private var mOutStringBuffer: StringBuffer? = null
@@ -113,6 +117,9 @@ class BluetoothChatFragment : Fragment() {
         mConversationView = view.findViewById(R.id.`in`)
         mOutEditText = view.findViewById(R.id.editTextOut)
         mSendButton = view.findViewById(R.id.buttonSend)
+        mhelp = view.findViewById(R.id.help)
+        mhelp2 = view.findViewById(R.id.help2)
+        mhelp3 = view.findViewById(R.id.help3)
     }
 
     /**
@@ -134,6 +141,27 @@ class BluetoothChatFragment : Fragment() {
             if (null != view) {
                 val textView = view.findViewById<TextView>(R.id.editTextOut)
                 val message = textView.text.toString()
+                sendMessage(message)
+            }
+        }
+        mhelp?.setOnClickListener { // Send a message using content of the edit text widget
+            val view = view
+            if (null != view) {
+                val message = view.findViewById<Button>(R.id.help).text.toString()
+                sendMessage(message)
+            }
+        }
+        mhelp2?.setOnClickListener { // Send a message using content of the edit text widget
+            val view = view
+            if (null != view) {
+                val message = view.findViewById<Button>(R.id.help2).text.toString()
+                sendMessage(message)
+            }
+        }
+        mhelp3?.setOnClickListener { // Send a message using content of the edit text widget
+            val view = view
+            if (null != view) {
+                val message = view.findViewById<Button>(R.id.help3).text.toString()
                 sendMessage(message)
             }
         }

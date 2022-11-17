@@ -50,7 +50,7 @@ class BackgroundService : Service() {
         val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("백그라운드")
             .setContentText("실행중")
-            .setSmallIcon(R.mipmap.sym_def_app_icon)
+            .setSmallIcon(R.drawable.sym_action_email)
             .setContentIntent(pendingIntent)
             .build()
         startForeground(1, notification)

@@ -4,8 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="scanning">scanning for devices...</string>
     <string name="none_paired">No devices have been paired</string>
-    <string name="select_device">select a device to connect</string>
-    <string name="none_found">No devices found</string>
+    <string name="select_device">사용자 기기를 선택해 주세요</string>
+    <string name="none_found">기기가 없습니다</string>
 
     <string name="send">Send</string>
     <string name="not_connected">You are not connected to a device</string>
@@ -14,14 +14,14 @@
     <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
     <string name="title_not_connected">not connected</string>
 
-    <string name="title_paired_devices">Paired Devices</string>
-    <string name="title_other_devices">Other Available Devices</string>
-    <string name="button_scan">Scan for devices</string>
+    <string name="title_paired_devices">연결 가능한 기기</string>
+    <string name="title_other_devices">연결 가능한 다른기기</string>
+    <string name="button_scan">블루투스 스캔하기</string>
 
     <!-- Options Menu -->
-    <string name="secure_connect">Connect a device - Secure</string>
-    <string name="insecure_connect">Connect a device - Insecure</string>
-    <string name="discoverable">Make discoverable</string>
+    <string name="secure_connect">안전한 기기 연결</string>
+    <string name="insecure_connect">불안정한 기기 연결</string>
+    <string name="discoverable">기기 검색 허용</string>
 
 
 </resources>
