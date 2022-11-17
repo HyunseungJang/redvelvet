@@ -29,14 +29,18 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             readMember()
         }
+
         //회원가입 버튼
         binding.registrationButton.setOnClickListener {
             launcher.launch(Intent(applicationContext,AgreeActivity::class.java))
         }
-        binding.bluetooth.setOnClickListener {
-            var intent = Intent(this,BluetoothActivity::class.java)
-            startActivity(intent)
-        }
+
+//        블루투스 버튼
+//        binding.bluetooth.setOnClickListener {
+//            var intent = Intent(this,BluetoothActivity::class.java)
+//            startActivity(intent)
+//        }
+
     }
     fun readMember() {
         var id = binding.loginId.text.toString()

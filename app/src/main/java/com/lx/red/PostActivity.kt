@@ -105,8 +105,12 @@ class PostActivity : AppCompatActivity() {
 
     // 응답받은 데이터를 화면에 있는 리스트에 추가하기
     fun addToList(response: Response<CommunityListResponse>) {
+
         listAdapter?.apply {
             response.body()?.output?.data?.let {
+
+                this.items.clear()
+
                 for (item in it) {
                     //this.items.add(StudentData(R.drawable.profile1, item.name, item.age, item.mobile))
                     var listData = ListData(item.id, item.title, item.filepath, item.content, item.area, item.time)

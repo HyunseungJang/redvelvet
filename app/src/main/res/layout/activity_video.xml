@@ -100,7 +100,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="128dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -112,12 +112,12 @@
 
                 <TextView
                     android:id="@+id/dateOutput2"
-                    android:layout_width="345dp"
-                    android:layout_height="120dp"
+                    android:layout_width="268dp"
+                    android:layout_height="67dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:background="#eeeeee"
-                    android:hint="설명"
+                    android:hint="시간"
                     android:padding="10dp"
                     tools:ignore="TouchTargetSizeCheck" />
 
