@@ -45,7 +45,7 @@ import kotlin.concurrent.scheduleAtFixedRate
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
-
+// 현승 테스트
     var locationClient:FusedLocationProviderClient?=null
 
     lateinit var map: GoogleMap
