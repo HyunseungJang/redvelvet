@@ -32,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
         //로그인 버튼
         binding.loginButton.setOnClickListener {
             readMember()
+
         }
 
         //회원가입 버튼

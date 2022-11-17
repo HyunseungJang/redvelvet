@@ -4,8 +4,8 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
@@ -13,16 +13,13 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
-import android.service.notification.NotificationListenerService
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -208,6 +205,20 @@ class MainActivity : AppCompatActivity() {
             pendingIntent
         )
         // --백그라운드에서 알람 울리기 기능 end--
+
+        // 로그아웃
+        binding.logoutButton.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
+                .setPositiveButton("로그아웃", DialogInterface.OnClickListener { dialog, whichButton ->
+                    val intent = Intent(this, LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                    startActivity(intent)
+                })
+                .setNegativeButton("취소",
+                    DialogInterface.OnClickListener { dialog, whichButton -> })
+                .show()
+        }
     }
     fun requestLocation(){
 
