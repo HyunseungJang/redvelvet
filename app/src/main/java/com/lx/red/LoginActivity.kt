@@ -10,6 +10,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.lx.api.BasicClient
 import com.lx.data.MemberListResponse
 import com.lx.red.databinding.ActivityLoginBinding
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,14 +21,31 @@ class LoginActivity : AppCompatActivity() {
 
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
 
+    // 자동로그인
+//    val pref = getSharedPreferences("loginId", 0)
+//    val savedEmail = pref.getString("email", "").toString()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // 자동로그인
+//        if(loginId.equals("")){
+//
+//        }else{
+//            val intent = Intent(applicationContext, MainActivity::class.java)
+//            startActivity(intent)
+//            Toast.makeText(this, "로그인 하였습니다", Toast.LENGTH_SHORT).show()
+//            finish()
+//
+//        }
+
         //로그인 버튼
         binding.loginButton.setOnClickListener {
             readMember()
+//            val Email = loginId.text.toString()
+//            saveDate(Email)
         }
         //회원가입 버튼
         binding.registrationButton.setOnClickListener {
@@ -38,6 +56,14 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    // 자동로그인
+//    fun saveDate( loginId :String ){
+//        val pref =getSharedPreferences("userEmail", MODE_PRIVATE) //shared key 설정
+//        val edit = pref.edit() // 수정모드
+//        edit.putString("email", loginId) // 값 넣기
+//        edit.apply() // 적용하기
+//    }
+
     fun readMember() {
         var id = binding.loginId.text.toString()
         var pw = binding.loginPw.text.toString()
