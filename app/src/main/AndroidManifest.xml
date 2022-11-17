@@ -40,7 +40,7 @@
         android:theme="@style/Theme.MyRed"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+<!---->
         <activity
             android:name=".BluetoothActivity"
             android:exported="true"

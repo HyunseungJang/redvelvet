@@ -28,7 +28,6 @@
             android:name="com.lx.red.common.logger.LogFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
     </ViewAnimator>
 
     <View
