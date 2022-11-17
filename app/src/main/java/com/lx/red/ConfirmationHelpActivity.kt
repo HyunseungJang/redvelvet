@@ -42,7 +42,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
             .setMessage("<반경 200m 이내> 레드 이용자에게 구조 신호를 보내고 있습니다.")
             .setPositiveButton("닫기",
                 DialogInterface.OnClickListener { dialog, id ->
-                    binding.resultText.text = "닫기 클릭"
+//                    binding.resultText.text = "닫기 클릭"
                 })
         // 다이얼로그를 띄워주기//
         builder.show()

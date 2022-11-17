@@ -75,7 +75,7 @@
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/my_intro_view_pager"
-                    android:layout_width="297dp"
+                    android:layout_width="250dp"
                     android:layout_height="350dp">
 
                 </androidx.viewpager2.widget.ViewPager2>
@@ -93,8 +93,7 @@
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:background="#D1A4A4"
-                />
+                android:background="#FBEBEB" />
 
             <TextView
                 android:id="@+id/ttextView1"
@@ -147,8 +146,7 @@
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:background="#8F8C8C"
-                />
+                android:background="#FBEBEB" />
 
             <TextView
                 android:id="@+id/ttextView3"
@@ -185,7 +183,7 @@
                     android:layout_width="300dp"
                     android:layout_height="400dp"
                     android:layout_weight="1"
-                    android:background="#E1D6D6" />
+                    android:background="#FFFFFF" />
 
                 <ImageView
                     android:id="@+id/next_btn3"
@@ -199,8 +197,7 @@
                 android:id="@+id/imageView6"
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:background="#8F8C8C"
-                />
+                android:background="#FBEBEB" />
 
             <TextView
                 android:id="@+id/ttextView4"
