@@ -24,6 +24,10 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        if(MemberData.memberEmernum == null){
+
+        }
+
         help()
         // 문자발송
         val inputPhoneNum=MemberData.memberEmernum
@@ -67,7 +71,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
 
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
-
+                launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
             }
         })
     }

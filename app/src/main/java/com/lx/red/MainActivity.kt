@@ -106,10 +106,10 @@ class MainActivity : AppCompatActivity() {
         time.scheduleAtFixedRate(1000, 5000) {
             updateArea(time)
         }
-        time.scheduleAtFixedRate(10000, 30000) {
-            searchDanger(time)
-        }
-        time.scheduleAtFixedRate(10000, 30000) {
+//        time.scheduleAtFixedRate(10000, 10000) {
+//            searchDanger(time)
+//        }
+        time.scheduleAtFixedRate(10000, 10000) {
             searchHelp(time)
         }
         //공지사항
