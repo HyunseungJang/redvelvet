@@ -81,17 +81,6 @@ class BluetoothActivity : AppCompatActivity() {
                 invalidateOptionsMenu()
                 return true
             }
-            R.id.buttonMenu ->{
-                mLogShown = !mLogShown
-                val output: ViewAnimator = findViewById(R.id.sampleOutput)
-                if (mLogShown) {
-                    output.displayedChild = 1
-                } else {
-                    output.displayedChild = 0
-                }
-                invalidateOptionsMenu()
-                return true
-            }
         }
         return super.onOptionsItemSelected(item)
     }

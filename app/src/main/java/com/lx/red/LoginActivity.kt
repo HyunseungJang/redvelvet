@@ -1,12 +1,13 @@
 package com.lx.red
 
+import android.app.ActionBar
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
 import com.lx.data.MemberListResponse
 import com.lx.red.databinding.ActivityLoginBinding
@@ -24,6 +25,9 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val actionBar: androidx.appcompat.app.ActionBar? = supportActionBar
+        actionBar?.hide()
 
         //로그인 버튼
         binding.loginButton.setOnClickListener {

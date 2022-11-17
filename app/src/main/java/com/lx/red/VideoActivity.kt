@@ -41,8 +41,7 @@ class VideoActivity : AppCompatActivity() {
         }
 
         binding.backButton.setOnClickListener {
-            val intent = Intent(this,PictureListFragment::class.java)
-            startActivity(intent)
+            finish()
         }
 
         AppData.selectedPicture?.apply {

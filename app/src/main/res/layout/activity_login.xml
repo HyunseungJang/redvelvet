@@ -10,7 +10,7 @@
         android:id="@+id/loginId"
         android:layout_width="229dp"
         android:layout_height="49dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="#F26161"
         android:ems="10"
         android:hint="아이디를 입력하세요."
@@ -125,7 +125,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/backButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -145,7 +145,7 @@
         android:backgroundTint="#FFD9D9"
         android:text="카카오"
         android:textColor="#F26161"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/backButton3"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <ImageView
