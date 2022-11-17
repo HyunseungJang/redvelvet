@@ -155,7 +155,7 @@ interface BasicApi {
         @Field("id") id: String,
         @Field("lat") lat: Double?,
         @Field("lng") lng: Double?,
-        @Field("lat") lat2: Double?
+        @Field("lat2") lat2: Double?
     ): Call<HelpResponse>
 
 
