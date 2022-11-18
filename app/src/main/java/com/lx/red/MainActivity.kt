@@ -3,6 +3,7 @@ package com.lx.red
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -414,21 +415,14 @@ class MainActivity : AppCompatActivity() {
                     showToast("알림 표시됨")
 
                     // 알림창 클릭시
-                    val sIntent = Intent(applicationContext, HelperActivity::class.java)
-                    val sPendingIntent = PendingIntent.getActivity(
-                        applicationContext,
-                        NOTIFICATION_ID,
-                        sIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                    )
+                    val pintent = Intent(this@MainActivity, HelperActivity::class.java)
+                    val pendingIntent = PendingIntent.getActivity(this@MainActivity, 0, pintent, 0)
 
                     var builder = NotificationCompat.Builder(this@MainActivity, "MY_channel")
                         .setSmallIcon(R.drawable.ic_launcher_background)
                         .setContentTitle("RED 앱 구조요청 알림")
                         .setContentText("근처 200m 이내에 도움이 필요한 사람이 있어요!")
-
-                            // 알림창 클릭시
-                        .setFullScreenIntent(sPendingIntent, true)
+                        .setContentIntent(pendingIntent)
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
                         val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
