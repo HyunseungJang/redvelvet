@@ -17,28 +17,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="배달받을 때" />
+            android:text="험악한 아저씨" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="택배" />
+            android:text="외국인" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="신원미상" />
+            android:text="무서운 누나" />
 
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="혼자있을 때" />
     </LinearLayout>
 
     <FrameLayout
@@ -74,6 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/speech_text"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:text="음성 전환" />
 
     </LinearLayout>

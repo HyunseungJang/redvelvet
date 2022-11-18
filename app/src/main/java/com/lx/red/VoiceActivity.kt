@@ -46,15 +46,11 @@ class VoiceActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
 
         binding.btn2.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.view, VoiceOneFragment()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.view, VoiceTwoFragment()).commit()
         }
 
         binding.btn3.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.view, VoiceOneFragment()).commit()
-        }
-
-        binding.btn4.setOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.view, VoiceOneFragment()).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.view, VoiceThreeFragment()).commit()
         }
 
     }

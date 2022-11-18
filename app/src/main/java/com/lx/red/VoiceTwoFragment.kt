@@ -8,11 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.lx.red.databinding.FragmentVoiceOneBinding
+import com.lx.red.databinding.FragmentVoiceTwoBinding
 import kotlinx.android.synthetic.main.activity_help_request.*
 
-class VoiceOneFragment : Fragment() {
+class VoiceTwoFragment : Fragment() {
 
-    var _binding: FragmentVoiceOneBinding? = null
+    var _binding: FragmentVoiceTwoBinding? = null
     val binding get() = _binding!!
 
     val TAG : String = "MainActivity"
@@ -26,7 +27,7 @@ class VoiceOneFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentVoiceOneBinding.inflate(inflater, container, false)
+        _binding = FragmentVoiceTwoBinding.inflate(inflater, container, false)
 
         mediaplayer1 = MediaPlayer.create(context, R.raw.nugu)
         mediaplayer2 = MediaPlayer.create(context, R.raw.siren)

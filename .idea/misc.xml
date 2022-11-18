@@ -3,23 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/drawable-v24/ic_left_arrow_24dp.xml" value="0.1" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/drawable-v24/ic_right_arrow_24dp.xml" value="0.1" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_bluetooth.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_disaster.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_help_request.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_helper.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_information.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_login.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_media.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_my_info_main.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_situation.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_sky.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_video.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_bluetooth_chat.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_picture_list.xml" value="0.24947916666666667" />
-        <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/menu/bluetooth_chat.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_voice.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_voice_one.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_voice_three.xml" value="0.34739583333333335" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_voice_two.xml" value="0.3619791666666667" />
       </map>
     </option>
   </component>
