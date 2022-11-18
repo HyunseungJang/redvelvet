@@ -46,9 +46,13 @@
         android:id="@+id/hprofileView"
         android:layout_width="100dp"
         android:layout_height="87dp"
-        app:srcCompat="@drawable/profile"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="63dp" />
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/view2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/outputName"
@@ -86,8 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.152">
+        app:layout_constraintTop_toBottomOf="@+id/view2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,8 +121,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:textStyle="bold"
-                    android:text="질환" />
+                    android:text="질환"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputSick"
@@ -144,8 +147,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
-                    android:textStyle="bold"
-                    android:text="긴급연락처" />
+                    android:text="긴급연락처"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputEmer"
@@ -170,8 +173,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
-                    android:textStyle="bold"
-                    android:text="혈액형" />
+                    android:text="혈액형"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputBlood"
@@ -195,9 +198,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:padding="16dp"
-                    android:text="복용중인 약" />
+                    android:text="복용중인 약"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputMedi"
@@ -222,9 +225,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:textStyle="bold"
                     android:padding="16dp"
-                    android:text="긴급 연락처" />
+                    android:text="긴급 연락처"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputTall"
@@ -249,8 +252,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
-                    android:textStyle="bold"
-                    android:text="체중" />
+                    android:text="체중"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputWeight"
@@ -275,8 +278,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
-                    android:textStyle="bold"
-                    android:text="자격증" />
+                    android:text="자격증"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputCertifi"
@@ -301,8 +304,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
-                    android:textStyle="bold"
-                    android:text="기타사항" />
+                    android:text="기타사항"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/infoinputOther"

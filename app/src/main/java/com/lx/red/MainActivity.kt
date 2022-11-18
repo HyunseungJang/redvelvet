@@ -14,6 +14,8 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
 
         // --백그라운드 작업 start--
 
@@ -169,6 +172,8 @@ class MainActivity : AppCompatActivity() {
         }
         // --펼치기 레이아웃 end--
 
+
+
         //지도 초기화하기
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         //구글맵 객체를 컨트롤
@@ -222,20 +227,49 @@ class MainActivity : AppCompatActivity() {
         )
         // --백그라운드에서 알람 울리기 기능 end--
 
-        // 로그아웃
-        binding.logoutButton.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
-                .setPositiveButton("로그아웃", DialogInterface.OnClickListener { dialog, whichButton ->
-                    val intent = Intent(this, LoginActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    startActivity(intent)
-                })
-                .setNegativeButton("취소",
-                    DialogInterface.OnClickListener { dialog, whichButton -> })
-                .show()
+    }
+
+    //액션바 메뉴 연결 함수
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return true
+    }
+
+    //액션바 버튼 눌렀을 때
+    @SuppressLint("NonConstantResourceId")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.write -> {
+                startActivity(Intent(this, PostActivity::class.java))
+                true
+
+                return super.onOptionsItemSelected(item)
+            }
+            R.id.userInfo -> {
+                startActivity(Intent(this, MyInfoMainActivity::class.java))
+                true
+            }
+            R.id.logOut -> {
+                logout()
+                true
+            } else -> super.onOptionsItemSelected(item)
         }
     }
+
+    fun logout(){
+        AlertDialog.Builder(this)
+            .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
+            .setPositiveButton("로그아웃", DialogInterface.OnClickListener { dialog, whichButton ->
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+                startActivity(intent)
+            })
+            .setNegativeButton("취소",
+                DialogInterface.OnClickListener { dialog, whichButton -> })
+            .show()
+    }
+
     fun requestLocation(){
 
         try {

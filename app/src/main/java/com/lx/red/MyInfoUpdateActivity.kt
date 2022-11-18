@@ -21,7 +21,7 @@ class MyInfoUpdateActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.outputName.text = "${MemberData.memberId+"의 정보"}"
-        binding.outputBirth1.text = "${"만"+MemberData.memberBirth+"세"}"
+        binding.outputBirth1.text = "${MemberData.memberBirth}"
         binding.infoinputTall.setText("${MemberData.memberHeight}")
         binding.infoinputWeight.setText("${MemberData.memberWeight}")
         binding.infoinputMedi.setText("${MemberData.memberMedicine}")

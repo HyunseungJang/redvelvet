@@ -6,6 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        app:menu="@menu/main_menu"
+        app:popupTheme="@style/Theme.TitleBar.PopupOverlay"
+        app:title="R.E.D."
+        app:titleTextColor="@color/colorOrange"
+        tools:ignore="MissingConstraints">
+
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutDetail02"
         android:layout_width="wrap_content"
@@ -16,6 +33,7 @@
         android:layout_marginTop="300dp"
         android:layout_marginBottom="80dp"
         android:visibility="gone"
+        android:background="@android:color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/plusLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +43,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:orientation="vertical">
 
             <Button
@@ -57,12 +76,6 @@
                 android:layout_marginTop="19dp"
                 android:text="음성변환"
                 app:backgroundTint="#F26161" />
-
-            <Button
-                android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="로그아웃" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
