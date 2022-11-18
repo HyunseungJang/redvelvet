@@ -30,9 +30,8 @@ class MyInfoMainActivity : AppCompatActivity() {
         binding.outputOther.text= "${MemberData.memberOther}"
         binding.outputCertifi.text= "${MemberData.memberCertificate}"
         binding.outputEmer.text= "${MemberData.memberEmernum}"
-        }
     }
-
+}
 
 
 

@@ -6,25 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="600dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutDetail02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|end"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="250dp"
         android:layout_marginTop="300dp"
+        android:layout_marginBottom="80dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/plusLayout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="1dp">
@@ -35,40 +28,45 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/postButton"
+                android:id="@+id/safezoneButtonn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="게시판" />
+                android:text="재난대피"
+                app:backgroundTint="#F26161" />
 
             <Button
-                android:id="@+id/infoButton"
+                android:id="@+id/accidentButtonn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="상황대처" />
+                android:text="행동요령"
+                app:backgroundTint="#F26161" />
 
             <Button
-                android:id="@+id/helpButton"
+                android:id="@+id/situationButtonn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="도와줘요!" />
+                android:text="상황대처"
+                app:backgroundTint="#F26161" />
 
             <Button
-                android:id="@+id/myinfoButton"
+                android:id="@+id/voiceButtonn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="19dp"
-                android:text="내정보" />
+                android:text="음성변환"
+                app:backgroundTint="#F26161" />
 
             <Button
                 android:id="@+id/logoutButton"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Button" />
+                android:text="로그아웃" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/plusLayout"
@@ -76,14 +74,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="550dp"
-        android:background="@drawable/ic_launcher_foreground"
-        app:cardBackgroundColor="@color/design_default_color_error"
+        android:layout_marginTop="492dp"
+        app:cardBackgroundColor="#FFD7D7"
         app:cardCornerRadius="100dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="@color/black"
         app:strokeWidth="1dp">
 
         <ImageButton
@@ -92,42 +87,64 @@
             android:layout_height="50dp"
             android:layout_gravity="right"
             android:layout_margin="10dp"
-            android:background="@android:drawable/ic_menu_add"
+            android:background="@drawable/addd"
+
             android:clickable="false"
             android:textSize="34sp" />
 
     </com.google.android.material.card.MaterialCardView>
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
+    <ScrollView
+        android:layout_width="359dp"
+        android:layout_height="67dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity">
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/noticeButton"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="620dp"
-        android:text="공지사항"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[중앙재난안전대책본부] 밀폐, 밀집한 시설에서의 모임을 자제하여주시기 바랍니다." />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[행정안전부] 18시 태풍경보, 해안지대 접근금지" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[서울특별시청] 코로나 바이러스 예방을 위해 마스크 착용 등 수칙을 준수하세요." />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="[국민안전처] 안전안내, 외출자제, 해안지대 접근금지 등 피해없게 주의하세요." />
+
+        </LinearLayout>
+    </ScrollView>
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/map"
@@ -136,5 +153,15 @@
             android:layout_height="match_parent" />
 
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/helpButton"
+        android:layout_width="73dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="500dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/help" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

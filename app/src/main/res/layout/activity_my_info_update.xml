@@ -6,174 +6,325 @@
     android:layout_height="match_parent"
     tools:context=".MyInfoMainActivity">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginBottom="24dp"
-        android:text="정보 수정"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        android:textStyle="bold"
+    <View
+        android:id="@+id/view2"
+        android:layout_width="400dp"
+        android:layout_height="3dp"
+        android:background="#F26161"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        tools:layout_editor_absoluteY="151dp" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="369dp"
+        android:id="@+id/textView17"
+        android:layout_width="61dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text=" 이곳에 의료정보를 등록하시면 응급상황을 대비할 때 사용됩니다."
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
-
-    <Button
-        android:id="@+id/checkButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="112dp"
-        android:backgroundTint="#F26161"
-        android:text="저장"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="150dp"
+        android:text="내 정보"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/outputBirth1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:text="00세"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/hprofileView"
+        app:layout_constraintTop_toBottomOf="@+id/outputName" />
+
+    <ImageView
+        android:id="@+id/hprofileView"
+        android:layout_width="100dp"
+        android:layout_height="87dp"
+        app:srcCompat="@drawable/profile"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="63dp" />
 
     <TextView
         android:id="@+id/outputName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="38dp"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="36dp"
-        android:hint="00님의 정보"
-        android:textColor="#F26161"
+        android:layout_marginTop="72dp"
+        android:text="00님"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toEndOf="@+id/hprofileView"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <Button
+        android:id="@+id/checkButton1"
+        android:layout_width="318dp"
+        android:layout_height="54dp"
+        android:text="저장"
+        app:backgroundTint="#F26161"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="214dp"
-        android:layout_height="364dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="26dp"
+        android:layout_width="352dp"
+        android:layout_height="393dp"
+        android:layout_marginStart="42dp"
         android:layout_marginEnd="177dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.174"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.152">
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/infoinputSick"
+
+            <TextView
+                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="의학적 질환"
-                android:inputType="textPersonName" />
+                android:layout_marginLeft="5dp"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/infoinputEmer"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:textStyle="bold"
+                    android:text="질환" />
+
+                <TextView
+                    android:id="@+id/infoinputSick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="의학적질환"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:text="긴급연락처" />
+
+                <TextView
+                    android:id="@+id/infoinputEmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="긴급연락처"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:text="혈액형" />
+
+                <TextView
+                    android:id="@+id/infoinputBlood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="혈액형"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="긴급 연락처"
-                android:inputType="textPersonName" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/infoinputBlood"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:text="복용중인 약" />
+
+                <TextView
+                    android:id="@+id/infoinputMedi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="복용 중인 약"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:padding="16dp"
+                    android:text="긴급 연락처" />
+
+                <TextView
+                    android:id="@+id/infoinputTall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="신장"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:text="체중" />
+
+                <TextView
+                    android:id="@+id/infoinputWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="체중"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:text="자격증" />
+
+                <TextView
+                    android:id="@+id/infoinputCertifi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="자격증"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="혈액형"
-                android:inputType="textPersonName" />
+                android:layout_marginTop="3dp"
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/infoinputMedi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="복용 중인 약"
-                android:inputType="textPersonName" />
+                <TextView
+                    android:layout_width="98dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:text="기타사항" />
 
-            <EditText
-                android:id="@+id/infoinputTall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="신장"
-                android:inputType="textPersonName" />
+                <TextView
+                    android:id="@+id/infoinputOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:background="#eeeeee"
+                    android:hint="기타사항"
+                    android:padding="10dp"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
 
-            <EditText
-                android:id="@+id/infoinputWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="체중"
-                android:inputType="textPersonName" />
 
-            <EditText
-                android:id="@+id/infoinputCertifi"
+            <TextView
+                android:id="@+id/textView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="자격증"
-                android:inputType="textPersonName" />
-
-            <EditText
-                android:id="@+id/infoinputOther"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#FFD9D9"
-                android:ems="10"
-                android:hint="기타사항"
-                android:inputType="textPersonName" />
+                android:layout_height="56dp"
+                android:text=" 이곳에 의료정보를 등록하시면 응급상황을 대비할 때 사용됩니다."
+                android:textSize="16sp" />
 
         </LinearLayout>
     </ScrollView>
-
-    <TextView
-        android:id="@+id/outputBirth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="98dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginBottom="403dp"
-        android:hint="00세"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/outputName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

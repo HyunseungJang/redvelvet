@@ -109,31 +109,47 @@ class MainActivity : AppCompatActivity() {
         time.scheduleAtFixedRate(10000, 10000) {
             searchHelp(time)
         }
-        //공지사항
-        binding.noticeButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
-        }
-
         //구조요청
         binding.helpButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,HelperActivity::class.java))
+            launcher.launch(Intent(applicationContext,HelpRequestActivity::class.java))
         }
 
-        //상황대처 정보
-        binding.infoButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,InformationActivity::class.java))
+        //재난대피
+        binding.safezoneButtonn.setOnClickListener {
+            launcher.launch(Intent(applicationContext,SkyActivity::class.java))
         }
+
+        //행동요령
+        binding.accidentButtonn.setOnClickListener {
+            launcher.launch(Intent(applicationContext,MediaActivity::class.java))
+        }
+
+        //상황대처
+        binding.situationButtonn.setOnClickListener {
+            launcher.launch(Intent(applicationContext,SituationActivity::class.java))
+        }
+
+        //음성변환
+        binding.voiceButtonn.setOnClickListener {
+            launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
+        }
+
+
+        //?? 정보
+//        binding.infoButton.setOnClickListener {
+//            launcher.launch(Intent(applicationContext,InformationActivity::class.java))
+//        }
 
 
         //내정보
-        binding.myinfoButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
-        }
+//        binding.myinfoButton.setOnClickListener {
+//            launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
+//        }
 
         //게시판
-        binding.postButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,PostActivity::class.java))
-        }
+//        binding.postButton.setOnClickListener {
+//            launcher.launch(Intent(applicationContext,PostActivity::class.java))
+//        }
 
         // --펼치기 레이아웃 start --
         binding.plusLayout.setOnClickListener {
@@ -359,7 +375,6 @@ class MainActivity : AppCompatActivity() {
                     HelpData.id= response.body()?.data?.get(0)?.id.toString()
                     HelpData.lat= response.body()?.data?.get(0)?.lat.toString()
                     HelpData.lng= response.body()?.data?.get(0)?.lng.toString()
-                    binding.textView7.text=response.body()?.data.toString()
 
                     // 알림 기능
                     showToast("알림 표시됨")
