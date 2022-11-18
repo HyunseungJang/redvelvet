@@ -17,21 +17,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="험악한 아저씨" />
+            android:text="험악한 아저씨"
+            app:backgroundTint="#F26161" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="외국인" />
+            android:text="외국인"
+            app:backgroundTint="#602B2B" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="무서운 누나" />
+            android:text="무서운 누나"
+            app:backgroundTint="#F26161" />
 
     </LinearLayout>
 
@@ -69,7 +72,8 @@
             android:layout_below="@id/speech_text"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:text="음성 전환" />
+            android:text="음성 전환"
+            app:backgroundTint="#F26161" />
 
     </LinearLayout>
 
