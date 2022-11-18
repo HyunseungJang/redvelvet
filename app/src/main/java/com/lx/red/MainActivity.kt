@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
+//        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
 
         // --백그라운드 작업 start--
 
@@ -229,33 +229,33 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    //액션바 메뉴 연결 함수
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.main_menu, menu)
-
-        return true
-    }
-
-    //액션바 버튼 눌렀을 때
-    @SuppressLint("NonConstantResourceId")
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.write -> {
-                startActivity(Intent(this, PostActivity::class.java))
-                true
-
-                return super.onOptionsItemSelected(item)
-            }
-            R.id.userInfo -> {
-                startActivity(Intent(this, MyInfoMainActivity::class.java))
-                true
-            }
-            R.id.logOut -> {
-                logout()
-                true
-            } else -> super.onOptionsItemSelected(item)
-        }
-    }
+//    //액션바 메뉴 연결 함수
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.main_menu, menu)
+//
+//        return true
+//    }
+//
+//    //액션바 버튼 눌렀을 때
+//    @SuppressLint("NonConstantResourceId")
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.write -> {
+//                startActivity(Intent(this, PostActivity::class.java))
+//                true
+//
+//                return super.onOptionsItemSelected(item)
+//            }
+//            R.id.userInfo -> {
+//                startActivity(Intent(this, MyInfoMainActivity::class.java))
+//                true
+//            }
+//            R.id.logOut -> {
+//                logout()
+//                true
+//            } else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
     fun logout(){
         AlertDialog.Builder(this)

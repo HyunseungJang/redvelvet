@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BluetoothActivity">
+    tools:context=".BluetoothActivity"
+    tools:menu="@menu/bluetooth_chat">
+
 
     <ViewAnimator
         android:id="@+id/sampleOutput"

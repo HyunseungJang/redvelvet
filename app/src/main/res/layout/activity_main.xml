@@ -6,22 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/actionbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        android:backgroundTint="@android:color/transparent"
-        android:elevation="4dp"
-        android:theme="?attr/actionBarTheme"
-        app:menu="@menu/main_menu"
-        app:popupTheme="@style/Theme.TitleBar.PopupOverlay"
-        app:title="R.E.D."
-        app:titleTextColor="@color/colorOrange"
-        tools:ignore="MissingConstraints">
+<!--    <com.google.android.material.appbar.MaterialToolbar-->
+<!--        android:id="@+id/actionbar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?attr/actionBarSize"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:backgroundTint="@android:color/transparent"-->
+<!--        android:elevation="4dp"-->
+<!--        android:theme="?attr/actionBarTheme"-->
+<!--        app:menu="@menu/main_menu"-->
+<!--        app:popupTheme="@style/Theme.TitleBar.PopupOverlay"-->
+<!--        app:title="R.E.D."-->
+<!--        app:titleTextColor="@color/colorOrange"-->
+<!--        tools:ignore="MissingConstraints">-->
 
 
-    </com.google.android.material.appbar.MaterialToolbar>
+<!--    </com.google.android.material.appbar.MaterialToolbar>-->
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/layoutDetail02"
