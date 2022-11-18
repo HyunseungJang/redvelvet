@@ -10,7 +10,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
 import com.lx.data.MemberListResponse
+import com.lx.red.SampleActivityBase.TAG
+import com.lx.red.common.logger.Log
 import com.lx.red.databinding.ActivityLoginBinding
+import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +36,26 @@ class LoginActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             readMember()
 
+            // 자동 로그인
+            val Email = loginId.text.toString()
+            saveData(Email)
+
+            val pref = getSharedPreferences("userEmail", 0)
+            // shared에 있는 'userEmail' 이란 데이터를 불러온다는 뜻. 0 대신 MODE_PRIVATE라고 입력가능
+
+            val savedEmail = pref.getString("email", "").toString()
+            // 1번째는 데이터 키 값, 2번째는 키 값에 데이터가 존재하지 않을때 대체 값
+
+            Log.d(TAG, savedEmail) // 로그를 찍어서 확인
+
+            if(loginId.equals("")){
+
+            } else {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                Toast.makeText(this,"로그인 하였습니다.", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
 
         //회원가입 버튼
@@ -47,6 +70,13 @@ class LoginActivity : AppCompatActivity() {
 //        }
 
     }
+    fun saveData(loginEmail :String) {
+        val pref = getSharedPreferences("userEmail", MODE_PRIVATE) // shared key 설정
+        val edit = pref.edit() // 수정모드
+        edit.putString("email", loginEmail) // 값 넣기
+        edit.apply()
+    }
+
     fun readMember() {
         var id = binding.loginId.text.toString()
         var pw = binding.loginPw.text.toString()

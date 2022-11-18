@@ -14,8 +14,6 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -34,6 +32,7 @@ import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
 import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
+import com.lx.red.NotificationBroadcastReceiver.Companion.NOTIFICATION_ID
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
 import retrofit2.Call
@@ -41,6 +40,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -413,10 +413,22 @@ class MainActivity : AppCompatActivity() {
                     // 알림 기능
                     showToast("알림 표시됨")
 
+                    // 알림창 클릭시
+                    val sIntent = Intent(applicationContext, HelperActivity::class.java)
+                    val sPendingIntent = PendingIntent.getActivity(
+                        applicationContext,
+                        NOTIFICATION_ID,
+                        sIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                    )
+
                     var builder = NotificationCompat.Builder(this@MainActivity, "MY_channel")
                         .setSmallIcon(R.drawable.ic_launcher_background)
                         .setContentTitle("RED 앱 구조요청 알림")
                         .setContentText("근처 200m 이내에 도움이 필요한 사람이 있어요!")
+
+                            // 알림창 클릭시
+                        .setFullScreenIntent(sPendingIntent, true)
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
                         val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
