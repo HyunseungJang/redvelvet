@@ -21,11 +21,14 @@ import com.lx.red.common.logger.Log
 import com.lx.red.common.logger.LogFragment
 import com.lx.red.common.logger.LogWrapper
 import com.lx.red.common.logger.MessageOnlyLogFilter
+import com.lx.red.databinding.ActivityBluetoothBinding
 import kotlinx.android.synthetic.main.activity_bluetooth.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class BluetoothActivity : AppCompatActivity() {
+    lateinit var binding:ActivityBluetoothBinding
+
     private var mLogShown = false
     val TAG = "BluetoothActivity"
     val PERMISSIONS = arrayOf(
@@ -41,12 +44,11 @@ class BluetoothActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_bluetooth)
+        binding = ActivityBluetoothBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-//
-//        val toolbar = blueAction
-//        setSupportActionBar(toolbar) //커스텀한 toolbar를 액션바로 사용
+        setSupportActionBar(binding.blueactionbar) //커스텀한 toolbar를 액션바로 사용
 
         
 
@@ -72,35 +74,35 @@ class BluetoothActivity : AppCompatActivity() {
 
 
     //액션바 메뉴 연결 함수
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.bluetooth_chat, menu)
-//
-//        return true
-//    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
 
-//    @SuppressLint("NonConstantResourceId")
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.secure_connect_scan -> {
-//                mLogShown = !mLogShown
-//                val output: ViewAnimator = findViewById(R.id.sampleOutput)
-//                if (mLogShown) {
-//                    output.displayedChild = 1
-//                } else {
-//                    output.displayedChild = 0
-//                }
-//                invalidateOptionsMenu()
-//                return true
-//            }
-//        }
-//        return super.onOptionsItemSelected(item)
-//    }
+        return true
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_toggle_log -> {
+                mLogShown = !mLogShown
+                val output: ViewAnimator = findViewById(R.id.sampleOutput)
+                if (mLogShown) {
+                    output.displayedChild = 1
+                } else {
+                    output.displayedChild = 0
+                }
+                invalidateOptionsMenu()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        val logToggle = menu.findItem(R.id.secure_connect_scan)
+        val logToggle = menu.findItem(R.id.menu_toggle_log)
         logToggle.isVisible = findViewById<View>(R.id.sampleOutput) is ViewAnimator
-        logToggle.setTitle(if (mLogShown) R.string.sample_hide_log else R.string.sample_show_log)
+        logToggle.setTitle(if (mLogShown) R.string.sample_hide_use else R.string.sample_show_use)
         return super.onPrepareOptionsMenu(menu)
     }
 

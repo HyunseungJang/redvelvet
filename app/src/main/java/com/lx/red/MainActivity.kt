@@ -15,13 +15,17 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RawRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
+import androidx.core.view.WindowCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -70,7 +74,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
+        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
+
+        // 맨 위 상태바 투명
+        val window = window
+        window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
 
         // --백그라운드 작업 start--
 
@@ -239,33 +248,34 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    //액션바 메뉴 연결 함수
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.main_menu, menu)
-//
-//        return true
-//    }
-//
-//    //액션바 버튼 눌렀을 때
-//    @SuppressLint("NonConstantResourceId")
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return when (item.itemId) {
-//            R.id.write -> {
-//                startActivity(Intent(this, PostActivity::class.java))
-//                true
-//
-//                return super.onOptionsItemSelected(item)
-//            }
-//            R.id.userInfo -> {
-//                startActivity(Intent(this, MyInfoMainActivity::class.java))
-//                true
-//            }
-//            R.id.logOut -> {
-//                logout()
-//                true
-//            } else -> super.onOptionsItemSelected(item)
-//        }
-//    }
+    //액션바 메뉴 연결 함수
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return true
+    }
+
+    //액션바 버튼 눌렀을 때
+    @SuppressLint("NonConstantResourceId")
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.write -> {
+                startActivity(Intent(this, PostActivity::class.java))
+                true
+
+                return super.onOptionsItemSelected(item)
+            }
+            R.id.userInfo -> {
+                startActivity(Intent(this, MyInfoMainActivity::class.java))
+                true
+            }
+            R.id.logOut -> {
+                logout()
+                true
+            } else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     fun logout(){
         AlertDialog.Builder(this)

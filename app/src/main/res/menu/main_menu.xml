@@ -19,11 +19,11 @@ xmlns:tools="http://schemas.android.com/tools"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 tools:ignore="AppCompatResource">
 <item
-    android:id="@+id/setting"
-    android:icon="@drawable/setting"
+    android:id="@+id/logOut"
+    android:icon="@drawable/logoutt"
     android:showAsAction="always"
     android:title=""
-    app:showAsAction="always" />
+    app:showAsAction="always"/>
 <item
     android:id="@+id/write"
     android:icon="@drawable/communityy"
@@ -31,15 +31,35 @@ tools:ignore="AppCompatResource">
     android:title=""
     app:showAsAction="always" />
 <item
+    android:id="@+id/empty1"
+    android:showAsAction="always"
+    android:title=""
+    app:showAsAction="always"/>
+<item
+    android:id="@+id/empty2"
+    android:showAsAction="always"
+    android:title=""
+    app:showAsAction="always"/>
+<item
+    android:id="@+id/empty3"
+    android:showAsAction="always"
+    android:title=""
+    app:showAsAction="always"/>
+<item
+    android:id="@+id/empty4"
+    android:showAsAction="always"
+    android:title=""
+    app:showAsAction="always"/>
+<item
     android:id="@+id/userInfo"
     android:icon="@drawable/mypagee"
     android:showAsAction="always"
     android:title=""
     app:showAsAction="always"/>
 <item
-    android:id="@+id/logOut"
-    android:icon="@drawable/logoutt"
+    android:id="@+id/setting"
+    android:icon="@drawable/setting"
     android:showAsAction="always"
     android:title=""
-    app:showAsAction="always"/>
+    app:showAsAction="always" />
 </menu>

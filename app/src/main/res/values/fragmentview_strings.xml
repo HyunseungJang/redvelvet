@@ -16,4 +16,6 @@
 <resources>
     <string name="sample_show_log">Show Log</string>
     <string name="sample_hide_log">Hide Log</string>
+    <string name="sample_show_use">이용방법 가리기</string>
+    <string name="sample_hide_use">이용방법 보기</string>
 </resources>

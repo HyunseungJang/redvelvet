@@ -5,25 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BluetoothActivity"
-    tools:menu="@menu/bluetooth_chat">
+    tools:context=".BluetoothActivity">
 
-<!--        <androidx.appcompat.widget.Toolbar-->
-<!--            android:id="@+id/blueAction"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="?attr/actionBarSize"-->
-<!--            android:background="@android:color/transparent"-->
-<!--            android:backgroundTint="@android:color/transparent"-->
-<!--            android:elevation="4dp"-->
-<!--            android:theme="?attr/actionBarTheme"-->
-<!--            app:menu="@menu/bluetooth_chat"-->
-<!--            app:popupTheme="@style/Theme.MyRed"-->
-<!--            app:title="R.E.D."-->
-<!--            app:titleTextColor="@color/colorOrange"-->
-<!--            tools:ignore="MissingConstraints">-->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/blueactionbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:outlineProvider="none"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/Theme.TitleBar.PopupOverlay"
+        app:title="R.E.D."
+        app:titleTextColor="@color/colorOrange"
+        tools:ignore="MissingConstraints">
 
 
-<!--        </androidx.appcompat.widget.Toolbar>-->
+    </com.google.android.material.appbar.MaterialToolbar>
 
 
     <ViewAnimator
