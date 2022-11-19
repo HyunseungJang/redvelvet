@@ -29,4 +29,26 @@
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
     </style>
+
+    <style name="AppAlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowTitleStyle">@style/AppAlertDialogTitle</item>
+        <item name="buttonBarNegativeButtonStyle">@style/AppAlertButtonStyle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/AppAlertButtonStyle</item>
+        <item name="buttonBarNeutralButtonStyle">@style/AppOtherAlertButtonStyle</item>
+    </style>
+
+    <style name="AppAlertDialogTitle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#F26161</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="AppAlertButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="AppOtherAlertButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">#D6945B</item>
+        <item name="android:textSize">10sp</item>
+    </style>
 </resources>

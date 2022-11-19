@@ -20,7 +20,7 @@ class HelpRequestActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        object : CountDownTimer(10000, 1000) {
+        object : CountDownTimer(5000, 1000) {
 
             override fun onTick(millisUntilFinished: Long) {
                 binding.count.text = "" + millisUntilFinished / 1000
@@ -43,6 +43,7 @@ class HelpRequestActivity : AppCompatActivity() {
 
     fun run() {
         launcher.launch(Intent(applicationContext,ConfirmationHelpActivity::class.java))
+        finish()
     }
     fun lunActivity(){
         launcher.launch(Intent(applicationContext,MainActivity::class.java))

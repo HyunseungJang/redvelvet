@@ -14,6 +14,7 @@
         android:layout_marginBottom="148dp"
         android:backgroundTint="#F26161"
         android:text="구조완료"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -25,10 +26,36 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="#F26161"
+        android:textColor="@color/colorWhite"
         android:text="블루투스로 신호보내기"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/deleteHelp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="298dp"
+        android:layout_height="178dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/confirm"
+        android:gravity="center"
+        android:text="@string/help"
+        android:textColor="#F26161"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="222dp"
+        android:layout_height="189dp"
+        android:layout_marginTop="236dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.565"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/help2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
