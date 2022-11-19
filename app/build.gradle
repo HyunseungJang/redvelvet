@@ -65,7 +65,8 @@ dependencies {
 
     //지도
     implementation("com.google.android.gms:play-services-maps:18.1.0")
-
+    api 'com.google.android.gms:play-services-location:9.6.1'
+    api 'com.google.android.gms:play-services-maps:10.0.1'
     // 위험 권한
     implementation("com.guolindev.permissionx:permissionx:1.7.1")
 
@@ -83,6 +84,11 @@ dependencies {
     //카드뷰 둥글게하기
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    // 히트맵
+    implementation 'com.google.maps.android:maps-utils-ktx:3.4.0'
+    implementation 'com.google.maps.android:android-maps-utils:2.3.0'
+
 
 
 }

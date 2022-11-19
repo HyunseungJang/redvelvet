@@ -6,6 +6,7 @@ import android.app.*
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
 import android.location.Location
@@ -17,6 +18,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RawRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
@@ -24,16 +26,17 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
+import com.google.maps.android.heatmaps.Gradient
+import com.google.maps.android.heatmaps.HeatmapTileProvider
 import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
 import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import org.json.JSONArray
+import org.json.JSONException
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -45,13 +48,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
 
     var locationClient:FusedLocationProviderClient?=null
-
     lateinit var map: GoogleMap
-
     var myMarker: Marker? = null
-
     val timer = Timer()
-
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
 
     // 쉐이크 + 전화걸기
@@ -61,6 +60,9 @@ class MainActivity : AppCompatActivity() {
 
     // 로그아웃
     val PREFS_NAME: String? = "LoginPrefs"
+
+
+
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @RequiresApi(Build.VERSION_CODES.S)
@@ -210,6 +212,7 @@ class MainActivity : AppCompatActivity() {
                 val zoomLevel = map.cameraPosition.zoom
                 println("zoomLevel: ${zoomLevel}")
             }
+            addHeatMap()
 
         }
         //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
@@ -295,7 +298,7 @@ class MainActivity : AppCompatActivity() {
             val locationRequest = LocationRequest.create()
             locationRequest.run{
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                interval = 1000    //위치 새로고침 시간
+                interval = 100000    //위치 새로고침 시간
 
             }
 
@@ -485,6 +488,62 @@ class MainActivity : AppCompatActivity() {
     fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
+
+    // 히트맵
+    private fun addHeatMap() {
+        var latLngs: List<LatLng?>? = null
+
+        // Get the data: latitude/longitude positions of police stations.
+        try {
+            latLngs = readItems(R.raw.dangerzone)
+        } catch (e: JSONException) {
+
+        }
+
+        // Create a heat map tile provider, passing it the latlngs of the police stations.
+        val provider = HeatmapTileProvider.Builder()
+            .data(latLngs)
+            .build()
+
+        // Add a tile overlay to the map, using the heat map tile provider.
+        val overlay = map.addTileOverlay(TileOverlayOptions().tileProvider(provider))
+
+        // Create the gradient.
+        val colors = intArrayOf(
+            Color.rgb(102, 225, 0),  // green
+            Color.rgb(255, 0, 0) // red
+        )
+        val startPoints = floatArrayOf(0.2f, 1f)
+        val gradient = Gradient(colors, startPoints)
+
+        // Add the tile overlay to the map.
+        val tileOverlay = map.addTileOverlay(
+            TileOverlayOptions()
+                .tileProvider(provider)
+        )
+        provider.setOpacity(0.7)
+        tileOverlay?.clearTileCache()
+
+        provider.setGradient(gradient)
+        provider.setRadius(50)
+
+    }
+
+    @Throws(JSONException::class)
+    private fun readItems(@RawRes resource: Int): List<LatLng?> {
+        val result: MutableList<LatLng?> = ArrayList()
+        val inputStream = this.resources.openRawResource(resource)
+        val json = Scanner(inputStream).useDelimiter("\\A").next()
+        val array = JSONArray(json)
+        for (i in 0 until array.length()) {
+            val `object` = array.getJSONObject(i)
+            val lat = `object`.getDouble("lat")
+            val lng = `object`.getDouble("lng")
+            result.add(LatLng(lat, lng))
+        }
+        return result
+    }
+
 
 
 }
