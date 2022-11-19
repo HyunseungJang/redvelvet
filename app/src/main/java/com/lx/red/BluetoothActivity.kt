@@ -1,8 +1,10 @@
 package com.lx.red
 
 import android.Manifest.permission.*
+import android.annotation.SuppressLint
 import android.app.ActionBar
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -10,6 +12,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import android.widget.Toolbar
 import android.widget.ViewAnimator
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +21,8 @@ import com.lx.red.common.logger.Log
 import com.lx.red.common.logger.LogFragment
 import com.lx.red.common.logger.LogWrapper
 import com.lx.red.common.logger.MessageOnlyLogFilter
+import kotlinx.android.synthetic.main.activity_bluetooth.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class BluetoothActivity : AppCompatActivity() {
@@ -33,9 +38,17 @@ class BluetoothActivity : AppCompatActivity() {
     )
     val REQUEST_ALL_PERMISSION = 2
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bluetooth)
+
+
+//
+//        val toolbar = blueAction
+//        setSupportActionBar(toolbar) //커스텀한 toolbar를 액션바로 사용
+
+        
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
             if (!hasPermissions(this, PERMISSIONS_S_ABOVE)) {
@@ -56,34 +69,42 @@ class BluetoothActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
+
+
+    //액션바 메뉴 연결 함수
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.bluetooth_chat, menu)
+//
+//        return true
+//    }
+
+//    @SuppressLint("NonConstantResourceId")
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.secure_connect_scan -> {
+//                mLogShown = !mLogShown
+//                val output: ViewAnimator = findViewById(R.id.sampleOutput)
+//                if (mLogShown) {
+//                    output.displayedChild = 1
+//                } else {
+//                    output.displayedChild = 0
+//                }
+//                invalidateOptionsMenu()
+//                return true
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
+
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        val logToggle = menu.findItem(R.id.menu_toggle_log)
+        val logToggle = menu.findItem(R.id.secure_connect_scan)
         logToggle.isVisible = findViewById<View>(R.id.sampleOutput) is ViewAnimator
         logToggle.setTitle(if (mLogShown) R.string.sample_hide_log else R.string.sample_show_log)
         return super.onPrepareOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_toggle_log -> {
-                mLogShown = !mLogShown
-                val output: ViewAnimator = findViewById(R.id.sampleOutput)
-                if (mLogShown) {
-                    output.displayedChild = 1
-                } else {
-                    output.displayedChild = 0
-                }
-                invalidateOptionsMenu()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
 
     /*
     override fun initializeLogging() {

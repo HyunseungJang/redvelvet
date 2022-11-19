@@ -8,6 +8,23 @@
     tools:context=".BluetoothActivity"
     tools:menu="@menu/bluetooth_chat">
 
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/blueAction"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="?attr/actionBarSize"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:backgroundTint="@android:color/transparent"-->
+<!--            android:elevation="4dp"-->
+<!--            android:theme="?attr/actionBarTheme"-->
+<!--            app:menu="@menu/bluetooth_chat"-->
+<!--            app:popupTheme="@style/Theme.MyRed"-->
+<!--            app:title="R.E.D."-->
+<!--            app:titleTextColor="@color/colorOrange"-->
+<!--            tools:ignore="MissingConstraints">-->
+
+
+<!--        </androidx.appcompat.widget.Toolbar>-->
+
 
     <ViewAnimator
         android:id="@+id/sampleOutput"

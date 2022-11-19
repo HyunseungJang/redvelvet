@@ -13,4 +13,5 @@
     <color name="colorOrange">#F44336</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlue">#2196F3</color>
+    <color name="clear">#00000000</color>
 </resources>
