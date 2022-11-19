@@ -114,9 +114,6 @@
             android:name=".SafeDisasterActivity"
             android:exported="false" />
         <activity
-            android:name=".InformationActivity"
-            android:exported="false" />
-        <activity
             android:name=".AddPostActivity"
             android:exported="false" />
         <activity
