@@ -77,6 +77,12 @@
                 android:text="음성변환"
                 app:backgroundTint="#F26161" />
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="로그아웃" />
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 

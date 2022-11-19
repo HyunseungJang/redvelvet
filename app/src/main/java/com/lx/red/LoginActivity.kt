@@ -29,17 +29,22 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 자동로그인
-        if(MemberData.memberId.isNullOrBlank()
-            || MemberData.memberPw.isNullOrBlank()) {
-            autoLogin()
-        }
-        else {
-            Toast.makeText(this, "${MemberData.memberId}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
+        // <-- 자동로그인 start -->
+        if(binding.checkBox.isChecked == false) {
+            if(MemberData.memberId.isNullOrBlank()
+                || MemberData.memberPw.isNullOrBlank()) {
+                login()
+            }
+            else {
+                Toast.makeText(this, "${MemberData.memberId}님 자동 로그인 되었습니다.", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+                startActivity(intent)
+                finish()
+            }
+        } else {
+
         }
+        // <-- 자동로그인 end -->
 
         val actionBar: androidx.appcompat.app.ActionBar? = supportActionBar
         actionBar?.hide()
@@ -62,7 +67,7 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun autoLogin() {
+    fun login() {
         var id = binding.loginId.text.toString()
         var pw = binding.loginPw.text.toString()
 
@@ -132,6 +137,7 @@ class LoginActivity : AppCompatActivity() {
                     MemberData.memberAgreeS1 = response.body()?.data?.get(0)?.agrees1.toString()
                     MemberData.memberAgreeS2 = response.body()?.data?.get(0)?.agrees2.toString()
                     launcher.launch(Intent(applicationContext,MainActivity::class.java))
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 } else if(checkMember == "0"){
                 val builder = AlertDialog.Builder(this@LoginActivity)
                 builder.setTitle("로그인")

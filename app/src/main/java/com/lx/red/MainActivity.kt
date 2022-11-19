@@ -3,7 +3,6 @@ package com.lx.red
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
-import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -33,7 +32,6 @@ import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
 import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
-import com.lx.red.NotificationBroadcastReceiver.Companion.NOTIFICATION_ID
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
 import retrofit2.Call
@@ -60,6 +58,9 @@ class MainActivity : AppCompatActivity() {
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
+
+    // 로그아웃
+    val PREFS_NAME: String? = "LoginPrefs"
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @RequiresApi(Build.VERSION_CODES.S)
@@ -136,6 +137,11 @@ class MainActivity : AppCompatActivity() {
         //음성변환
         binding.voiceButtonn.setOnClickListener {
             launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
+        }
+
+        // 로그아웃
+        binding.logoutButton.setOnClickListener {
+            logout()
         }
 
 
@@ -265,6 +271,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
             })
             .setNegativeButton("취소",
                 DialogInterface.OnClickListener { dialog, whichButton -> })
