@@ -516,7 +516,7 @@ class MainActivity : AppCompatActivity() {
         val startPoints = floatArrayOf(0.2f, 1f)
         val gradient = Gradient(colors, startPoints)
 
-        // Add the tile overlay to the map.
+        // Add the tile overlay to the map..
         val tileOverlay = map.addTileOverlay(
             TileOverlayOptions()
                 .tileProvider(provider)
