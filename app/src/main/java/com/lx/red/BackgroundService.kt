@@ -38,9 +38,8 @@ class BackgroundService : Service() {
             )!!
             manager.createNotificationChannel(serviceChannel)
         }
-        val notificationIntent = Intent(this, MainActivity::class.java)
+        val notificationIntent = Intent(this, LoginActivity::class.java)
 
-        //씨발
         val pendingIntent = PendingIntent.getActivity(
             this,
             0,
@@ -61,11 +60,6 @@ class BackgroundService : Service() {
 
     fun time() {
 
-    }
-
-    fun run() {
-        val intent = Intent(this, HelpRequestActivity::class.java)
-        startActivity(intent)
     }
 
     fun showToast(message: String) {

@@ -14,8 +14,6 @@ import android.os.Bundle
 import android.os.Looper
 import android.os.SystemClock
 import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -42,6 +40,7 @@ import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
 
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
 
@@ -59,6 +58,9 @@ class MainActivity : AppCompatActivity() {
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
+
+    // 로그아웃
+    val PREFS_NAME: String? = "LoginPrefs"
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @RequiresApi(Build.VERSION_CODES.S)
@@ -135,6 +137,11 @@ class MainActivity : AppCompatActivity() {
         //음성변환
         binding.voiceButtonn.setOnClickListener {
             launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
+        }
+
+        // 로그아웃
+        binding.logoutButton.setOnClickListener {
+            logout()
         }
 
 
@@ -264,6 +271,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
+                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
+                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
+                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
             })
             .setNegativeButton("취소",
                 DialogInterface.OnClickListener { dialog, whichButton -> })
@@ -413,10 +423,15 @@ class MainActivity : AppCompatActivity() {
                     // 알림 기능
                     showToast("알림 표시됨")
 
+                    // 알림창 클릭시
+                    val pintent = Intent(this@MainActivity, HelperActivity::class.java)
+                    val pendingIntent = PendingIntent.getActivity(this@MainActivity, 0, pintent, 0)
+
                     var builder = NotificationCompat.Builder(this@MainActivity, "MY_channel")
                         .setSmallIcon(R.drawable.ic_launcher_background)
                         .setContentTitle("RED 앱 구조요청 알림")
                         .setContentText("근처 200m 이내에 도움이 필요한 사람이 있어요!")
+                        .setContentIntent(pendingIntent)
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) { // 오레오 버전 이후에는 알림을 받을 때 채널이 필요
                         val channel_id = "MY_channel" // 알림을 받을 채널 id 설정
