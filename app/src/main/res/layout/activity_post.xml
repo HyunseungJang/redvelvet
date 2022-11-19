@@ -18,18 +18,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="69dp"
-            android:background="#BCE57373"
+            android:background="#F26161"
             android:gravity="center|center_vertical"
             android:text="동네소식"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#EB9797" />
 
     </LinearLayout>
 
@@ -51,7 +45,7 @@
         android:layout_marginBottom="56dp"
         android:clickable="true"
         android:src="@drawable/add"
-        app:backgroundTint="#EB9797"
+        android:backgroundTint="#F26161"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

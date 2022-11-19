@@ -111,7 +111,7 @@ class GetHelpActivity : AppCompatActivity() {
         MarkerOptions().also{
             it.position(curPoint)
             it.title("구조요청자 위치")
-            it.icon(BitmapDescriptorFactory.fromResource(R.drawable.sos))
+            it.icon(BitmapDescriptorFactory.fromResource(R.drawable.warninging))
 
             myMarker = map2.addMarker(it)
             //태그정보

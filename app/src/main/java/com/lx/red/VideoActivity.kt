@@ -5,8 +5,11 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.VideoView
+import com.lx.red.common.logger.Log
 
 import com.lx.red.databinding.ActivityVideoBinding
+import kotlinx.android.synthetic.main.activity_video.*
+import retrofit2.http.Url
 
 
 class VideoActivity : AppCompatActivity() {
@@ -22,9 +25,9 @@ class VideoActivity : AppCompatActivity() {
 
 
         // 비디오 영상 재생하기
-        video = findViewById(R.id.videoView2)
+        var video = binding.videoView2
 //        video?.setVideoURI(Uri.parse("${AppData.selectedPicture?.path}"))
-        video?.setVideoURI(Uri.parse("http://download.atmark-techno.com/sample/bbb/big-buck-bunny-30sec-800x480.mp4"))
+//        video?.setVideoURI(Uri.parse("android.resource://MyRed/" + R.raw.haha))
 
 //        video?.setOnPreparedListener {
 //            it.start()
@@ -45,19 +48,17 @@ class VideoActivity : AppCompatActivity() {
         }
 
         AppData.selectedPicture?.apply {
-            binding.titleOutput1.text="${this.title}"
+            binding.titleOutput1.text= this.title
         }
 
         AppData.selectedPicture?.apply {
-            binding.explainOutput.text="${this.date}"
+            binding.explainOutput.text=this.date
         }
 
         AppData.selectedPicture?.apply {
-            binding.explainOutput.text="${this.smalltitle}"
-        }
-
-
-
+            binding.explainOutput.text=this.smalltitle
         }
 
     }
+
+}

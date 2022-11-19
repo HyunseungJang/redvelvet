@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/pager_item_image"
+        android:id="@+id/logo_item_image"
         android:layout_width="match_parent"
         android:layout_height="271dp"
         android:layout_marginBottom="20dp" />

@@ -18,10 +18,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toEndOf="@+id/textView27"
         app:layout_constraintTop_toBottomOf="@+id/btn_registration"
-        app:layout_constraintVertical_bias="0.672" />
+        app:layout_constraintVertical_bias="0.686" />
 
     <TextView
         android:id="@+id/textView27"
@@ -43,16 +43,16 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.082"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285">
+        app:layout_constraintVertical_bias="0.307">
 
         <EditText
             android:id="@+id/registrationId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="아이디"
             android:inputType="textPersonName" />
@@ -61,7 +61,7 @@
             android:id="@+id/registrationPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="비밀번호"
             android:inputType="textPersonName" />
@@ -70,7 +70,7 @@
             android:id="@+id/registrationPwCheck"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="비밀번호 확인"
             android:inputType="textPersonName" />
@@ -79,7 +79,7 @@
             android:id="@+id/registrationBirthday"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="나이(만 - 세)"
             android:inputType="textPersonName" />
@@ -88,7 +88,7 @@
             android:id="@+id/registrationName"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="이름"
             android:inputType="textPersonName" />
@@ -97,7 +97,7 @@
             android:id="@+id/registrationGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="성별"
             android:inputType="textPersonName" />
@@ -106,7 +106,7 @@
             android:id="@+id/registrationMobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FFD9D9"
+            android:backgroundTint="#F26161"
             android:ems="10"
             android:hint="전화번호 / - 제외"
             android:inputType="textPersonName" />

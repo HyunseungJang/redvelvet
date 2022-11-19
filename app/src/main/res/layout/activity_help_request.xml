@@ -27,18 +27,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.544" />
 
     <TextView
         android:id="@+id/smallTitleView"
-        android:layout_width="174dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="44dp"
-        android:text="닫기 버튼을 누르지 않을 경우 구조요청이 자동 시작됩니다."
+        android:layout_width="196dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="52dp"
+        android:text="닫기 버튼을 누르지 않을 경우     도움요청이 자동으로 시작됩니다."
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/smallTitleView2" />
 
     <ImageView

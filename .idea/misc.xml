@@ -21,6 +21,47 @@
         <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_sky.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/activity_video.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/gjsrn/AndroidStudioProjects/redvelvet/app/src/main/res/layout/fragment_picture_list.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/drawable-v24/ic_left_arrow_24dp.xml" value="0.186" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/drawable-v24/ic_right_arrow_24dp.xml" value="0.186" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/drawable-v24/pink_round_button.xml" value="0.186" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_add_post.xml" value="0.2652777777777778" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_agree.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_bluetooth.xml" value="0.2652777777777778" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_capture.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_confirmation_help.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_device_list.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_disaster.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_emergency_call.xml" value="0.24947916666666667" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_get_help.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_help_request.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_helper.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_main.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_main_info_view_pager.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_main_info_viewpager.xml" value="0.36875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_main_intro_viewpager_item.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_maps.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_media.xml" value="0.2652777777777778" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_my_info_main.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_my_info_update.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_notice.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_post.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_register.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_safe_disaster.xml" value="0.18518518518518517" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_situation.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_sky.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_video.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_voice.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/activity_warning.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/device_name.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/fragment_bluetooth_chat.xml" value="0.2652777777777778" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/fragment_picture_list.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/fragment_voice_one.xml" value="0.2652777777777778" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/fragment_voice_three.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/fragment_voice_two.xml" value="0.18703703703703703" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/layout_intro_pager_item.xml" value="0.4" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/message.xml" value="0.37421875" />
+        <entry key="..\:/Users/user/AndroidStudioProjects/haRed/app/src/main/res/layout/picture_item.xml" value="0.6" />
       </map>
     </option>
   </component>

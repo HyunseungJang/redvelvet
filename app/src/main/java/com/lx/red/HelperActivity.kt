@@ -72,7 +72,7 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
                 .position(soser)
                 .title("$nameHelp")
                 .snippet("도움이 필요한 사람의 위치")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.sos))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.warninging))
         )
 
         val save = mMap.addMarker(

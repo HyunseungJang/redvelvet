@@ -13,7 +13,6 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.lx.red.databinding.ActivitySkyBinding
 import kotlinx.android.synthetic.main.activity_sky.*
 
-
 class SkyActivity : AppCompatActivity(), OnMapReadyCallback {
     lateinit var binding : ActivitySkyBinding
 

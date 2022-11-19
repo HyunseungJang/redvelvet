@@ -28,9 +28,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
             android:layout_weight="1"
+            android:paddingTop="3dp"
             android:text="상황대처 및 요령"
             android:textColor="#000000"
-            android:textSize="34sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -39,10 +40,12 @@
         android:layout_height="597dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="2dp"
-        android:layout_marginTop="134dp"
-        android:layout_marginBottom="0dp">
+        android:layout_marginTop="106dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="28dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -94,15 +97,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:background="#FBEBEB" />
-
-            <TextView
-                android:id="@+id/ttextView1"
-                android:layout_width="match_parent"
-                android:layout_height="67dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:text="TextView" />
 
             <TextView
                 android:id="@+id/smallTitleView2"
