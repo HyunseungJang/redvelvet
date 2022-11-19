@@ -1,18 +1,18 @@
 package com.lx.red
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
 import com.lx.data.HelpResponse
 import com.lx.red.databinding.ActivityConfirmationHelpBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import androidx.activity.result.contract.ActivityResultContracts
+
 
 class ConfirmationHelpActivity : AppCompatActivity() {
     lateinit var binding : ActivityConfirmationHelpBinding
@@ -26,9 +26,9 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         setContentView(binding.root)
         if(MemberData.memberEmernum == null){
 
-        }
 
-        help()
+            help()
+        }
         // 문자발송
         val inputPhoneNum=MemberData.memberEmernum
         val myUri = Uri.parse("smsto:${inputPhoneNum}")
@@ -36,14 +36,14 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         myIntent.putExtra("sms_body", "살려주세요!")
         startActivity(myIntent)
         // 다이얼로그
-        val builder = AlertDialog.Builder(this)
+        val builder = AlertDialog.Builder(this,R.style.AppAlertDialogTheme)
         builder.setTitle("112 신고 완료")
             .setIcon(R.drawable.location)
             .setMessage("<반경 200m 이내> 레드 이용자에게 구조 신호를 보내고 있습니다.")
-            .setPositiveButton("닫기",
-                DialogInterface.OnClickListener { dialog, id ->
-//                    binding.resultText.text = "닫기 클릭"
-                })
+            .setPositiveButton("닫기"
+            ) { _, _ ->
+
+            }
         // 다이얼로그를 띄워주기//
         builder.show()
 
@@ -52,7 +52,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         }
 
         binding.blueButton.setOnClickListener {
-            launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
+            launcher.launch(Intent(applicationContext, BluetoothActivity::class.java))
         }
     }
 
@@ -71,7 +71,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
 
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
-                launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
+                
             }
         })
     }
@@ -89,4 +89,5 @@ class ConfirmationHelpActivity : AppCompatActivity() {
             }
         })
     }
+
 }
