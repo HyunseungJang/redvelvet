@@ -25,7 +25,6 @@ import androidx.annotation.RawRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
-import androidx.core.view.WindowCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -33,12 +32,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
+import com.google.maps.android.heatmaps.WeightedLatLng
 import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
 import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
+import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Call
@@ -64,9 +66,6 @@ class MainActivity : AppCompatActivity() {
 
     // 로그아웃
     val PREFS_NAME: String? = "LoginPrefs"
-
-
-
 
     @SuppressLint("UnspecifiedImmutableFlag")
     @RequiresApi(Build.VERSION_CODES.S)
@@ -150,11 +149,6 @@ class MainActivity : AppCompatActivity() {
             launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
         }
 
-        // 로그아웃
-        binding.logoutButton.setOnClickListener {
-            logout()
-        }
-
 
         //?? 정보
 //        binding.infoButton.setOnClickListener {
@@ -221,7 +215,8 @@ class MainActivity : AppCompatActivity() {
                 val zoomLevel = map.cameraPosition.zoom
                 println("zoomLevel: ${zoomLevel}")
             }
-            addHeatMap()
+
+//            addHeatMap()
 
         }
         //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
@@ -246,6 +241,10 @@ class MainActivity : AppCompatActivity() {
         )
         // --백그라운드에서 알람 울리기 기능 end--
 
+        binding.applyButton.setOnClickListener {
+            addHeatMap()
+        }
+
     }
 
     //액션바 메뉴 연결 함수
@@ -269,13 +268,16 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, MyInfoMainActivity::class.java))
                 true
             }
+            R.id.setting -> {
+                // 체크박스 표시되는 함수 만들기!
+                true
+            }
             R.id.logOut -> {
                 logout()
                 true
             } else -> super.onOptionsItemSelected(item)
         }
     }
-
 
     fun logout(){
         AlertDialog.Builder(this)
@@ -503,39 +505,68 @@ class MainActivity : AppCompatActivity() {
     private fun addHeatMap() {
         var latLngs: List<LatLng?>? = null
 
-        // Get the data: latitude/longitude positions of police stations.
-        try {
-            latLngs = readItems(R.raw.dangerzone)
-        } catch (e: JSONException) {
+        //지도 초기화하기
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        //구글맵 객체를 컨트롤
+        mapFragment.getMapAsync{
+            //초기화가 끝난 지도
+            map = it
+            //내위치 요청하기
+            requestLocation()
+            //보고있는 지도영역에 대한 구분
+            map.setOnCameraIdleListener {
+                //현재위치
+                val bounds = map.projection.visibleRegion.latLngBounds
+                //줌 레벨
+                val zoomLevel = map.cameraPosition.zoom
+                println("zoomLevel: ${zoomLevel}")
+            }
 
         }
 
-        // Create a heat map tile provider, passing it the latlngs of the police stations.
+        // 체크박스 체크 상황별
+//        if(crimeCheck.isChecked) {
+//            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+//        } else if(accidentCheck.isChecked) {
+//            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
+//        } else if(cctvCheck.isChecked){
+//            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
+//        } else if(crimeCheck.isChecked && accidentCheck.isChecked){
+//            try { latLngs = readItems(R.raw.mix1) } catch (e: JSONException) { }
+//        } else if(accidentCheck.isChecked && cctvCheck.isChecked){
+//            try { latLngs = readItems(R.raw.mix2) } catch (e: JSONException) { }
+//        } else if(crimeCheck.isChecked && cctvCheck.isChecked){
+//            try { latLngs = readItems(R.raw.mix3) } catch (e: JSONException) { }
+//        } else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
+//            try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }
+//        }
+
+
+
         val provider = HeatmapTileProvider.Builder()
             .data(latLngs)
             .build()
 
-        // Add a tile overlay to the map, using the heat map tile provider.
         val overlay = map.addTileOverlay(TileOverlayOptions().tileProvider(provider))
 
-        // Create the gradient.
         val colors = intArrayOf(
             Color.rgb(102, 225, 0),  // green
             Color.rgb(255, 0, 0) // red
         )
-        val startPoints = floatArrayOf(0.2f, 1f)
+        val startPoints = floatArrayOf(0.7f, 1f)
         val gradient = Gradient(colors, startPoints)
 
-        // Add the tile overlay to the map..
         val tileOverlay = map.addTileOverlay(
             TileOverlayOptions()
                 .tileProvider(provider)
         )
-        provider.setOpacity(0.7)
+        provider.setOpacity(0.55)
         tileOverlay?.clearTileCache()
 
         provider.setGradient(gradient)
         provider.setRadius(50)
+
+
 
     }
 
@@ -553,7 +584,5 @@ class MainActivity : AppCompatActivity() {
         }
         return result
     }
-
-
 
 }
