@@ -1,9 +1,15 @@
 package com.lx.red
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.lx.api.BasicClient
@@ -20,13 +26,17 @@ class ConfirmationHelpActivity : AppCompatActivity() {
 
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if(MemberData.memberEmernum == null){
+        binding.blueButton.setText("${MemberData.memberId}")
 
-
+        if (!checkNetworkState(this)) {
+            launcher.launch(Intent(applicationContext, BluetoothActivity::class.java))
+        }
+        else {
             help()
         }
         // 문자발송
@@ -71,10 +81,30 @@ class ConfirmationHelpActivity : AppCompatActivity() {
 
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
-                
+//                launcher.launch(Intent(applicationContext, BluetoothActivity::class.java))
             }
         })
     }
+    fun help2(){
+        var id = MemberData.memberId.toString()
+        var LAT= AppData.lat?.toDouble()
+        var LNG= AppData.lng?.toDouble()
+
+        BasicClient.api.help(
+            requestCode = "1001",
+            id = id,
+            LAT = LAT,
+            LNG = LNG
+        ).enqueue(object : Callback<HelpResponse> {
+            override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
+
+            }
+            override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
+
+            }
+        })
+    }
+
     fun deleteHelp(){
         var id = MemberData.memberId.toString()
 
@@ -88,6 +118,22 @@ class ConfirmationHelpActivity : AppCompatActivity() {
                 launcher.launch(Intent(applicationContext,MainActivity::class.java))
             }
         })
+    }
+    companion object {
+        @RequiresApi(Build.VERSION_CODES.M)
+        fun checkNetworkState(context: Context): Boolean {
+            val connectivityManager: ConnectivityManager =
+                context.getSystemService(ConnectivityManager::class.java)
+            val network: Network = connectivityManager.activeNetwork ?: return false
+            val actNetwork: NetworkCapabilities =
+                connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                actNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                actNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                else -> false
+            }
+        }
     }
 
 }
