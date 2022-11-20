@@ -23,7 +23,7 @@ class VideoActivity : AppCompatActivity() {
 
         // 비디오 영상 재생하기
         video = findViewById(R.id.videoView2)
-        video?.setVideoPath("android.resource://" + packageName + "/" + R.raw.test)
+        video?.setVideoPath("android.resource://" + packageName + "/" + R.raw.cpr)
 //        video?.setVideoURI(Uri.parse("${AppData.selectedPicture?.path}"))
         //video?.setVideoURI(Uri.parse("http://download.atmark-techno.com/sample/bbb/big-buck-bunny-30sec-800x480.mp4"))
 //        video?.setVideoURI(Uri.parse("android.resource://MyRed/" + R.raw.ha))

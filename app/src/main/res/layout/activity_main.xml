@@ -215,6 +215,232 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/scroller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    app:cardBackgroundColor="#F6C0C0"
+                                    app:cardCornerRadius="8dp"
+                                    app:contentPadding="4dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:backgroundTint="#FFFFFF"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:orientation="horizontal">
+
+                                                    <TextView
+                                                        android:id="@+id/idOutput12"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="23dp"
+                                                        android:layout_marginStart="4dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:gravity="center"
+                                                        android:text="[중앙재난안전대책본부]"
+                                                        android:textColor="#000000"
+                                                        android:textSize="12sp" />
+
+                                                </LinearLayout>
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <TextView
+                                                android:id="@+id/reviewOutput1"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="4dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="밀폐, 밀집한 시설에서의 모임을 자제하여주시기 바랍니다."
+                                                android:textColor="#000000"
+                                                android:textSize="13dp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    app:cardBackgroundColor="#FFFFFF"
+                                    app:cardCornerRadius="8dp"
+                                    app:contentPadding="4dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:backgroundTint="#FFFFFF"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:orientation="horizontal">
+
+                                                    <TextView
+                                                        android:id="@+id/idOutput123"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="23dp"
+                                                        android:layout_marginStart="4dp"
+                                                        android:layout_marginTop="5dp"
+                                                        android:gravity="center"
+                                                        android:text="[행정안전부]"
+                                                        android:textColor="#000000"
+                                                        android:textSize="12sp" />
+
+                                                </LinearLayout>
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <TextView
+                                                android:id="@+id/reviewOutput124"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="58dp"
+                                                android:layout_marginLeft="4dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="18시 태풍경보, 해안지대 접근금지"
+                                                android:textColor="#000000"
+                                                android:textSize="13dp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="150dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="10dp"
+                                    app:cardBackgroundColor="#FFFFFF"
+                                    app:cardCornerRadius="8dp"
+                                    app:contentPadding="4dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical">
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:backgroundTint="#FFFFFF"
+                                            android:orientation="vertical">
+
+                                            <androidx.constraintlayout.widget.ConstraintLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content">
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:orientation="horizontal">
+
+                                                    <ImageView
+                                                        android:id="@+id/imageView098"
+                                                        android:layout_width="43dp"
+                                                        android:layout_height="match_parent"
+                                                        android:layout_marginLeft="10dp"
+                                                        />
+                                                </LinearLayout>
+
+                                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                            <TextView
+                                                android:id="@+id/reviewOutput098"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginLeft="4dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="[국민안전처]"
+                                                android:textColor="#000000"
+                                                android:textSize="13dp" />
+
+                                            <TextView
+                                                android:id="@+id/idOutput098"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="61dp"
+                                                android:layout_marginStart="4dp"
+                                                android:layout_marginTop="5dp"
+                                                android:text="안전안내, 외출자제, 해안지대 접근금지 등 피해없게 주의하세요."
+                                                android:textColor="#000000"
+                                                android:textSize="12sp" />
+                                        </LinearLayout>
+                                    </LinearLayout>
+                                </androidx.cardview.widget.CardView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </HorizontalScrollView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"></LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="match_parent"
