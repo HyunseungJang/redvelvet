@@ -35,11 +35,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="315dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="237dp"
         android:layout_height="328dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="30dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -130,29 +142,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="268dp"
-        android:layout_marginBottom="24dp"
-        android:text="회원가입"
-        android:textColor="#000000"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
     <Button
         android:id="@+id/btn_registration"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
+        android:layout_width="243dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="106dp"
         android:backgroundTint="#F26161"
         android:text="가입하기"

@@ -12,9 +12,8 @@
         android:layout_height="3dp"
         android:background="#F26161"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="151dp" />
+        tools:layout_editor_absoluteY="134dp" />
 
     <TextView
         android:id="@+id/textView17"
@@ -34,8 +33,8 @@
         android:id="@+id/outputBirth1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:text="00세"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -46,29 +45,28 @@
         android:id="@+id/hprofileView"
         android:layout_width="100dp"
         android:layout_height="87dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="36dp"
         android:layout_marginBottom="1dp"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/profile" />
+
 
     <TextView
         android:id="@+id/outputName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="56dp"
         android:text="00님"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toEndOf="@+id/hprofileView"
         app:layout_constraintTop_toTopOf="parent" />
-
-
 
     <Button
         android:id="@+id/checkButton1"
@@ -85,6 +83,7 @@
         android:layout_width="352dp"
         android:layout_height="393dp"
         android:layout_marginStart="42dp"
+        android:layout_marginTop="-10dp"
         android:layout_marginEnd="177dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +110,21 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:text=" 이곳에 의료정보를 등록하시면 응급상황을 대비할 때 사용됩니다."
+                android:textSize="16sp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="98dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="20dp"
@@ -143,7 +150,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="100dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
@@ -169,7 +176,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="98dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
@@ -248,7 +255,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="98dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
@@ -274,7 +281,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="98dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
@@ -300,7 +307,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="98dp"
+                    android:layout_width="102dp"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="16dp"
@@ -320,14 +327,22 @@
             </LinearLayout>
 
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:text=" 이곳에 의료정보를 등록하시면 응급상황을 대비할 때 사용됩니다."
-                android:textSize="16sp" />
-
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="358dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="155dp">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/img" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
