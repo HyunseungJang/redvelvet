@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.actionbar) //커스텀한 toolbar를 액션바로 사용
+        setSupportActionBar(binding.actionBar) //커스텀한 toolbar를 액션바로 사용
 
         // 맨 위 상태바 투명
         val window = window
