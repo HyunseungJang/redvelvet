@@ -34,11 +34,11 @@ class SituationActivity : AppCompatActivity() {
             my_intro_view_pager.currentItem = my_intro_view_pager.currentItem + 1
         }
 
-        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr1, "1. 심정지 확인 후 도움 및 119 신고요청"))
-        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr2, "2. 가슴압박 30회 실시"))
-        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr3, "3. 영아에서의 흉부압박"))
-        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr4, "4. 인공호흡 2회 실시"))
-        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr5, "5. 가슴압박과 인공호흡을 반복"))
+        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr1, "심정지 확인 후 도움 및 119 신고요청"))
+        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr2, "가슴압박 30회 실시"))
+        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr3, "영아에서의 흉부압박"))
+        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr4, "인공호흡 2회 실시"))
+        pageItemList.add(PageItem(R.color.colorWhite, R.drawable.cpr5, "가슴압박과 인공호흡을 반복"))
         myIntroPagerRecyclerAdapter = MyIntroPagerRecyclerAdapter(pageItemList)
         if (Build.VERSION.SDK_INT < 16) {window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,

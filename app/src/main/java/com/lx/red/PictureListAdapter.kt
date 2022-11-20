@@ -64,6 +64,8 @@ class PictureListAdapter : RecyclerView.Adapter<PictureListAdapter.ViewHolder>()
             binding.titleOutput.text = item.title
             // 일시 표시하기
             binding.timeOutput.text = item.date
+            // 소제목 표시하기
+            binding.smallTitleOutput.text = item.smalltitle
         }
     }
 

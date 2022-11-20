@@ -61,9 +61,14 @@ class PictureListFragment : Fragment() {
         binding.pictureList.adapter = pictureAdapter
 
         pictureAdapter?.apply {
-            this.items.add(PictureData(R.drawable.janan1,"1","CPR","2022-11-29","따라하는 CPR"))
-            this.items.add(PictureData(R.drawable.janan2,"2","재난","2022-11-29","지진났을 때"))
-            this.items.add(PictureData(R.drawable.janan3,"3","압사","2022-11-29", "행동요령입니다"))
+            this.items.add(PictureData(R.drawable.jan1,"1","소중한 생명을 살리는 심폐소생술","2022-11-29","생활안전 성인용"))
+            this.items.add(PictureData(R.drawable.janan2,"1","영유아 심폐소생술","2022-11-20","생활안전 유아용"))
+            this.items.add(PictureData(R.drawable.janan3,"2","안전예방수칙","2022-11-14","이것은 꼭 해야합니다!"))
+            this.items.add(PictureData(R.drawable.janan4,"3","자연재난 행동요령","2022-11-13", "중요한 세가지"))
+            this.items.add(PictureData(R.drawable.janan5,"4","태풍이 온다면 어떻게 해야하지?","2022-11-11", "행동요령"))
+            this.items.add(PictureData(R.drawable.janan6,"5","폭우와 건물이 잠긴다면?","2022-11-10", "행동요령"))
+
+
 //            this.items.add(PictureData("4","압사","행동요령"))
 //            this.items.add(PictureData("5","압사","행동요령"))
 //            this.items.add(PictureData("6","압사","행동요령"))

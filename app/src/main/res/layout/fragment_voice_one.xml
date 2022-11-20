@@ -21,6 +21,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#FFFFFF"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -44,7 +45,10 @@
                         android:layout_gravity="center|center_horizontal"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="험악한 아저씨" />
+                        android:text="험악한 아저씨"
+                        android:textColor="#676262"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/context1"
@@ -52,7 +56,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="누구세요?" />
+                        android:text="누구세요?"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -68,6 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_lock_silent_mode_off" />
 
                     <ImageButton
@@ -75,11 +82,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_media_pause" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#FFDADA"
+                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -107,7 +121,9 @@
                         android:layout_gravity="center|center_horizontal"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="험악한 아저씨" />
+                        android:text="험악한 아저씨"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/context2"
@@ -115,7 +131,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="문 앞에 두고가세요" />
+                        android:text="문 앞에 두고가세요"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,6 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_lock_silent_mode_off" />
 
                     <ImageButton
@@ -138,11 +157,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_media_pause" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#FFDADA"
+                android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,7 +196,9 @@
                         android:layout_gravity="center|center_horizontal"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="험악한 아저씨" />
+                        android:text="험악한 아저씨"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/context3"
@@ -178,7 +206,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="네?" />
+                        android:text="네?"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -194,6 +224,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_lock_silent_mode_off" />
 
                     <ImageButton
@@ -201,10 +232,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="#F26161"
                         android:src="@android:drawable/ic_media_pause" />
 
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"></LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -223,20 +266,26 @@
                 <TextView
                     android:id="@+id/textView26"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:background="#F26161"
                     android:gravity="center"
-                    android:text="사이렌 소리" />
+                    android:text="사이렌 소리"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView25"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:background="#F26161"
                     android:gravity="center"
-                    android:text="총소리" />
+                    android:text="총소리"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -251,6 +300,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="centerInside"
                     android:src="@drawable/siren" />
 
                 <ImageButton
@@ -258,6 +309,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:scaleType="centerInside"
                     android:src="@drawable/gun" />
 
             </LinearLayout>

@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="험악한 아저씨"
-            app:backgroundTint="#F26161" />
+            android:textColor="#F26161"
+            app:backgroundTint="#FFD9D9" />
 
         <Button
             android:id="@+id/btn2"
@@ -26,15 +27,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="외국인"
-            app:backgroundTint="#602B2B" />
+            android:textColor="#FFFFFF"
+            app:backgroundTint="#F26161" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="무서운 누나"
-            app:backgroundTint="#F26161" />
+            android:text="여자 대장부"
+            android:textColor="#F26161"
+            app:backgroundTint="#FFD9D9" />
 
     </LinearLayout>
 
@@ -55,24 +58,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="#D9D9D9"
+            android:background="#F26161"
             android:gravity="center"
-            android:text="목소리 자동 변조" />
+            android:text="목소리 자동 변조"
+            android:textColor="#FFFFFF" />
 
         <EditText
             android:id="@+id/speech_text"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:gravity="center"
             android:hint="메시지를 입력하세요" />
 
         <Button
             android:id="@+id/speech_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="132dp"
+            android:layout_height="37dp"
             android:layout_below="@id/speech_text"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
             android:text="음성 전환"
+            android:textColor="#FFFFFF"
             app:backgroundTint="#F26161" />
 
     </LinearLayout>

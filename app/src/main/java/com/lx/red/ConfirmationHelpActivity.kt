@@ -47,9 +47,9 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         startActivity(myIntent)
         // 다이얼로그
         val builder = AlertDialog.Builder(this,R.style.AppAlertDialogTheme)
-        builder.setTitle("112 신고 완료")
+        builder.setTitle("119 신고 완료")
             .setIcon(R.drawable.location)
-            .setMessage("<반경 200m 이내> 레드 이용자에게 구조 신호를 보내고 있습니다.")
+            .setMessage("<반경 200m 이내> \n 레드 이용자에게 구조 신호를 보내고 있습니다.")
             .setPositiveButton("닫기"
             ) { _, _ ->
 

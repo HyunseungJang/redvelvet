@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="58dp"
                 android:layout_height="wrap_content"
-                android:background="#E1CDCD"
+                android:background="#FFD9D9"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="제목" />
@@ -43,7 +43,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="#eeeeee"
                 android:hint="제목"
                 android:padding="10dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -59,7 +58,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#E1CDCD"
+                android:background="#FFD9D9"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="소개" />
@@ -70,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:background="#eeeeee"
                 android:hint="소개글"
                 android:padding="10dp"
                 tools:ignore="TouchTargetSizeCheck" />
@@ -131,6 +129,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#FFFFFF"
                 android:gravity="center"
                 android:padding="16dp"
                 android:text="내용" />
@@ -144,7 +143,7 @@
                     android:id="@+id/textView20"
                     android:layout_width="66dp"
                     android:layout_height="match_parent"
-                    android:background="#E1CDCD"
+                    android:background="#FFD9D9"
                     android:gravity="center"
                     android:text="설명" />
 
@@ -156,14 +155,15 @@
                     <TextView
                         android:id="@+id/textView3"
                         android:layout_width="295dp"
-                        android:layout_height="72dp"
-                        android:text="* 하임리히법 : 기도가 이물질로 인해 막힐 경우, 이물질을 빼내는 응급처치법  성인 기도이물폐쇄는 대부분 음식물 섭취 중에 발생합니다. " />
+                        android:layout_height="88dp"
+
+                        android:text="심정지 후 5분이 지나면 뇌에 산소가 공급되지 않아 치사율이 높아집니다. 이때 꼭 필요한 응급처치 ! 바로 심폐소생술인데요~ 성인의 심폐소생술, 영상으로 배워볼까요?" />
 
                     <TextView
                         android:id="@+id/textView4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="그냥 뒤에서 배를 끌어당기면 되는 거 아니냐고요?! 절대 NONO!! 어려운 거 하나 없고 엄청 간단! 쉬운! 하임리히법~ 이번 기회를 통해 제대로 된 방법을 익혀봐요 :D 응급상황은 말 그대로 언제 일어날지 모르는 상황이기 때문에 미리미리 대비하는 방법 말고는 없다는 거~ 알고 계시죠?! " />
+                        android:text="어려운 거 하나 없고 엄청 간단! 쉬운! CPR~ 이번 기회를 통해 제대로 된 방법을 익혀봐요 :D 응급상황은 말 그대로 언제 일어날지 모르는 상황이기 때문에 미리미리 대비하는 방법 말고는 없다는 거~ 알고 계시죠?! " />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -186,7 +186,7 @@
             android:layout_height="49dp"
             android:text="뒤로가기"
             android:textColor="#FFFFFF"
-            app:backgroundTint="#DA8E8E"
+            app:backgroundTint="#F26161"
             tools:ignore="TextContrastCheck,TextContrastCheck,TouchTargetSizeCheck" />
 
     </LinearLayout>
