@@ -505,41 +505,28 @@ class MainActivity : AppCompatActivity() {
     private fun addHeatMap() {
         var latLngs: List<LatLng?>? = null
 
-        //지도 초기화하기
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        //구글맵 객체를 컨트롤
-        mapFragment.getMapAsync{
-            //초기화가 끝난 지도
-            map = it
-            //내위치 요청하기
-            requestLocation()
-            //보고있는 지도영역에 대한 구분
-            map.setOnCameraIdleListener {
-                //현재위치
-                val bounds = map.projection.visibleRegion.latLngBounds
-                //줌 레벨
-                val zoomLevel = map.cameraPosition.zoom
-                println("zoomLevel: ${zoomLevel}")
-            }
-
+        // 체크박스 체크 상황별
+        if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
+            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
         }
 
-        // 체크박스 체크 상황별
-//        if(crimeCheck.isChecked) {
-//            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
-//        } else if(accidentCheck.isChecked) {
-//            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
-//        } else if(cctvCheck.isChecked){
-//            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
-//        } else if(crimeCheck.isChecked && accidentCheck.isChecked){
-//            try { latLngs = readItems(R.raw.mix1) } catch (e: JSONException) { }
-//        } else if(accidentCheck.isChecked && cctvCheck.isChecked){
-//            try { latLngs = readItems(R.raw.mix2) } catch (e: JSONException) { }
-//        } else if(crimeCheck.isChecked && cctvCheck.isChecked){
-//            try { latLngs = readItems(R.raw.mix3) } catch (e: JSONException) { }
-//        } else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
-//            try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }
-//        }
+        else if(crimeCheck.isChecked == true && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
+            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked == false && accidentCheck.isChecked == true && cctvCheck.isChecked == false) {
+            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == true){
+            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
+        }
+
+        else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked == false){
+            try { latLngs = readItems(R.raw.mix1) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked && accidentCheck.isChecked == false && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.mix2) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked == false && cctvCheck.isChecked && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.mix3) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }
+        }
 
 
 
