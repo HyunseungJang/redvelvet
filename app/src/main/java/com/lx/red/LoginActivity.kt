@@ -139,7 +139,7 @@ class LoginActivity : AppCompatActivity() {
                     launcher.launch(Intent(applicationContext,MainActivity::class.java))
                     intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 } else if(checkMember == "0"){
-                val builder = AlertDialog.Builder(this@LoginActivity)
+                val builder = AlertDialog.Builder(this@LoginActivity,R.style.AppAlertDialogTheme)
                 builder.setTitle("로그인")
                 builder.setMessage("아이디/비밀번호를 다시 입력해주세요.")
                 builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->

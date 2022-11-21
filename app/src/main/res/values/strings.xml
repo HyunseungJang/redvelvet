@@ -24,7 +24,7 @@
     <string name="discoverable">기기 검색 허용</string>
 
     <string name="help">구조요청을 보냈습니다. \n
-                        구조 부재시 블루투스로  \n
+                        통신망 장애시 블루투스로  \n
                         신호를 보내주세요</string>
 
 </resources>

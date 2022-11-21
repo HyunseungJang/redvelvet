@@ -31,7 +31,6 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityConfirmationHelpBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.blueButton.setText("${MemberData.memberId}")
 
         if (!checkNetworkState(this)) {
             launcher.launch(Intent(applicationContext, BluetoothActivity::class.java))

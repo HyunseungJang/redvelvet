@@ -21,6 +21,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.lx.red.databinding.ActivityHelperBinding
 import kotlinx.android.synthetic.main.activity_confirmation_help.*
 
 class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -34,25 +35,21 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
     var latHelp = HelpData.lat?.toDouble()
     var lngHelp = HelpData.lng?.toDouble()
     var nameHelp = HelpData.id
+    var distanceHelp = HelpData.distance?.toDouble()
 
     val soser = LatLng(latHelp!!, lngHelp!!)
     val saver = LatLng(latMe!!, lngMe!!)
     private var locationArrayList: ArrayList<LatLng>? = null
 
+    lateinit var binding:ActivityHelperBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_helper)
+        binding = ActivityHelperBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val map = supportFragmentManager
             .findFragmentById(R.id.myMap) as SupportMapFragment
         map.getMapAsync(this)
-
-        //locationArrayList = ArrayList()
-
-        //locationArrayList!!.add(saver)
-        //locationArrayList!!.add(saver2)
-
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -60,19 +57,12 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(soser,17.0f))
 
-
-//        for (i in locationArrayList!!.indices) {
-//            mMap.addMarker(MarkerOptions().position(locationArrayList!![i]).title("Marker"))
-//            mMap.animateCamera(CameraUpdateFactory.zoomTo(18.0f))
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(locationArrayList!!.get(i)))
-//        }//
-
         val sos = mMap.addMarker(
             MarkerOptions()
                 .position(soser)
                 .title("$nameHelp")
                 .snippet("도움이 필요한 사람의 위치")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.warninging))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.sos))
         )
 
         val save = mMap.addMarker(
@@ -80,7 +70,7 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
                 .position(saver)
                 .title("$nameMe")
                 .snippet("나의 위치")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.you))
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.you1))
         )
 
         mMap.setOnMarkerClickListener(object : GoogleMap.OnMarkerClickListener {
@@ -89,7 +79,7 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
                 if(marker.snippet == "도움이 필요한 사람의 위치") {
 
                         // 다이얼로그를 생성하기 위해 Builder 클래스 생성자를 이용해 줍니다.
-                        val builder = AlertDialog.Builder(this@HelperActivity)
+                        val builder = AlertDialog.Builder(this@HelperActivity,R.style.AppAlertDialogTheme)
                         builder.setTitle("$nameHelp 님에게로 가는 경로 탐색")
                             .setMessage("구글맵으로 이동합니다.")
                             .setPositiveButton("확인",

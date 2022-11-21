@@ -21,7 +21,9 @@ data class HelpResponse(
         @SerializedName("lng")
         val lng: Double,
         @SerializedName("lat2")
-        val lat2: Double
+        val lat2: Double,
+        @SerializedName("distance")
+        val distance: Double,
     )
     data class Header(
         @SerializedName("total")

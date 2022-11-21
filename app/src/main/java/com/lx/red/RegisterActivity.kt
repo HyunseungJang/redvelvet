@@ -44,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
             postMemberAdd()
             addMemberArea()
         } else {
-            var builder = AlertDialog.Builder(this)
+            var builder = AlertDialog.Builder(this,R.style.AppAlertDialogTheme)
             builder.setTitle("회원가입")
             builder.setMessage("비밀번호를 다시 입력해주세요.")
             builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
@@ -66,7 +66,7 @@ class RegisterActivity : AppCompatActivity() {
                 val checkId = response.body()?.header?.total.toString()
 
                 if(checkId == "1"){
-                    var builder = AlertDialog.Builder(this@RegisterActivity)
+                    var builder = AlertDialog.Builder(this@RegisterActivity,R.style.AppAlertDialogTheme)
                     builder.setTitle("중복체크")
                     builder.setMessage("이미 있는 아이디입니다.")
                     builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
@@ -76,7 +76,7 @@ class RegisterActivity : AppCompatActivity() {
                     binding.registrationId.setText("")
                 }
                 if(checkId == "0") {
-                    var builder = AlertDialog.Builder(this@RegisterActivity)
+                    var builder = AlertDialog.Builder(this@RegisterActivity,R.style.AppAlertDialogTheme)
                     builder.setTitle("중복체크")
                     builder.setMessage("사용 가능한 아이디입니다.")
                     builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->

@@ -3,6 +3,7 @@ package com.lx.red
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.*
+import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -58,12 +59,12 @@ class MainActivity : AppCompatActivity() {
     var myMarker: Marker? = null
     val timer = Timer()
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
-
     // 쉐이크 + 전화걸기
     private var mSensorManager: SensorManager? = null
     private var mAccelerometer: Sensor? = null
     private var mShakeDetector: ShakeDetector? = null
-
+    var locationRequest : LocationRequest?=null
+    var tileOverlay : TileOverlay?=null
     // 로그아웃
     val PREFS_NAME: String? = "LoginPrefs"
 
@@ -115,10 +116,10 @@ class MainActivity : AppCompatActivity() {
             }
         val time = Timer()
 
-        time.scheduleAtFixedRate(1000, 5000) {
+        time.scheduleAtFixedRate(1000, 3000) {
             updateArea(time)
         }
-//        time.scheduleAtFixedRate(10000, 10000) {
+//        time.scheduleAtFixedRate(8000, 3000) {
 //            searchDanger(time)
 //        }
         time.scheduleAtFixedRate(10000, 10000) {
@@ -149,22 +150,10 @@ class MainActivity : AppCompatActivity() {
             launcher.launch(Intent(applicationContext,VoiceActivity::class.java))
         }
 
-
-        //?? 정보
-//        binding.infoButton.setOnClickListener {
-//            launcher.launch(Intent(applicationContext,InformationActivity::class.java))
-//        }
-
-
-        //내정보
-//        binding.myinfoButton.setOnClickListener {
-//            launcher.launch(Intent(applicationContext,MyInfoMainActivity::class.java))
-//        }
-
-        //게시판
-//        binding.postButton.setOnClickListener {
-//            launcher.launch(Intent(applicationContext,PostActivity::class.java))
-//        }
+        //블루투스
+        binding.bluetoothButton.setOnClickListener{
+            launcher.launch(Intent(applicationContext,BluetoothActivity::class.java))
+        }
 
         // --펼치기 레이아웃 start --
         binding.plusLayout.setOnClickListener {
@@ -215,7 +204,6 @@ class MainActivity : AppCompatActivity() {
                 val zoomLevel = map.cameraPosition.zoom
                 println("zoomLevel: ${zoomLevel}")
             }
-
 //            addHeatMap()
 
         }
@@ -242,7 +230,12 @@ class MainActivity : AppCompatActivity() {
         // --백그라운드에서 알람 울리기 기능 end--
 
         binding.applyButton.setOnClickListener {
-            addHeatMap()
+            if(tileOverlay!=null){
+                removeheatmap()
+                addHeatMap()
+            }else{
+                addHeatMap()
+            }
         }
 
     }
@@ -280,7 +273,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun logout(){
-        AlertDialog.Builder(this)
+        AlertDialog.Builder(this,R.style.AppAlertDialogTheme)
             .setTitle("로그아웃").setMessage("로그아웃 하시겠습니까?")
             .setPositiveButton("로그아웃", DialogInterface.OnClickListener { dialog, whichButton ->
                 val intent = Intent(this, LoginActivity::class.java)
@@ -310,7 +303,7 @@ class MainActivity : AppCompatActivity() {
             val locationRequest = LocationRequest.create()
             locationRequest.run{
                 priority = LocationRequest.PRIORITY_HIGH_ACCURACY
-                interval = 100000    //위치 새로고침 시간
+                interval = 1000000    //위치 새로고침 시간
 
             }
 
@@ -405,6 +398,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this@MainActivity,WarningActivity::class.java)
                     time.cancel()
                     startActivity(intent)
+
                 }else{
                     return
                 }
@@ -434,13 +428,14 @@ class MainActivity : AppCompatActivity() {
                     HelpData.id= response.body()?.data?.get(0)?.id.toString()
                     HelpData.lat= response.body()?.data?.get(0)?.lat.toString()
                     HelpData.lng= response.body()?.data?.get(0)?.lng.toString()
-
+                    HelpData.distance = response.body()?.data?.get(0)?.distance.toString()
                     // 알림 기능
+
                     showToast("알림 표시됨")
 
                     // 알림창 클릭시
                     val pintent = Intent(this@MainActivity, HelperActivity::class.java)
-                    val pendingIntent = PendingIntent.getActivity(this@MainActivity, 0, pintent, 0)
+                    val pendingIntent = PendingIntent.getActivity(this@MainActivity, 0, pintent, FLAG_MUTABLE)
 
                     var builder = NotificationCompat.Builder(this@MainActivity, "MY_channel")
                         .setSmallIcon(R.drawable.ic_launcher_background)
@@ -505,12 +500,13 @@ class MainActivity : AppCompatActivity() {
     private fun addHeatMap() {
         var latLngs: List<LatLng?>? = null
 
-        // 체크박스 체크 상황별
-        if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
-            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
-        }
-
-        else if(crimeCheck.isChecked == true && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
+//        // 체크박스 체크 상황별
+//        if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
+//            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+//        }
+//
+//        else
+            if(crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked) {
             try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
         } else if(crimeCheck.isChecked == false && accidentCheck.isChecked == true && cctvCheck.isChecked == false) {
             try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
@@ -528,13 +524,10 @@ class MainActivity : AppCompatActivity() {
             try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }
         }
 
-
-
         val provider = HeatmapTileProvider.Builder()
             .data(latLngs)
             .build()
 
-        val overlay = map.addTileOverlay(TileOverlayOptions().tileProvider(provider))
 
         val colors = intArrayOf(
             Color.rgb(102, 225, 0),  // green
@@ -543,7 +536,7 @@ class MainActivity : AppCompatActivity() {
         val startPoints = floatArrayOf(0.7f, 1f)
         val gradient = Gradient(colors, startPoints)
 
-        val tileOverlay = map.addTileOverlay(
+        tileOverlay = map.addTileOverlay(
             TileOverlayOptions()
                 .tileProvider(provider)
         )
@@ -554,7 +547,9 @@ class MainActivity : AppCompatActivity() {
         provider.setRadius(50)
 
 
-
+    }
+    fun removeheatmap(){
+        tileOverlay?.remove()
     }
 
     @Throws(JSONException::class)

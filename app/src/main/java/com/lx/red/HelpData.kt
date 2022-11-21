@@ -7,5 +7,6 @@ class HelpData {
         var lat: String? = null
         var lng: String? = null
         var id: String? = null
+        var distance: String?=null
     }
 }

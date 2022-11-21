@@ -48,7 +48,7 @@
     </style>
 
     <style name="AppOtherAlertButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">#D6945B</item>
+        <item name="android:textColor">#F26161</item>
         <item name="android:textSize">10sp</item>
     </style>
 </resources>
