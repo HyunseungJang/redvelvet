@@ -35,12 +35,7 @@ tools:ignore="AppCompatResource">
     android:showAsAction="always"
     android:title=""
     app:showAsAction="always"/>
-<item
-    android:id="@+id/empty2"
-    android:showAsAction="always"
-    android:title=""
-    app:showAsAction="always"/>
-<item
+    <item
     android:id="@+id/empty3"
     android:showAsAction="always"
     android:title=""
