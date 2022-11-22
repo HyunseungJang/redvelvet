@@ -73,15 +73,16 @@
         android:id="@+id/textView26"
         android:layout_width="183dp"
         android:layout_height="64dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="48dp"
+        android:gravity="center"
         android:shadowColor="#000000"
         android:text="이곳은 CCTV가 없는
                  성범죄자거주지역입니다."
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"
-        android:textAlignment="center"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView15" />
 </androidx.constraintlayout.widget.ConstraintLayout>

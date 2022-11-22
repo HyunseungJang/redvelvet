@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MyInfoMainActivity">
 
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#F26161"
+        android:gravity="center|center_vertical"
+        android:text="마이페이지"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/view2"
         android:layout_width="400dp"
@@ -15,56 +29,39 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="134dp" />
 
-    <TextView
-        android:id="@+id/textView17"
-        android:layout_width="61dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="150dp"
-        android:text="내 정보"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/outputBirth1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="20dp"
         android:text="00세"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/hprofileView"
-        app:layout_constraintTop_toBottomOf="@+id/outputName" />
+        tools:layout_editor_absoluteY="95dp" />
 
     <ImageView
         android:id="@+id/hprofileView"
-        android:layout_width="100dp"
-        android:layout_height="87dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="80dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/view2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/profile" />
-
 
     <TextView
         android:id="@+id/outputName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="68dp"
         android:text="00님"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toEndOf="@+id/hprofileView"
         app:layout_constraintTop_toTopOf="parent" />
 

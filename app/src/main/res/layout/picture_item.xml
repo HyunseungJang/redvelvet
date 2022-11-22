@@ -57,7 +57,7 @@
                             android:layout_height="wrap_content"
                             android:text="제목"
                             android:textColor="#E53935"
-                            android:textSize="18sp" />
+                            android:textSize="22sp" />
 
                         <TextView
                             android:id="@+id/smallTitleOutput"

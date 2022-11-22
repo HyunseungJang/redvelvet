@@ -7,6 +7,20 @@
     android:orientation="vertical"
     tools:context=".BluetoothActivity">
 
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:background="#F26161"
+        android:gravity="center|center_vertical"
+        android:text="블루투스"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/blueactionbar"
         android:layout_width="match_parent"

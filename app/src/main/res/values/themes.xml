@@ -23,6 +23,7 @@
 
     <style name="CustomToolBar" parent="@style/Widget.AppCompat.Toolbar">
         <item name="titleTextColor">#F26161</item>
+
     </style>
 
     <style name="Theme.TitleBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">

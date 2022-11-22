@@ -20,7 +20,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="69dp"
+            android:layout_height="54dp"
             android:background="#F26161"
             android:gravity="center|center_vertical"
             android:text="상황대처"

@@ -25,12 +25,18 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="121dp"
+                    android:layout_height="88dp"
                     android:src="@drawable/ma"
                     app:civ_border_color="#00BCD4"
                     app:civ_border_overlay="true"
                     app:civ_border_width="0dp" />
+
+                <LinearLayout
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:background="#DCD6D6"
+                    android:orientation="horizontal"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -92,7 +98,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#FFDADA"
+                android:background="#DCD6D6"
                 android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
@@ -101,12 +107,18 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="121dp"
+                    android:layout_height="83dp"
                     android:src="@drawable/ma"
                     app:civ_border_color="#00BCD4"
                     app:civ_border_overlay="true"
                     app:civ_border_width="0dp" />
+
+                <LinearLayout
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:background="#DCD6D6"
+                    android:orientation="horizontal"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -167,7 +179,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
-                android:background="#FFDADA"
+                android:background="#DCD6D6"
                 android:orientation="vertical"></LinearLayout>
 
             <LinearLayout
@@ -176,12 +188,18 @@
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
+                    android:layout_width="121dp"
+                    android:layout_height="91dp"
                     android:src="@drawable/ma"
                     app:civ_border_color="#00BCD4"
                     app:civ_border_overlay="true"
                     app:civ_border_width="0dp" />
+
+                <LinearLayout
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:background="#DCD6D6"
+                    android:orientation="horizontal"></LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -247,7 +265,33 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"></LinearLayout>
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="3dp"
+                            android:layout_weight="1"
+                            android:background="#DCD6D6"
+                            android:orientation="vertical"></LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="#EFC6C6"
+                            android:gravity="center"
+                            android:text="기타 효과음"
+                            android:textColor="#F26161"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
@@ -269,10 +313,10 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="#F26161"
+                    android:background="#FFDADA"
                     android:gravity="center"
                     android:text="사이렌 소리"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#F26161"
                     android:textStyle="bold" />
 
                 <TextView
@@ -281,10 +325,10 @@
                     android:layout_height="30dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="#F26161"
+                    android:background="#FFDADA"
                     android:gravity="center"
                     android:text="총소리"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#F26161"
                     android:textStyle="bold" />
 
             </LinearLayout>

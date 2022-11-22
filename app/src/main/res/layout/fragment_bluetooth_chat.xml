@@ -9,13 +9,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/help"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="살려주세요"
-            app:backgroundTint="#F26161" />
+            android:textColor="#F26161"
+            app:backgroundTint="#FFD9D9" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
 
         <Button
             android:id="@+id/help2"
@@ -23,7 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="도와주세요"
-            app:backgroundTint="#602B2B" />
+            app:backgroundTint="#F26161" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
 
         <Button
             android:id="@+id/help3"
@@ -31,7 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="사람살려!"
-            app:backgroundTint="#F26161" />
+            android:textColor="#F26161"
+            app:backgroundTint="#FFD9D9" />
     </LinearLayout>
 
     <ListView
