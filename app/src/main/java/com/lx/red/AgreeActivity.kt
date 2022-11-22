@@ -23,24 +23,15 @@ class AgreeActivity : AppCompatActivity() {
         bodycheckBox.setOnClickListener { onCheckChanged(bodycheckBox) }
         allcheckBox.setOnClickListener { onCheckChanged(allcheckBox) }
 
-
         //약관동의-> 회원가입
         binding.agreeButton.setOnClickListener {
             if (infocheckBox.isChecked){
                 if(localcheckBox.isChecked){
                     launcher.launch(Intent(applicationContext, RegisterActivity::class.java))
-//                        if(emercheckBox.isChecked){
-//                            if(bodycheckBox.isChecked){
-//                                launcher.launch(Intent(applicationContext, RegisterActivity::class.java))
-//                            }
-//                        }
                 }
             }else{
                 return@setOnClickListener
             }
-
-
-
         }
         binding.allcheckBox.setOnCheckedChangeListener{compoundButton, checked ->
             binding.agreeButton.isEnabled = allcheckBox.isChecked

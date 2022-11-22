@@ -25,7 +25,6 @@ class ConfirmationHelpActivity : AppCompatActivity() {
     var phoneNum: String = "tel:"
 
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
-
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,25 +79,6 @@ class ConfirmationHelpActivity : AppCompatActivity() {
 
             }
             override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
-//                launcher.launch(Intent(applicationContext, BluetoothActivity::class.java))
-            }
-        })
-    }
-    fun help2(){
-        var id = MemberData.memberId.toString()
-        var LAT= AppData.lat?.toDouble()
-        var LNG= AppData.lng?.toDouble()
-
-        BasicClient.api.help(
-            requestCode = "1001",
-            id = id,
-            LAT = LAT,
-            LNG = LNG
-        ).enqueue(object : Callback<HelpResponse> {
-            override fun onResponse(call: Call<HelpResponse>, response: Response<HelpResponse>) {
-
-            }
-            override fun onFailure(call: Call<HelpResponse>, t: Throwable) {
 
             }
         })
@@ -118,6 +98,7 @@ class ConfirmationHelpActivity : AppCompatActivity() {
             }
         })
     }
+
     companion object {
         @RequiresApi(Build.VERSION_CODES.M)
         fun checkNetworkState(context: Context): Boolean {

@@ -18,7 +18,5 @@ class AppData {
         }
         var pictureList = ArrayList<PictureData>()
         var selectedPicture:PictureData? = null
-
-
     }
 }

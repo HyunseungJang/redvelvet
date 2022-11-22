@@ -39,7 +39,6 @@ class GetHelpActivity : AppCompatActivity() {
 
             //마커 클릭시 처리
             map2.setOnMarkerClickListener {
-                showToast("마커 클릭됨 : ${it.tag},${it.title}")
 
                 //필요시, 다른화면으로 이동(tag 정보를 이용해서 구분함)
 
@@ -67,7 +66,7 @@ class GetHelpActivity : AppCompatActivity() {
         try {
             //가장 최근에 확인된 위치 알려주기
             locationClient2?.lastLocation?.addOnSuccessListener {
-                showToast("최근위치 : ${it.latitude}, ${it.longitude}")
+
             }
 
             //위치 클라이언트 만들기

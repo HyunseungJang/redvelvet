@@ -92,11 +92,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="485dp"
         app:cardBackgroundColor="#FFD7D7"
         app:cardCornerRadius="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="1dp">
 
         <ImageButton
@@ -513,12 +512,12 @@
 
     <ImageView
         android:id="@+id/helpButton"
-        android:layout_width="73dp"
-        android:layout_height="74dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="485dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/help" />
 
     <ImageView

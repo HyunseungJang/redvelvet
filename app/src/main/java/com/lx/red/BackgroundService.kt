@@ -2,7 +2,6 @@ package com.lx.red
 
 import android.R
 import android.app.*
-import android.content.Context
 import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorManager
@@ -59,7 +58,6 @@ class BackgroundService : Service() {
     }
 
     fun time() {
-
     }
 
     fun showToast(message: String) {

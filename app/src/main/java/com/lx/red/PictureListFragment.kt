@@ -40,7 +40,6 @@ class PictureListFragment : Fragment() {
 
     //  화면을 넘겨주는 런처
     val classLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        showToast("돌아옴")
     }
 
     //  화면 열렸을 시
@@ -78,7 +77,6 @@ class PictureListFragment : Fragment() {
             override fun onItemClick(holder: PictureListAdapter.ViewHolder, view: View?, position: Int) {
                 pictureAdapter?.apply {
                     val item = items.get(position)
-                    showToast("아이템 선택됨 : ${position}, ${item.title}")
 
                     AppData.pictureList = items
                     AppData.selectedPicture = PictureData(item.photo,item.path,item.title,item.date,item.smalltitle)
@@ -90,18 +88,6 @@ class PictureListFragment : Fragment() {
 
     }
 
-//    fun initView() {
-//        // 업로드 버튼 눌렀을때
-//        binding.uploadButton.setOnClickListener {
-//            val intent = Intent(this,PictureListFragment::class.java)
-//            startActivity(intent)
-//            showToast("업로드 버튼 눌림")
-//        }
-//    }
-
-
-
-    /** 토스트 메시지 보여주기 */
     fun showToast(message:String) {
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
     }

@@ -48,7 +48,6 @@ class RegisterActivity : AppCompatActivity() {
             builder.setTitle("회원가입")
             builder.setMessage("비밀번호를 다시 입력해주세요.")
             builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
-                toast("Positive")
             }
             builder.show()
         }
@@ -70,7 +69,7 @@ class RegisterActivity : AppCompatActivity() {
                     builder.setTitle("중복체크")
                     builder.setMessage("이미 있는 아이디입니다.")
                     builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
-                        toast("Positive")
+
                     }
                     builder.show()
                     binding.registrationId.setText("")
@@ -80,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
                     builder.setTitle("중복체크")
                     builder.setMessage("사용 가능한 아이디입니다.")
                     builder.setPositiveButton("확인") { dialogInterface: DialogInterface, i: Int ->
-                        toast("Positive")
+
                     }
                     builder.show()
                 }

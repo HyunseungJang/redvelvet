@@ -20,7 +20,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RawRes
 import androidx.annotation.RequiresApi
@@ -33,14 +32,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.maps.android.heatmaps.Gradient
 import com.google.maps.android.heatmaps.HeatmapTileProvider
-import com.google.maps.android.heatmaps.WeightedLatLng
 import com.lx.api.BasicClient
 import com.lx.data.DangerResponse
 import com.lx.data.HelpResponse
 import com.lx.data.MemberAreaResponse
 import com.lx.red.databinding.ActivityMainBinding
 import com.permissionx.guolindev.PermissionX
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -49,7 +46,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
 import kotlin.concurrent.scheduleAtFixedRate
-
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
@@ -80,9 +76,6 @@ class MainActivity : AppCompatActivity() {
         val window = window
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-
-        // --백그라운드 작업 start--
-
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
 
@@ -94,9 +87,7 @@ class MainActivity : AppCompatActivity() {
         with(mShakeDetector) {
             this?.setOnShakeListener(object : ShakeDetector.OnShakeListener {
                 override fun onShake(count: Int) {
-
                     run()
-
                 }
             })
         }
@@ -109,9 +100,9 @@ class MainActivity : AppCompatActivity() {
             )
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    showToast("권한부여")
+
                 } else {
-                    showToast("권한거부")
+
                 }
             }
         val time = Timer()
@@ -171,10 +162,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        // --펼치기 레이아웃 end--
-
-
-
         //지도 초기화하기
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         //구글맵 객체를 컨트롤
@@ -183,67 +170,51 @@ class MainActivity : AppCompatActivity() {
             map = it
             //내위치 요청하기
             requestLocation()
-
             //마커 클릭시 처리
             map.setOnMarkerClickListener {
-                showToast("마커 클릭됨 : ${it.tag},${it.title}")
-
-                //필요시, 다른화면으로 이동(tag 정보를 이용해서 구분함)
-
-                //리턴
                 true
             }
-
             //보고있는 지도영역에 대한 구분
             map.setOnCameraIdleListener {
                 //현재위치
                 val bounds = map.projection.visibleRegion.latLngBounds
-
-
                 //줌 레벨
                 val zoomLevel = map.cameraPosition.zoom
                 println("zoomLevel: ${zoomLevel}")
             }
-//            addHeatMap()
-
         }
         //백그라운드가 실행되는 MyService로 넘어가서 실행되는 서비스(foreground가 꺼져도 계속 실행되는것임)
         val intent = Intent(this, BackgroundService::class.java)
         startForegroundService(intent)
-
         // --백그라운드에서 알람 울리기 기능 start--
         val alarmMgr = getSystemService(ALARM_SERVICE) as AlarmManager
-
         val alarmIntent = Intent(this, NotificationBroadcastReceiver::class.java) // 리시버로 전달
-
         val pendingIntent = PendingIntent.getBroadcast(
             this, 0, alarmIntent,
             PendingIntent.FLAG_MUTABLE)
-
         val triggerTime = (SystemClock.elapsedRealtime()  // 5초 지나면 알람 울리기
                 + 20 * 1000)
-        alarmMgr.setExactAndAllowWhileIdle(   // setExactAndAllowWhileIdle -> 절전모드에서도 동작하는 코드(절전모드 원치 않으면 setExact)
+        alarmMgr.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
             triggerTime,
             pendingIntent
         )
         // --백그라운드에서 알람 울리기 기능 end--
-
         binding.applyButton.setOnClickListener {
-            if(tileOverlay!=null){
+            if(!crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked){
+                removeheatmap()
+            }else if(tileOverlay!=null){
                 removeheatmap()
                 addHeatMap()
-            }else{
+            }else if(tileOverlay==null){
                 addHeatMap()
             }
         }
-
     }
 
     //액션바 메뉴 연결 함수
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-
         return true
     }
 
@@ -254,7 +225,6 @@ class MainActivity : AppCompatActivity() {
             R.id.write -> {
                 startActivity(Intent(this, PostActivity::class.java))
                 true
-
                 return super.onOptionsItemSelected(item)
             }
             R.id.userInfo -> {
@@ -262,7 +232,6 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.setting -> {
-                // 체크박스 표시되는 함수 만들기!
                 true
             }
             R.id.logOut -> {
@@ -279,9 +248,9 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, LoginActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
                 startActivity(intent)
-                moveTaskToBack(true);						// 태스크를 백그라운드로 이동
-                finishAndRemoveTask();						// 액티비티 종료 + 태스크 리스트에서 지우기
-                android.os.Process.killProcess(android.os.Process.myPid());	// 앱 프로세스 종료
+                moveTaskToBack(true)
+                finishAndRemoveTask()
+                android.os.Process.killProcess(android.os.Process.myPid())
             })
             .setNegativeButton("취소",
                 DialogInterface.OnClickListener { dialog, whichButton -> })
@@ -293,7 +262,6 @@ class MainActivity : AppCompatActivity() {
         try {
             //가장 최근에 확인된 위치 알려주기
             locationClient?.lastLocation?.addOnSuccessListener {
-                showToast("최근위치 : ${it.latitude}, ${it.longitude}")
             }
 
             //위치 클라이언트 만들기
@@ -429,9 +397,6 @@ class MainActivity : AppCompatActivity() {
                     HelpData.lat= response.body()?.data?.get(0)?.lat.toString()
                     HelpData.lng= response.body()?.data?.get(0)?.lng.toString()
                     HelpData.distance = response.body()?.data?.get(0)?.distance.toString()
-                    // 알림 기능
-
-                    showToast("알림 표시됨")
 
                     // 알림창 클릭시
                     val pintent = Intent(this@MainActivity, HelperActivity::class.java)
@@ -460,7 +425,6 @@ class MainActivity : AppCompatActivity() {
                         notificationManager.notify(1002, builder.build())
                     }
 
-
                     val intent = Intent(this@MainActivity,HelperActivity::class.java)
                     time.cancel()
                     startActivity(intent)
@@ -474,7 +438,6 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
     //10초 카운트 세기 (1초마다)
     fun time() {
         for (i in 0..1) {
@@ -492,21 +455,24 @@ class MainActivity : AppCompatActivity() {
         launcher.launch(Intent(applicationContext,HelpRequestActivity::class.java))
     }
 
-    fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
-    }
-
     // 히트맵
     private fun addHeatMap() {
         var latLngs: List<LatLng?>? = null
 
-//        // 체크박스 체크 상황별
-//        if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == false) {
-//            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
-//        }
-//
-//        else
-        if(crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked) {
+        if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
+            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
+        }else if(crimeCheck.isChecked && accidentCheck.isChecked && !cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
+        } else if(crimeCheck.isChecked && !accidentCheck.isChecked && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
+            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
+        } else if(!crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
+            try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
+            try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
+        }else if(crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked) {
             try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
         } else if(!crimeCheck.isChecked && accidentCheck.isChecked && !cctvCheck.isChecked) {
             try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
@@ -514,20 +480,9 @@ class MainActivity : AppCompatActivity() {
             try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
         }
 
-        else if(crimeCheck.isChecked && accidentCheck.isChecked && !cctvCheck.isChecked){
-            try { latLngs = readItems(R.raw.mix1) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked && !accidentCheck.isChecked && cctvCheck.isChecked){
-            try { latLngs = readItems(R.raw.mix2) } catch (e: JSONException) { }
-        } else if(!crimeCheck.isChecked && cctvCheck.isChecked && cctvCheck.isChecked){
-            try { latLngs = readItems(R.raw.mix3) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
-            try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }
-        }
-
         val provider = HeatmapTileProvider.Builder()
             .data(latLngs)
             .build()
-
 
         val colors = intArrayOf(
             Color.rgb(102, 225, 0),  // green
@@ -545,7 +500,6 @@ class MainActivity : AppCompatActivity() {
 
         provider.setGradient(gradient)
         provider.setRadius(50)
-
 
     }
     fun removeheatmap(){
@@ -566,5 +520,4 @@ class MainActivity : AppCompatActivity() {
         }
         return result
     }
-
 }

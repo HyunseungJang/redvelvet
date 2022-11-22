@@ -23,8 +23,6 @@ class PostActivity : AppCompatActivity() {
 
     var listAdapter: ListAdapter? = null
 
-//    var uploadFile : QuestionActivity? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPostBinding.inflate(layoutInflater)
@@ -69,11 +67,6 @@ class PostActivity : AppCompatActivity() {
             override fun onItemClick(holder: ListAdapter.ViewHolder?, view: View?, position: Int) {
                 listAdapter?.apply {
                     val item = items.get(position)
-                    showToast("아이템 선택됨 : ${position}, ${item.id}, ${item.title}")
-
-                    //이거 혹시나 빨간줄 떠보여도 오류 아니니 신경 안써도됨 실행하는데 지장없음
-//                    val intent = Intent(this@ListActivity, DetailActivity::class.java)
-//                    startActivity(intent)
                 }
             }
         }
@@ -87,32 +80,20 @@ class PostActivity : AppCompatActivity() {
             requestCode = "1001"
         ).enqueue(object: Callback<CommunityListResponse> {
             override fun onResponse(call: Call<CommunityListResponse>, response: Response<CommunityListResponse>) {
-//                printLog("onResponse 호출됨 : ${response.body().toString()}")
-
-                // 리스트에 추가
                 addToList(response)
             }
 
             override fun onFailure(call: Call<CommunityListResponse>, t: Throwable) {
-//                printLog("onFailure 호출됨 : ${t.message}")
-
             }
         })
-
-//        printLog("getStudentList 요청함.")
-
     }
-
     // 응답받은 데이터를 화면에 있는 리스트에 추가하기
     fun addToList(response: Response<CommunityListResponse>) {
 
         listAdapter?.apply {
             response.body()?.output?.data?.let {
-
                 this.items.clear()
-
                 for (item in it) {
-                    //this.items.add(StudentData(R.drawable.profile1, item.name, item.age, item.mobile))
                     var listData = ListData(item.id, item.title, item.filepath, item.content, item.area, item.time)
                     this.items.add(listData)
                     Log.i("mymy", listData.toString())
@@ -120,9 +101,6 @@ class PostActivity : AppCompatActivity() {
             }
             this.notifyDataSetChanged()
         }
-    }
-    fun showToast(message:String){
-        Toast.makeText(this,message, Toast.LENGTH_LONG).show()
     }
 
 }

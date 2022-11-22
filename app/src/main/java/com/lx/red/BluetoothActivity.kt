@@ -2,9 +2,7 @@ package com.lx.red
 
 import android.Manifest.permission.*
 import android.annotation.SuppressLint
-import android.app.ActionBar
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -12,18 +10,11 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
-import android.widget.Toolbar
 import android.widget.ViewAnimator
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import com.lx.red.common.logger.Log
-import com.lx.red.common.logger.LogFragment
-import com.lx.red.common.logger.LogWrapper
-import com.lx.red.common.logger.MessageOnlyLogFilter
 import com.lx.red.databinding.ActivityBluetoothBinding
-import kotlinx.android.synthetic.main.activity_bluetooth.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class BluetoothActivity : AppCompatActivity() {
@@ -47,10 +38,7 @@ class BluetoothActivity : AppCompatActivity() {
         binding = ActivityBluetoothBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         setSupportActionBar(binding.blueactionbar) //커스텀한 toolbar를 액션바로 사용
-
-        
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S){
             if (!hasPermissions(this, PERMISSIONS_S_ABOVE)) {
@@ -71,12 +59,9 @@ class BluetoothActivity : AppCompatActivity() {
         }
     }
 
-
-
     //액션바 메뉴 연결 함수
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-
         return true
     }
 
@@ -98,31 +83,12 @@ class BluetoothActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         val logToggle = menu.findItem(R.id.menu_toggle_log)
         logToggle.isVisible = findViewById<View>(R.id.sampleOutput) is ViewAnimator
         logToggle.setTitle(if (mLogShown) R.string.sample_hide_use else R.string.sample_show_use)
         return super.onPrepareOptionsMenu(menu)
     }
-
-
-
-    /*
-    override fun initializeLogging() {
-        val logWrapper = LogWrapper()
-        Log.setLogNode(logWrapper)
-
-        val msgFilter = MessageOnlyLogFilter()
-        logWrapper.next = msgFilter
-
-        // On screen logging via a fragment with a TextView.
-        val logFragment = supportFragmentManager
-            .findFragmentById(R.id.logFragment) as LogFragment?
-        msgFilter.next = logFragment!!.logView
-        Log.i(TAG, "Ready")
-    }
-       */
 
     private fun hasPermissions(context: Context, permissions: Array<String>): Boolean {
         for (permission in permissions) {
