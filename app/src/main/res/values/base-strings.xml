@@ -18,17 +18,12 @@
 <resources>
     <string name="intro_message">
         <![CDATA[
-        
-            
-            This application allows two Android devices to carry out two-way text chat over
-            Bluetooth. It demonstrates all the fundamental Bluetooth API capabilities, such as: \n
-              (1) 장치를 검색해 주세요 \n
+              블루투스 사용방법입니다. \n \n
+              (1) 윗 상단 버튼을 통해장치를 검색해 주세요 \n
               (2) 구조 신호를 보낼 다른 사용자를 선택해주세요\n
               (3) 연결 \n
               (4) 위급상황 메시지 전달 \n
-              (5) 상단 버튼은 퀵메시지
-            
-        
+              (5) 상단 버튼은 퀵메시지 입니다.
         ]]>
     </string>
 </resources>

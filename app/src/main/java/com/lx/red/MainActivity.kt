@@ -506,19 +506,19 @@ class MainActivity : AppCompatActivity() {
 //        }
 //
 //        else
-            if(crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked) {
+        if(crimeCheck.isChecked && !accidentCheck.isChecked && !cctvCheck.isChecked) {
             try { latLngs = readItems(R.raw.crime) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked == false && accidentCheck.isChecked == true && cctvCheck.isChecked == false) {
+        } else if(!crimeCheck.isChecked && accidentCheck.isChecked && !cctvCheck.isChecked) {
             try { latLngs = readItems(R.raw.caraccident) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked == false && accidentCheck.isChecked == false && cctvCheck.isChecked == true){
+        } else if(!crimeCheck.isChecked && !accidentCheck.isChecked && cctvCheck.isChecked){
             try { latLngs = readItems(R.raw.cctv) } catch (e: JSONException) { }
         }
 
-        else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked == false){
+        else if(crimeCheck.isChecked && accidentCheck.isChecked && !cctvCheck.isChecked){
             try { latLngs = readItems(R.raw.mix1) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked && accidentCheck.isChecked == false && cctvCheck.isChecked){
+        } else if(crimeCheck.isChecked && !accidentCheck.isChecked && cctvCheck.isChecked){
             try { latLngs = readItems(R.raw.mix2) } catch (e: JSONException) { }
-        } else if(crimeCheck.isChecked == false && cctvCheck.isChecked && cctvCheck.isChecked){
+        } else if(!crimeCheck.isChecked && cctvCheck.isChecked && cctvCheck.isChecked){
             try { latLngs = readItems(R.raw.mix3) } catch (e: JSONException) { }
         } else if(crimeCheck.isChecked && accidentCheck.isChecked && cctvCheck.isChecked){
             try { latLngs = readItems(R.raw.all) } catch (e: JSONException) { }

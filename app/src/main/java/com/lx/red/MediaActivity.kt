@@ -38,10 +38,6 @@ class MediaActivity : AppCompatActivity() {
 
         /** 첫 화면설정 */
         onFragmentChanged(FragmentItem.ITEM1)
-
-        binding.backButton3.setOnClickListener {
-            finish()
-        }
     }
 
     /** 부분 화면 변경하고자 하는 경우 호출 */

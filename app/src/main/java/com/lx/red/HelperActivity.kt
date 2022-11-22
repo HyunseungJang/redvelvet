@@ -36,7 +36,9 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
     var lngHelp = HelpData.lng?.toDouble()
     var nameHelp = HelpData.id
     var distanceHelp = HelpData.distance?.toDouble()
-
+    var dis = distanceHelp!! * 1000
+    var d = dis.toInt()
+    var a = d.toString()
     val soser = LatLng(latHelp!!, lngHelp!!)
     val saver = LatLng(latMe!!, lngMe!!)
     private var locationArrayList: ArrayList<LatLng>? = null
@@ -46,6 +48,8 @@ class HelperActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityHelperBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.att.text = "구조자와의 거리는 ${a}m 입니다."
 
         val map = supportFragmentManager
             .findFragmentById(R.id.myMap) as SupportMapFragment
