@@ -274,22 +274,10 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="3dp"
+                            android:layout_height="17dp"
                             android:layout_weight="1"
-                            android:background="#DCD6D6"
                             android:orientation="vertical"></LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textView19"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:background="#EFC6C6"
-                            android:gravity="center"
-                            android:text="기타 효과음"
-                            android:textColor="#F26161"
-                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -305,32 +293,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:orientation="horizontal"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="89dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#FFDADA"
-                    android:gravity="center"
                     android:text="사이렌 소리"
                     android:textColor="#F26161"
-                    android:textStyle="bold" />
+                    app:backgroundTint="#FFDADA" />
 
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center"
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="#FFDADA"
-                    android:gravity="center"
                     android:text="총소리"
                     android:textColor="#F26161"
-                    android:textStyle="bold" />
-
+                    app:backgroundTint="#FFDADA" />
             </LinearLayout>
 
             <LinearLayout

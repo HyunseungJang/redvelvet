@@ -36,7 +36,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="350dp">
+        android:layout_marginTop="350dp"
+        android:layout_marginBottom="20dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -195,7 +196,7 @@
         android:layout_height="400dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="350dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="20dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -355,7 +356,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="350dp"
-        android:layout_marginBottom="30dp">
+        android:layout_marginBottom="20dp">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

@@ -7,17 +7,6 @@
     tools:context=".AgreeActivity">
 
     <TextView
-        android:id="@+id/textView34"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="#F26161"
-        android:gravity="center|center_vertical"
-        android:text="이용약관"
-        android:textColor="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView34" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
 
     <CheckBox
         android:id="@+id/infocheckBox"
@@ -77,8 +66,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="257dp" />
+        app:layout_constraintTop_toBottomOf="@+id/localcheckBox"
+        tools:ignore="MissingConstraints" />
 
     <CheckBox
         android:id="@+id/emercheckBox"
@@ -108,8 +97,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="349dp" />
+        app:layout_constraintTop_toBottomOf="@+id/emercheckBox"
+        tools:ignore="MissingConstraints" />
 
     <CheckBox
         android:id="@+id/bodycheckBox"
@@ -132,19 +121,16 @@
         android:layout_width="190dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="252dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="164dp"
         android:background="#00ff0000"
         android:text="자세한 이용약관 확인하기"
         android:textColor="#F26161"
         android:textSize="13sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintTop_toBottomOf="@+id/bodycheckBox"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -169,16 +155,17 @@
         android:id="@+id/allcheckBox"
         android:layout_width="131dp"
         android:layout_height="36dp"
-        android:layout_marginStart="112dp"
         android:layout_marginBottom="20dp"
         android:buttonTint="#F26161"
         android:onClick="agreeCheck"
         android:text="전체 동의 하기"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/agreeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registrationButton5"
-        app:layout_constraintVertical_bias="0.902" />
+        app:layout_constraintVertical_bias="0.888" />
 
     <Button
         android:id="@+id/agreeButton"
@@ -195,5 +182,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.972" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="361dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
