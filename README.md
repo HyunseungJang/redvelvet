@@ -8,6 +8,8 @@ No matter what danger comes, 'R.E.D.' protects you.
 * Is there any way to ask for help in an emergency?
 * What if you could let people know in a disaster situation?
 
+__With this app, you can call for help even if your mobile network is paralyzed!__
+
 ## :hammer_and_wrench: **Technologies**
 * Android Studio : App development
 * Visual Studio Code : Web development, Controller, SQL
@@ -47,9 +49,20 @@ No matter what danger comes, 'R.E.D.' protects you.
   * Voice modulation
   * Bulletin boards, etc
 
+:heavy_check_mark: Web
+
+ * Informations about App
+ * Dangerous areas
+ * 3D indoor spatial information
+
 ## :iphone: **Screenshots**
 
+* App
 ![image](https://user-images.githubusercontent.com/112330490/204071783-7a68eee8-9004-4605-816b-2f69c3fd404a.png)
+
+* Web
+![image](https://user-images.githubusercontent.com/112330490/204075472-2d30a352-e7ff-4be9-83c1-0d2914df1f3a.png)
+
 
 ## :earth_asia: **Run**
 
