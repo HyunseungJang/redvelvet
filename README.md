@@ -18,6 +18,8 @@ No matter what danger comes, 'R.E.D.' protects you.
 * Geocoder-Xr : Geocoder
 * Postman : API Test
 * HeidiSQL : Database Tool
+* Languages : Kotlin, Java, Javascript
+* API : Google Maps APIs
 
 ## :rocket: **Features**
 
@@ -50,6 +52,11 @@ No matter what danger comes, 'R.E.D.' protects you.
 ![image](https://user-images.githubusercontent.com/112330490/204071783-7a68eee8-9004-4605-816b-2f69c3fd404a.png)
 
 ## :earth_asia: **Run**
+
+* Download Data
+```
+https://drive.google.com/file/d/1SLRirzwDEWs54nTFaljbFK25KopFuIt5/view?usp=sharing
+```
 
 * Go to ubiaccess-framework
 ```kotlin
