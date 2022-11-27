@@ -7,6 +7,7 @@ import android.app.PendingIntent.FLAG_MUTABLE
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.hardware.Sensor
 import android.hardware.SensorManager
@@ -24,6 +25,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RawRes
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -51,15 +53,22 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
 
     var locationClient:FusedLocationProviderClient?=null
+
     lateinit var map: GoogleMap
+
     var myMarker: Marker? = null
     val timer = Timer()
+
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){}
     // 쉐이크 + 전화걸기
     private var mSensorManager: SensorManager? = null
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var mAccelerometer: Sensor? = null
+
     private var mShakeDetector: ShakeDetector? = null
+
     var locationRequest : LocationRequest?=null
+
     var tileOverlay : TileOverlay?=null
     // 로그아웃
     val PREFS_NAME: String? = "LoginPrefs"
@@ -78,6 +87,9 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         // 앱이 실행되면 카운트 시작( 테스트용이라 나중에 지워도 됨)
         Thread { time() }.start()
+        if(MemberData.memberId ==null){
+            finish()
+        }
 
         // 쉐이크 + 전화걸기 + 문자발송
         mSensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -91,6 +103,20 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            return
+//        }
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { location : Location? ->
+//            }
         val builder = AlertDialog.Builder(this)
         //위험권한 요청하기
         PermissionX.init(this)
@@ -168,6 +194,7 @@ class MainActivity : AppCompatActivity() {
         mapFragment.getMapAsync{
             //초기화가 끝난 지도
             map = it
+
             //내위치 요청하기
             requestLocation()
             //마커 클릭시 처리
@@ -228,7 +255,7 @@ class MainActivity : AppCompatActivity() {
                 return super.onOptionsItemSelected(item)
             }
             R.id.userInfo -> {
-                startActivity(Intent(this, MyInfoMainActivity::class.java))
+                startActivity(Intent(this, MyInfoUpdateActivity::class.java))
                 true
             }
             R.id.setting -> {
@@ -260,6 +287,7 @@ class MainActivity : AppCompatActivity() {
     fun requestLocation(){
 
         try {
+
             //가장 최근에 확인된 위치 알려주기
             locationClient?.lastLocation?.addOnSuccessListener {
             }
@@ -289,6 +317,7 @@ class MainActivity : AppCompatActivity() {
         }catch(e:SecurityException){
             e.printStackTrace()
         }
+
     }
 
     fun showCurrentLocation(location: Location){

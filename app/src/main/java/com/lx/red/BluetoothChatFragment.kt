@@ -13,6 +13,9 @@ import android.widget.*
 import android.widget.TextView.OnEditorActionListener
 import androidx.fragment.app.Fragment
 import com.lx.red.common.logger.Log
+import kotlinx.android.synthetic.main.fragment_bluetooth_chat.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class BluetoothChatFragment : Fragment() {
@@ -36,6 +39,7 @@ class BluetoothChatFragment : Fragment() {
     private var mBluetoothAdapter: BluetoothAdapter? = null
     private var mChatService: BluetoothChatService? = null
 
+    val timer = Timer()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
@@ -131,6 +135,8 @@ class BluetoothChatFragment : Fragment() {
         mChatService = BluetoothChatService(activity, mHandler)
 
         mOutStringBuffer = StringBuffer()
+
+
     }
 
     @SuppressLint("MissingPermission")
@@ -180,6 +186,7 @@ class BluetoothChatFragment : Fragment() {
     private val mHandler: Handler = @SuppressLint("HandlerLeak")
     object : Handler() {
         override fun handleMessage(msg: Message) {
+
             val activity = getActivity()
             when (msg.what) {
                 Constants.MESSAGE_STATE_CHANGE -> when (msg.arg1) {
@@ -211,6 +218,10 @@ class BluetoothChatFragment : Fragment() {
                                     + mConnectedDeviceName, Toast.LENGTH_SHORT
                         ).show()
                     }
+                    Thread.sleep(2000)
+                    val text = view!!.findViewById(R.id.localText) as TextView
+                    text.text = "'북동' 쪽 5m 거리에 '${mConnectedDeviceName}'(이)가 위치해 있습니다."
+
                 }
                 Constants.MESSAGE_TOAST -> if (null != activity) {
                     Toast.makeText(

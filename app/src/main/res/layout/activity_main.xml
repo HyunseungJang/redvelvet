@@ -137,18 +137,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="여성밤길"
+                    android:text="CCTV미설치"
                     app:buttonTint="#F26161" />
 
                 <Button
                     android:id="@+id/applyButton"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="55dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:text="적용"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#DAF3645A"
+                    android:textSize="13dp"
                     android:textStyle="bold"
-                    app:backgroundTint="#FFD7D7" />
+                    app:backgroundTint="#FFFFFF" />
             </LinearLayout>
 
             <LinearLayout

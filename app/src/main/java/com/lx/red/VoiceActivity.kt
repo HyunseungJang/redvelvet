@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.lx.red.databinding.ActivityVoiceBinding
+import kotlinx.android.synthetic.main.activity_voice.*
 import java.util.*
 
 class VoiceActivity : AppCompatActivity(), TextToSpeech.OnInitListener {

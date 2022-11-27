@@ -41,7 +41,8 @@ class ConfirmationHelpActivity : AppCompatActivity() {
         val inputPhoneNum=MemberData.memberEmernum
         val myUri = Uri.parse("smsto:${inputPhoneNum}")
         val myIntent = Intent(Intent.ACTION_SENDTO, myUri)
-        myIntent.putExtra("sms_body", "살려주세요!")
+        myIntent.putExtra("sms_body", "질환 : 고혈압" +
+                "혈액형 : AB형" + "복용중인 약 : 고혈압 치료제" + "신장 : 194 " + "체중 : 100 ")
         startActivity(myIntent)
         // 다이얼로그
         val builder = AlertDialog.Builder(this,R.style.AppAlertDialogTheme)
