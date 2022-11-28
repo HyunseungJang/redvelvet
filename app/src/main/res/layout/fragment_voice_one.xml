@@ -265,21 +265,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="17dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical"></LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
+                    android:orientation="vertical"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -315,7 +301,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="총소리"
+                    android:text="비명소리"
                     android:textColor="#F26161"
                     app:backgroundTint="#FFDADA" />
             </LinearLayout>
@@ -328,7 +314,7 @@
 
                 <ImageButton
                     android:id="@+id/sirenButton"
-                    android:layout_width="wrap_content"
+                    android:layout_width="122dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
@@ -342,7 +328,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
                     android:scaleType="centerInside"
-                    android:src="@drawable/gun" />
+                    android:src="@drawable/shout" />
 
             </LinearLayout>
 
